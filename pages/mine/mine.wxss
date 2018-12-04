@@ -1,0 +1,49 @@
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background:#fee767;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+  border: 2px solid #fee767;
+}
+
+.userinfo-nickname {
+  color: #aaa;
+  
+}
+
+.usermotto {
+  margin-top: 200px;
+}
+
+
+.section {
+	padding: 0;
+	color: #2e2e2e;
+	font-size: 30rpx;
+}
+.section .line {
+	margin-left: 30rpx;
+	padding-right: 30rpx;
+	line-height: 3;
+	border-bottom: 1px solid #efefef;
+}
+.section .line:last-child {
+	border-bottom: none;
+}
+.section .line:before {
+	content: '>';
+	float: right;
+	color: #aaa;
+	margin-left: 20rpx;
+}
+.section .line .tl {
+	float: right;
+	color: #aaa;
+}
