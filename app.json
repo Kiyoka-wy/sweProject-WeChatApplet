@@ -1,13 +1,20 @@
 {
   "pages":[
     "pages/index/index",
-    "pages/logs/logs",
-    "pages/mine/mine"
+    "pages/mine/mine",
+    "pages/mine/information/display/information",
+    "pages/mine/information/edit/edit",
+    "pages/mine/address/display/address",
+    "pages/mine/address/add/add",
+    "pages/welcome/register/register",
+    "pages/welcome/login/login",
+    "pages/welcome/welcome",
+    "pages/publish/publish"
   ],
   "window":{
     "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#fee767",
-    "navigationBarTitleText": "任务平台",
+    "navigationBarBackgroundColor": "#b3d4db",
+    "navigationBarTitleText": "校园任务平台",
     "navigationBarTextStyle":"black"
   },
   "tabBar":{
@@ -27,6 +34,12 @@
         "iconPath": "imgs/tabBar/mine_2.png",
         "selectedIconPath": "imgs/tabBar/mine_1.png",
         "text": "我的"
+      },
+      {
+        "pagePath": "pages/welcome/welcome",
+        "iconPath": "imgs/tabBar/mine_2.png",
+        "selectedIconPath": "imgs/tabBar/mine_1.png",
+        "text": "测试"
       }
     ]
   }

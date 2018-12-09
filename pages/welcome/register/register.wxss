@@ -1,0 +1,38 @@
+@import "../../lib/weui.wxss";
+.back_img{
+  background: url(https://s1.ax1x.com/2018/12/06/Flz4h9.jpg) no-repeat;
+  background-size:cover;
+  -webkit-filter: blur(10px); /* Chrome, Opera */
+  -moz-filter: blur(10px);
+  -ms-filter: blur(10px);    
+  filter: blur(10px); 
+  z-index:0;
+  position:relative;
+}
+.login_info{
+  z-index: 999;
+  position:absolute;
+}
+.login_form{
+  border-radius:5px;
+  margin-left:8%;
+  background-color: rgba(255,255,255,0.2);
+}
+
+button{ 
+    border: 2rpx solid #405f80;
+    border-radius:10rpx;
+    height: 100rpx;
+    width:350rpx;
+    text-align: center;
+    margin-top: 30rpx;
+    margin-bottom: 20rpx;
+}
+.button-sp-area{
+  margin: 0 auto;
+  width: 60%;
+}
+.button-text{
+    font-size: 34rpx;
+    color: #405f80;
+}

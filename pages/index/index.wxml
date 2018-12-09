@@ -5,14 +5,16 @@
   
     <view class="section section-big special">
 			<view class="title">发布任务</view>
-        <swiper class="section icons" indicator-dots="true" autoplay="" interval="" duration="500">
-			    <swiper-item wx:for="{{icons}}" wx:for-item="list" wx:key="id">
-				    <view class="icon" wx:for="{{list}}" wx:for-item="icon" wx:key="id" bindtap="toNearby">
-					    <image src="{{icon.img}}"/>
-					    <text>{{icon.name}}</text>
-				    </view>
-          </swiper-item>
-		    </swiper>
+      <view>选择任务类型</view>
+      <navigator url="../publish/publish">
+        <button>跑腿类</button>
+      </navigator>
+      <navigator url="../../index/index">
+        <button>交易类</button>
+      </navigator>
+      <navigator url="../../index/index">
+        <button>问卷类</button>
+      </navigator>
 		</view>
     
     <view id="nearby" class="section section-big nearby">
@@ -22,18 +24,26 @@
 				</view>
 				<view class="filter {{filterId==2?'active':''}}" data-id="2" bindtap="tapFilter">赏金最高<text class="v">↓</text>
 				</view>
-				<view class="filter {{filterId==3?'active':''}}" data-id="3" bindtap="tapFilter">距离最近<text class="v">↓</text>
+				<view class="filter {{filterId==3?'active':''}}" data-id="3" bindtap="tapFilter">地点排序<text class="v">↓</text>
+				</view>
+        <view class="filter {{filterId==4?'active':''}}" data-id="4" bindtap="tapFilter">修改时间<text class="v">↓</text>
+				</view>
+        <view class="filter {{filterId==5?'active':''}}" data-id="5" bindtap="tapFilter">截止时间<text class="v">↓</text>
 				</view>
 			</view>
-			<view class="shop" wx:for="{{shops}}" wx:key="id">
+
+			<view class="shop">
 				<navigator url="/page/shop/shop?id={{item.id}}">
-					<image src="{{item.img}}"/>
+					<view class="section">第一个任务</view>
 				</navigator>
+        <view class="section">第二个任务</view>
+        <view class="section">第三个任务</view>
+
+        <view class="loading">努力加载中…</view>
 			</view>
+
 		</view>
-		<view class="loading">努力加载中…</view>
 
   </scroll-view>
-
 
 </view>

@@ -1,0 +1,16 @@
+
+
+<view>登录注册模块入口</view>
+
+<view class="button">
+  <navigator url="login/login">
+    <text class="button-text">登录</text>
+  </navigator>
+</view>
+
+
+<view class="button">
+  <navigator url="register/register">
+    <text class="button-text">注册</text>
+  </navigator>
+</view>

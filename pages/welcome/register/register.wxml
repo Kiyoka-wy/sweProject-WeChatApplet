@@ -1,0 +1,44 @@
+<!--
+变量说明：
+showTopTips ： 是否显示提示信息
+errorMsg ： 错误信息
+windowHeight ：设备的窗口的高度
+windowWidth ： 设备的窗口的宽度
+account ： 账号
+password ：密码
+subPassword ：确认密码
+-->
+<view class="page__bd">
+  <view class="weui-toptips weui-toptips_warn" wx:if="{{showTopTips}}">{{errorMsg}}</view>
+  
+  <view style="height: {{windowHeight}}px; width: {{windowWidth}}px;" class="back_img"></view>
+
+  <form bindsubmit="formSubmit" bindreset="formReset">
+
+    <view class="login_info" style="top:{{windowHeight * 0.3}}px;width: {{windowWidth * 0.92}}px;">
+      <view class="login_form">
+
+        <view>
+          <label>账号</label>
+          <input class="weui-input" placeholder="请输入手机号或邮箱" type="text" maxlength="20" value="{{account}}" focus="true" name="account"/>
+        </view>
+
+        <view>
+          <label>密码</label>
+          <input class="weui-input" placeholder="请输入密码" type="password" maxlength="10" value="{{password}}" name="password"/>
+        </view>
+
+        <view>
+          <label>确认密码</label>
+          <input class="weui-input" placeholder="请再次输入密码" type="password" maxlength="10" value="{{subPassword}}" name="password"/>
+        </view>
+
+        <view class="button-sp-area">
+          <button formType="submit" plain='true'>注册</button>
+        </view>
+
+      </view>
+    </view>
+  </form>
+
+</view>
