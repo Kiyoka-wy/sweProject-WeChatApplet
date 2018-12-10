@@ -2,21 +2,6 @@
 <view class="container">
   <scroll-view scroll-y="true" scroll-into-view="{{scrollIntoView}}" bindscroll="onScroll">
 
-  
-    <view class="section section-big special">
-			<view class="title">发布任务</view>
-      <view>选择任务类型</view>
-      <navigator url="../publish/publish">
-        <button>跑腿类</button>
-      </navigator>
-      <navigator url="../../index/index">
-        <button>交易类</button>
-      </navigator>
-      <navigator url="../../index/index">
-        <button>问卷类</button>
-      </navigator>
-		</view>
-    
     <view id="nearby" class="section section-big nearby">
 			<view class="title">当前任务</view>
 			<view class="filters">

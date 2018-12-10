@@ -6,6 +6,8 @@
     "pages/mine/information/edit/edit",
     "pages/mine/address/display/address",
     "pages/mine/address/add/add",
+    "pages/mine/dormitory/display/dormitory",
+    "pages/mine/dormitory/add/add",
     "pages/welcome/register/register",
     "pages/welcome/login/login",
     "pages/welcome/welcome",
@@ -16,6 +18,10 @@
     "navigationBarBackgroundColor": "#b3d4db",
     "navigationBarTitleText": "校园任务平台",
     "navigationBarTextStyle":"black"
+  },
+  "usingComponents": {
+    "i-tab-bar": "pages/dist/tab-bar/index",
+    "i-tab-bar-item": "pages/dist/tab-bar-item/index"
   },
   "tabBar":{
     "color": "#878787",
@@ -30,11 +36,18 @@
         "text": "首页"
       },
       {
+        "pagePath": "pages/publish/publish",
+        "iconPath": "imgs/tabBar/mine_2.png",
+        "selectedIconPath": "imgs/tabBar/mine_1.png",
+        "text": "发布"
+      },
+      {
         "pagePath": "pages/mine/mine",
         "iconPath": "imgs/tabBar/mine_2.png",
         "selectedIconPath": "imgs/tabBar/mine_1.png",
         "text": "我的"
       },
+
       {
         "pagePath": "pages/welcome/welcome",
         "iconPath": "imgs/tabBar/mine_2.png",

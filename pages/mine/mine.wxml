@@ -17,7 +17,10 @@
 		  <view class="line judgement">我的地址</view>
     </navigator>
 
-    <view class="line judgement">我的宿舍楼</view>
+    <navigator url="dormitory/display/dormitory">
+      <view class="line judgement">我的宿舍楼</view>
+    </navigator>
+
 		<view class="line judgement">消息通知</view>
 	</view>
 
