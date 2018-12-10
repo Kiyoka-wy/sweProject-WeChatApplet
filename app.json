@@ -11,7 +11,9 @@
     "pages/welcome/register/register",
     "pages/welcome/login/login",
     "pages/welcome/welcome",
-    "pages/publish/publish"
+    "pages/publish/publish",
+    "pages/task/accepted/accepted",
+    "pages/task/published/published"
   ],
   "window":{
     "backgroundTextStyle":"light",

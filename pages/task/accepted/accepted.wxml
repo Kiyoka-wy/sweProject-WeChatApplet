@@ -1,0 +1,16 @@
+<i-tabs current="{{ current }}" bindchange="handleChange">
+    <i-tab key="tab1" title="进行中"></i-tab>
+    <i-tab key="tab2" title="已完成"></i-tab>
+    <i-tab key="tab3" title="已取消"></i-tab>
+</i-tabs>
+
+<i-panel>
+    <view style="padding: 15px;">
+      <i-panel class="cell-panel-demo">
+        <i-cell title="任务标题" label="任务地点" value="任务时间" is-link></i-cell>
+      </i-panel>
+    
+    </view>
+    <i-button bind:click="handleClick" inline type="success">完成任务</i-button>
+    <i-button bind:click="handleClick" inline type="error">取消任务</i-button>
+</i-panel>

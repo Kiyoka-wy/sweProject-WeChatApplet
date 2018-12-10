@@ -25,8 +25,13 @@
 	</view>
 
   <view class="section">
-		<view class="line judgement">已接受的任务</view>
-		<view class="line judgement">已发布的任务</view>
+    <navigator url="../task/accepted/accepted">
+		  <view class="line judgement">已接受的任务</view>
+    </navigator>
+
+    <navigator url="../task/published/published">
+		  <view class="line judgement">已发布的任务</view>
+    </navigator> 
 	</view>
 
 	<view class="section">

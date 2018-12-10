@@ -7,9 +7,23 @@ Page({
     motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    current: 'tab1',
+    current_scroll: 'tab1'
+  },
+ 
+  handleChange({ detail }) {
+    this.setData({
+      current: detail.key
+    });
   },
 
+  handleChangeScroll({ detail }) {
+    this.setData({
+      current_scroll: detail.key
+    });
+  },
+  
   //事件处理函数
   bindViewTap: function() {
     wx.navigateTo({

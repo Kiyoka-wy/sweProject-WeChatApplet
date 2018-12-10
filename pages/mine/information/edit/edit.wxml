@@ -1,54 +1,43 @@
 <!--pages/mine/edit/edit.wxml-->
 
+ <view class="modify-form">
+   <form bindsubmit="formSubmit">
 
-<i-panel title="基础用法">
-    <i-input value="{{ value1 }}" title="昵称" placeholder="请输入您的昵称" />
-    <i-input value="{{ value1 }}" title="性别" placeholder="性别" />
-    <i-input value="{{ value2 }}" title="E-mail" placeholder="请输入您的邮箱" />
-    <i-input value="{{ value2 }}" type="number" title="手机号" placeholder="请输入手机号" />
-    <i-input value="{{ value2 }}" type="number" title="手机号" placeholder="请输入手机号" />
-    <i-input value="{{ value3 }}" type="textarea" title="详细地址" placeholder="请输入详细地址(最多50字)" maxlength="50" />
-    <i-input value="{{ value4 }}" title="用户信息" disabled />
-</i-panel>
+       <view class="label-list">
+         <view class="label">昵称</view>
+         <input placeholder="请输入您的昵称"  placeholder-class="place" name="nickname" value="{{nickname}}"/>
+       </view>
 
-<view class="modify-form">
-  <form bindsubmit="formSubmit">
+       <view class="label-list">
+         <view class="label">性别</view>
+         <radio-group class="radio-group" bindchange="radioChange">
+           <label class="radio" wx:for="{{sex}}" wx:key="{{index}}">
+             <radio value="{{item.id}}" checked="{{sexId == item.id}}"/>{{item.name}}
+           </label>
+         </radio-group>
+       </view>
+         
+       <view class="label-list">
+         <view class="label">E-mail</view>
+         <input placeholder="请输入您的E-mail" value='{{mail}}' placeholder-class="place" name='mail'/>
+       </view>
 
-      <view class="label-list">
-        <view class="label">昵称</view>
-        <input placeholder="请输入您的昵称"  placeholder-class="place" name="nickname" value="{{nickname}}"/>
-      </view>
+       <view class="label-list">
+         <view class="label">手机号</view>
+         <input value="{{phoneNumber}}"   placeholder-class="place"/>
+       </view>
 
-      <view class="label-list">
-        <view class="label">性别</view>
-        <radio-group class="radio-group" bindchange="radioChange">
-          <label class="radio" wx:for="{{sex}}" wx:key="{{index}}">
-            <radio value="{{item.id}}" checked="{{sexId == item.id}}"/>{{item.name}}
-          </label>
-        </radio-group>
-      </view>
-        
-      <view class="label-list">
-        <view class="label">E-mail</view>
-        <input placeholder="请输入您的E-mail" value='{{mail}}' placeholder-class="place" name='mail'/>
-      </view>
+       <view class="label-list">
+         <view class="label">学号</view>
+         <input value="{{studentID}}"   placeholder-class="place"/>
+       </view>
 
-      <view class="label-list">
-        <view class="label">手机号</view>
-        <input value="{{phoneNumber}}"   placeholder-class="place"/>
-      </view>
+       <view class="label-list">
+         <view class="label">所在学院</view>
+         <input value="{{department}}"   placeholder-class="place"/>
+       </view>
 
-      <view class="label-list">
-        <view class="label">学号</view>
-        <input value="{{studentID}}"   placeholder-class="place"/>
-      </view>
+       <button form-type='submit' class="submit">确定</button>
 
-      <view class="label-list">
-        <view class="label">所在学院</view>
-        <input value="{{department}}"   placeholder-class="place"/>
-      </view>
-
-      <button form-type='submit' class="submit">确定</button>
-
-  </form>
-</view>
+   </form>
+ </view>
