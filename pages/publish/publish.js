@@ -12,6 +12,7 @@ Page({
     endDate: '2000-01-01',
     endTime: '00:00',
     dataArray: ['安楼208', 'B楼308', 'F楼', 'G107', '手动输入'],
+    place: '安楼208',
     dataIndex: 0
   },
 
@@ -23,7 +24,8 @@ Page({
       this.setData({ reply: false })
     }
     this.setData({
-      dataIndex: e.detail.value
+      dataIndex: e.detail.value,
+      place: this.data.dataArray[e.detail.value]
     })
   },
 

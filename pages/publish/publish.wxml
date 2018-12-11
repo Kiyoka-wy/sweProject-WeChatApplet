@@ -43,7 +43,7 @@
       </view>
       
       <view class="section {{reply?'on':'off'}}">
-        <input name="place" placeholder="请输入任务地点" type="text"/>
+        <input name="place" placeholder="请输入任务地点" type="text" value="{{place}}"/>
       </view>
 
       <view class="weui-cells__title">任务截止日期</view>
