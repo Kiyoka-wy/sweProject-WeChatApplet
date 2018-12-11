@@ -13,7 +13,8 @@ Page({
     endTime: '00:00',
     dataArray: ['安楼208', 'B楼308', 'F楼', 'G107', '手动输入'],
     place: '安楼208',
-    dataIndex: 0
+    dataIndex: 0,
+    money:0
   },
 
   bindCasPickerChange: function (e) {
@@ -63,5 +64,15 @@ Page({
 
   formReset(e) {
     console.log('form发生了reset事件，携带数据为：', e.detail.value)
+    this.setData({
+      startDate: '2000-01-01',
+      startTime: '00:00',
+      endDate: '2000-01-01',
+      endTime: '00:00',
+      dataArray: ['安楼208', 'B楼308', 'F楼', 'G107', '手动输入'],
+      place: '安楼208',
+      dataIndex: 0,
+      money: 0
+    })
   }
 })
