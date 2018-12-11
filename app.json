@@ -2,6 +2,7 @@
   "pages":[
     "pages/index/index",
     "pages/mine/mine",
+    "pages/details/details",
     "pages/mine/information/display/information",
     "pages/mine/information/edit/edit",
     "pages/mine/address/display/address",
@@ -13,7 +14,8 @@
     "pages/welcome/welcome",
     "pages/publish/publish",
     "pages/task/accepted/accepted",
-    "pages/task/published/published"
+    "pages/task/published/published",
+    "pages/task/detail/detail"
   ],
   "window":{
     "backgroundTextStyle":"light",
@@ -37,12 +39,7 @@
         "selectedIconPath": "imgs/tabBar/home_1.png",
         "text": "首页"
       },
-      {
-        "pagePath": "pages/publish/publish",
-        "iconPath": "imgs/tabBar/mine_2.png",
-        "selectedIconPath": "imgs/tabBar/mine_1.png",
-        "text": "发布"
-      },
+      
       {
         "pagePath": "pages/mine/mine",
         "iconPath": "imgs/tabBar/mine_2.png",

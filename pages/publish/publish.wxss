@@ -1,5 +1,14 @@
 @import "../lib/weui.wxss";
 
+.i-steps-demo{
+    margin:20px;
+}
+.one-tag{
+    font-size:14px;
+    margin:30px 5px 20px 0;
+}
+
+
 label {
   display: inline-block;
   min-width: 270rpx;
@@ -18,4 +27,3 @@ form{
   }
 .on{display: block}
 .off{display: none}
-

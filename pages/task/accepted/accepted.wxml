@@ -1,16 +1,26 @@
-<i-tabs current="{{ current }}" bindchange="handleChange">
-    <i-tab key="tab1" title="进行中"></i-tab>
-    <i-tab key="tab2" title="已完成"></i-tab>
-    <i-tab key="tab3" title="已取消"></i-tab>
-</i-tabs>
+<view class='topTabSwiper'>
+    <view class='tab  {{currentData == 0 ? "tabBorer" : ""}}'  data-current = "0" bindtap='checkCurrent'>进行中</view>
+    <view class='tab  {{currentData == 1 ? "tabBorer" : ""}}'  data-current = "1" bindtap='checkCurrent'>已完成</view>
+    <view class='tab  {{currentData == 2 ? "tabBorer" : ""}}'  data-current = "2" bindtap='checkCurrent'>已取消</view>
+</view>
 
-<i-panel>
-    <view style="padding: 15px;">
-      <i-panel class="cell-panel-demo">
-        <i-cell title="任务标题" label="任务地点" value="任务时间" is-link></i-cell>
+<swiper current="{{currentData}}" class='swiper' style="height:600px;" duration="300" bindchange="bindchange">
+  <swiper-item>
+    <navigator url="../detail/detail">
+      <i-panel>
+        <view style="padding: 15px;">
+          <i-panel class="cell-panel-demo">
+            <i-cell title="任务标题" label="任务地点" value="任务时间" is-link></i-cell>
+          </i-panel>
+        </view>
+        <i-button bind:click="handleClick" inline type="success">完成任务</i-button>
+        <i-button bind:click="handleClick" inline type="error">取消任务</i-button>
       </i-panel>
-    
-    </view>
-    <i-button bind:click="handleClick" inline type="success">完成任务</i-button>
-    <i-button bind:click="handleClick" inline type="error">取消任务</i-button>
-</i-panel>
+    </navigator>
+  </swiper-item> 
+
+  <swiper-item><view class='swiper_con'>welcome come to 热点</view></swiper-item>
+  <swiper-item><view class='swiper_con'>welcome come to 关注</view></swiper-item>  
+</swiper>
+
+

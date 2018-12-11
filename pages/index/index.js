@@ -9,9 +9,41 @@ Page({
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     current: 'tab1',
-    current_scroll: 'tab1'
+    current_scroll: 'tab1',
+    currentData: 0,
+    title:'一个任务标题',
+    nickname:'发布人昵称',
+    img:'https://i.loli.net/2017/08/21/599a521472424.jpg',
+    content:"此处为任务内容",
+    time:"15:00"
   },
- 
+
+  jumpto: function () {
+    wx.navigateTo({
+      url: '../details/details',
+    })
+  },
+  //获取当前滑块的index
+  bindchange: function (e) {
+    const that = this;
+    that.setData({
+      currentData: e.detail.current
+    })
+  },
+  //点击切换，滑块index赋值
+  checkCurrent: function (e) {
+    const that = this;
+
+    if (that.data.currentData === e.target.dataset.current) {
+      return false;
+    } else {
+
+      that.setData({
+        currentData: e.target.dataset.current
+      })
+    }
+  },
+
   handleChange({ detail }) {
     this.setData({
       current: detail.key

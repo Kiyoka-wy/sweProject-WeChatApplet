@@ -14,7 +14,7 @@
 	"compileType": "miniprogram",
 	"libVersion": "2.0.4",
 	"appid": "wxd2125532676924b2",
-	"projectname": "%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9",
+	"projectname": "sweproject",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},

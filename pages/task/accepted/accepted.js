@@ -2,19 +2,27 @@ var app = getApp();
 
 Page({
   data: {
-    current: 'tab1',
-    current_scroll: 'tab1'
+    currentData: 0,
   },
 
-  handleChange({ detail }) {
-    this.setData({
-      current: detail.key
-    });
+  //获取当前滑块的index
+  bindchange: function (e) {
+    const that = this;
+    that.setData({
+      currentData: e.detail.current
+    })
   },
+  //点击切换，滑块index赋值
+  checkCurrent: function (e) {
+    const that = this;
 
-  handleChangeScroll({ detail }) {
-    this.setData({
-      current_scroll: detail.key
-    });
+    if (that.data.currentData === e.target.dataset.current) {
+      return false;
+    } else {
+
+      that.setData({
+        currentData: e.target.dataset.current
+      })
+    }
   }
 })

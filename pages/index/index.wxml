@@ -1,37 +1,31 @@
 <!--index.wxml-->
-<i-tabs current="{{ current }}" bindchange="handleChange">
-    <i-tab key="tab1" title="选项1"></i-tab>
-    <i-tab key="tab2" title="选项2"></i-tab>
-    <i-tab key="tab3" title="选项3"></i-tab>
-</i-tabs>
-
-<view class="container">
-  <scroll-view scroll-y="true" scroll-into-view="{{scrollIntoView}}" bindscroll="onScroll">
-
-    <view id="nearby" class="section section-big nearby">
-			<view class="title">当前任务</view>
-			<view class="filters">
-				<view class="filter {{filterId==1?'active':''}}" data-id="1" bindtap="tapFilter">综合排序<text class="v">↓</text>
-				</view>
-				<view class="filter {{filterId==2?'active':''}}" data-id="2" bindtap="tapFilter">赏金最高<text class="v">↓</text>
-				</view>
-				<view class="filter {{filterId==3?'active':''}}" data-id="3" bindtap="tapFilter">地点排序<text class="v">↓</text>
-				</view>
-        <view class="filter {{filterId==4?'active':''}}" data-id="4" bindtap="tapFilter">修改时间<text class="v">↓</text>
-				</view>
-        <view class="filter {{filterId==5?'active':''}}" data-id="5" bindtap="tapFilter">截止时间<text class="v">↓</text>
-				</view>
-			</view>
-
-      
-      <i-card title="任务标题" extra="发布人昵称" thumb="https://i.loli.net/2017/08/21/599a521472424.jpg">
-        <view slot="content">任务内容</view>
-        <view slot="footer">时间</view>
-      </i-card>
-
-			
-		</view>
-
-  </scroll-view>
-
+<view class='topTabSwiper'>
+    <view class='tab  {{currentData == 0 ? "tabBorer" : ""}}'  data-current = "0" bindtap='checkCurrent'>分类1</view>
+    <view class='tab  {{currentData == 1 ? "tabBorer" : ""}}'  data-current = "1" bindtap='checkCurrent'>分类2</view>
+    <view class='tab  {{currentData == 2 ? "tabBorer" : ""}}'  data-current = "2" bindtap='checkCurrent'>分类3</view>
 </view>
+
+<swiper current="{{currentData}}" class='swiper' style="height:600px;" duration="300" bindchange="bindchange">
+  <swiper-item>
+
+      <view id="nearby" class="section section-big nearby">
+			  <view class="title">当前任务</view>
+        <navigator url="../details/details">
+          <i-card title="{{title}}" extra="{{nickname}}" thumb="{{img}}">
+            <view slot="content">{{content}}</view>
+            <view slot="footer">{{time}}</view>
+          </i-card>
+        </navigator>	
+		  </view>
+      
+  </swiper-item>
+  <swiper-item><view class='swiper_con'>welcome come to 分类2</view></swiper-item>
+  <swiper-item><view class='swiper_con'>welcome come to 分类3</view></swiper-item>  
+</swiper>
+
+
+
+
+<navigator url="../publish/publish">
+  <image class="add_icon" src="../../imgs/index/icon_9.jpg"></image>
+</navigator>
