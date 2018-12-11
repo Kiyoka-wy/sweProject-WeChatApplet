@@ -35,7 +35,7 @@
             <view class="weui-label">当前选择</view>
           </view>
           <view class="weui-cell__bd">
-            <picker bindchange="bindCasPickerChange" value="{{dataIndex1}}" range="{{dataArray}}">
+            <picker name="placePicker"bindchange="bindCasPickerChange" value="{{dataIndex}}" range="{{dataArray}}">
                 <view class="weui-input">{{dataArray[dataIndex]}}</view>
             </picker>
           </view>
