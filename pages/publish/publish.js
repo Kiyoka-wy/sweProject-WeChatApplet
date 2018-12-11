@@ -9,7 +9,32 @@ Page({
     dataArray: ['安楼208', 'B楼308', 'F楼', 'G107', '手动输入'],
     place: '安楼208',
     dataIndex: 0,
-    money:0
+    money:0,
+    items: [
+      { value: '1', name: '代办' },
+      { value: '2', name: '交易' },
+      { value: '3', name: '问卷' },
+      { value: '4', name: '其他' },
+    ]
+  },
+
+  handleClick() {
+    const current = this.data.current + 1;
+    this.setData({
+      'current': current,
+      'currentData': current
+    })
+  },
+
+  radioChange(e) {
+    console.log('radio发生change事件，携带value值为：', e.detail.value)
+    const items = this.data.items
+    for (let i = 0, len = items.length; i < len; ++i) {
+      items[i].checked = items[i].value === e.detail.value
+    }
+    this.setData({
+      items
+    })
   },
 
   bindCasPickerChange: function (e) {
