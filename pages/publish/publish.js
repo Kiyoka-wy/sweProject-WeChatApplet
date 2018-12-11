@@ -7,30 +7,51 @@ Page({
   },
 
   data: {
-    pickerHidden: true,
-    chosen: '',
-    date: '2016-09-01',
-    time: '12:01'
+    startDate: '2000-01-01',
+    startTime: '00:00',
+    endDate: '2000-01-01',
+    endTime: '00:00',
+    dataArray: ['安楼208', 'B楼308', 'F楼', 'G107', '手动输入'],
+    dataIndex: 0
   },
 
-  pickerConfirm(e) {
+  bindCasPickerChange: function (e) {
+    console.log('选择的是', this.data.dataArray[e.detail.value])
+    if (e.detail.value == 4) {
+      this.setData({ reply: true })
+    } else {
+      this.setData({ reply: false })
+    }
     this.setData({
-      pickerHidden: true
-    })
-    this.setData({
-      chosen: e.detail.value
-    })
-  },
-
-  pickerCancel() {
-    this.setData({
-      pickerHidden: true
+      dataIndex: e.detail.value
     })
   },
 
-  pickerShow() {
+  bindStartDateChange: function (e) {
+    console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
-      pickerHidden: false
+      startDate: e.detail.value
+    })
+  },
+
+  bindStartTimeChange: function (e) {
+    console.log('picker发送选择改变，携带值为', e.detail.value)
+    this.setData({
+      startTime: e.detail.value
+    })
+  },
+
+  bindEndDateChange: function (e) {
+    console.log('picker发送选择改变，携带值为', e.detail.value)
+    this.setData({
+      endDate: e.detail.value
+    })
+  },
+
+  bindEndTimeChange: function (e) {
+    console.log('picker发送选择改变，携带值为', e.detail.value)
+    this.setData({
+      endTime: e.detail.value
     })
   },
 
@@ -40,8 +61,5 @@ Page({
 
   formReset(e) {
     console.log('form发生了reset事件，携带数据为：', e.detail.value)
-    this.setData({
-      chosen: ''
-    })
   }
 })

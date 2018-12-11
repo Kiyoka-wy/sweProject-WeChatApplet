@@ -12,3 +12,10 @@ form{
   margin-left: 20rpx;
   position: relative;
 }
+.section{
+   font-size:28rpx;
+   margin-top: 30rpx;
+  }
+.on{display: block}
+.off{display: none}
+
