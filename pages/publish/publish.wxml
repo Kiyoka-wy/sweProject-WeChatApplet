@@ -133,9 +133,15 @@
 
   <swiper-item>
       <view class="page-section page-section-gap">
-        <view class="page-section-title">赏金</view>
-        <slider value="{{money}}" name="money" show-value ></slider>
+        <view class="page-section-title">任务酬劳</view>
+        <radio-group class="radio-group" bindchange="radioChange2">
+          <radio class="radio" bindtap="bindtap1" wx:for-items="{{item2}}" wx:key="name" value="{{item.type}}" checked = "{{item.checked}}">
+            <text>{{item.type}}</text>
+            <input class="weui-input" name="{{item.name}}" placeholder="{{item.description}}" />
+          </radio>
+        </radio-group>
       </view>
+     
 
       <view class="page-section">
         <view class="page-section-title">任务隐藏字段</view>

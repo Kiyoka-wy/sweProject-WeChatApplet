@@ -15,6 +15,10 @@ Page({
       { value: '2', name: '交易' },
       { value: '3', name: '问卷' },
       { value: '4', name: '其他' },
+    ],
+    item2: [
+      { value: '1', type: '赏金', name:'money', description: '请输入赏金数量'},
+      { value: '2', type: '其他', name:'thing', description: '请输入其他酬劳内容'},
     ]
   },
 
@@ -24,6 +28,28 @@ Page({
       'current': current,
       'currentData': current
     })
+  },
+
+  bindtap1: function (e) {
+    var items = this.data.items;
+    for (var i = 0; i < items.length; i++) {
+      if (items[i].name == this.data.aa) {
+        for (var j = 0; j < items.length; j++) {
+          if (items[j].checked && j != i) {
+            items[j].checked = false;
+          }
+        }
+        items[i].checked = !(items[i].checked);
+      }
+    }
+    this.setData({
+      items: items
+    });
+  },
+
+  radioChange2: function (e) {
+    this.data.aa = e.detail.value;
+    console.log(this.data.aa);
   },
 
   radioChange(e) {

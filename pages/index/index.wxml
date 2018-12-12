@@ -8,7 +8,7 @@
 <swiper current="{{currentData}}" class='swiper' style="height:600px;" duration="300" bindchange="bindchange">
   <swiper-item>
 
-      <view id="nearby" class="section section-big nearby">
+      <view class="section section-big">
 			  <view class="title">当前任务</view>
         <navigator url="../details/details">
           <i-card title="{{title}}" extra="{{nickname}}" thumb="{{img}}">
@@ -27,5 +27,5 @@
 
 
 <navigator url="../publish/publish">
-  <image class="add_icon" src="../../imgs/index/icon_9.jpg"></image>
+  <image class="add_icon" src="../../images/add.png"></image>
 </navigator>
