@@ -3,6 +3,21 @@ var app = getApp();
 Page({
   data: {
     currentData: 0,
+    tasks:[
+      {
+        taskID:"001",
+        title: "我是任务的标题1",
+        fromLocation: "我是任务的交付地点",
+        TimeLimit: "3小时"
+      },
+      {
+        taskID: "002",
+        title: "我是任务的标题2",
+        fromLocation: "我是任务的交付地点2",
+        TimeLimit: "6小时"
+      }
+    ]
+    
   },
 
   //获取当前滑块的index

@@ -11,11 +11,23 @@ Page({
     current: 'tab1',
     current_scroll: 'tab1',
     currentData: 0,
-    title:'一个任务标题',
-    nickname:'发布人昵称',
-    img:'https://i.loli.net/2017/08/21/599a521472424.jpg',
-    content:"此处为任务内容",
-    time:"15:00"
+    tasks:[
+      {
+        title: '一个任务标题',
+        nickname: '发布人昵称',
+        img: 'https://i.loli.net/2017/08/21/599a521472424.jpg',
+        content: "此处为任务内容",
+        time: "15:00"
+      },
+      {
+        title: '第二个任务标题',
+        nickname: '发布人昵称2',
+        img: 'https://i.loli.net/2017/08/21/599a521472424.jpg',
+        content: "此处为任务内容2",
+        time: "16:00"
+      }
+    ]
+    
   },
 
   jumpto: function () {

@@ -6,21 +6,17 @@
 
 <swiper current="{{currentData}}" class='swiper' style="height:600px;" duration="300" bindchange="bindchange">
   <swiper-item>
-    <navigator url="../detail/detail">
-      <view class="section" style="padding: 15px;">
-        <i-panel class="cell-panel-demo">
-          <i-cell title="任务标题" label="任务地点" value="任务时间" is-link></i-cell>
-        </i-panel>
-      </view>
-    </navigator>
 
-    <navigator url="../detail/detail">
-      <view class="section" style="padding: 15px;">
-        <i-panel class="cell-panel-demo">
-          <i-cell title="任务标题" label="任务地点" value="任务时间" is-link></i-cell>
-        </i-panel>
-      </view>
-    </navigator>
+    <view wx:for="{{tasks}}" wx:key="item">
+      <navigator url="../detail/detail?taskID={{item.taskID}}&title={{item.title}}">
+      
+        <view class="section" style="padding: 15px;">
+          <i-panel class="cell-panel-demo">
+            <i-cell title="{{item.title}}" label="{{item.fromLocation}}" value="{{item.TimeLimit}}" is-link></i-cell>
+          </i-panel>
+        </view>
+      </navigator>
+    </view>
 
   </swiper-item> 
 

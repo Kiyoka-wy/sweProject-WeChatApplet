@@ -10,12 +10,14 @@
 
       <view class="section section-big">
 			  <view class="title">当前任务</view>
-        <navigator url="../details/details">
-          <i-card title="{{title}}" extra="{{nickname}}" thumb="{{img}}">
-            <view slot="content">{{content}}</view>
-            <view slot="footer">{{time}}</view>
-          </i-card>
-        </navigator>	
+        <view wx:for="{{tasks}}" wx:key="item">
+          <navigator url="../details/details">
+            <i-card title="{{item.title}}" extra="{{item.nickname}}" thumb="{{item.img}}">
+              <view slot="content">{{item.content}}</view>
+              <view slot="footer">{{item.time}}</view>
+            </i-card>
+          </navigator>
+        </view>
 		  </view>
       
   </swiper-item>

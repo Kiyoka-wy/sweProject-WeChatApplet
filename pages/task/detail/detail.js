@@ -1,20 +1,23 @@
 // pages/task/detail/detail.js
 Page({
   data: {
+    taskID:0,
+    title: 0,
+    content: "我是任务的内容",
+    fromLocation: "任务执行地点",
+    toLocation: "任务交付的地点",
+    HideContent: "任务隐藏的字段啊",
     targetTime: 0,
-    targetTime1: 0,
-    myFormat: ['时', '分', '秒'],
-    myFormat1: ['天', '时', '分', '秒'],
-    status: '进行中...',
     clearTimer: false
   },
-  onLoad() {
+  
+  onLoad: function (options) {
     this.setData({
       targetTime: new Date().getTime() + 6430000,
-      targetTime1: new Date().getTime() + 86430000,
-      targetTime2: new Date().getTime() + 10000
-    });
+      title: options.title
+    })
   },
+
   onUnload() {
     this.setData({
       clearTimer: true
