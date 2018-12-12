@@ -1,0 +1,25 @@
+<!--pages/task/detail_pub/detail.wxml-->
+
+<i-panel title="任务标题">
+    <view style="padding: 15px;">{{title}}</view>
+</i-panel>
+
+<i-panel title="任务内容">
+    <view style="padding: 15px;">{{content}}</view>
+</i-panel>
+
+<i-panel title="任务执行地点">
+    <view style="padding: 15px;">{{fromLocation}}</view>
+</i-panel>
+
+<i-panel title="任务交付地点">
+    <view style="padding: 15px;">{{toLocation}}</view>
+</i-panel>
+
+<i-panel title="任务隐藏字段">
+    <view style="padding: 15px;">{{HideContent}}</view>
+</i-panel>
+
+<i-button bind:click="handleClick" inline type="error">取消发布</i-button>
+
+
