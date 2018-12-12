@@ -32,8 +32,27 @@ App({
         }
       }
     })
+
+    //调用接口获取个人信息，未完成，现在是假数据
+    this.globalData.myUserData={
+      sex: '男',
+      nickname: 'nickname',
+      mail: 'mail',
+      phoneNumber: 'phoneNumber',
+      studentID: 'studentID',
+      department: 'department'
+    }
+
   },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    myUserData:{
+      sex: '',
+      nickname: '',
+      mail: '',
+      phoneNumber: '',
+      studentID: '',
+      department: ''
+    }
   }
 })

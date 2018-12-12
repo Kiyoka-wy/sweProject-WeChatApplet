@@ -2,6 +2,16 @@ var app = getApp()
 
 Page({
   data:{
+    myUserData: {
+      sex: '',
+      nickname: '',
+      mail: '',
+      phoneNumber: '',
+      studentID: '',
+      department: ''
+    },
+
+//下面的暂时弃用
     nickname:"",
     sex:"",
     phoneNumber:"",
@@ -10,7 +20,12 @@ Page({
     department:""
   },
 
-  onLoad: function (options) {
+  onShow: function () {
+    this.setData({
+      myUserData: app.globalData.myUserData,
+    })
+    
+    /*
     var that = this
     wx.request({
       url: '',
@@ -41,6 +56,7 @@ Page({
         }
       }
     })
+    */
   }
 
 })
