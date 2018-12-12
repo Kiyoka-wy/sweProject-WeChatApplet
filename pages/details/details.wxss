@@ -1,1 +1,2 @@
 /* pages/details/details.wxss */
+@import "../lib/weui.wxss";

@@ -1,11 +1,19 @@
 // pages/details/details.js
+var app = getApp()
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    nickname: "发布人昵称",
+    title: "我是一个任务标题",
+    content: "我是任务的内容",
+    address: "我是一个地点",
+    address2: "我是另一个地点",
+    limit: "3小时",
+    money: "20元"
   },
 
   /**

@@ -1,0 +1,70 @@
+
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">此处头像</view>
+        </view>
+        <view class="weui-cell__bd">
+          <view class="weui-input">{{nickname}}</view>
+        </view>
+      </view>
+
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">任务标题</view>
+        </view>
+        <view class="weui-cell__bd">
+          <view class="weui-input">{{title}}</view>
+        </view>
+      </view>
+
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">任务内容</view>
+        </view>
+        <view class="weui-cell__bd">
+          <view class="weui-input">{{content}}</view>
+        </view>
+      </view>
+
+
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">执行地点</view>
+        </view>
+        <view class="weui-cell__bd">
+          <view class="weui-input">{{address}}</view>
+        </view>
+      </view>
+
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">交付地点</view>
+        </view>
+        <view class="weui-cell__bd">
+          <view class="weui-input">{{address2}}</view>
+        </view>
+      </view>
+
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">执行期限</view>
+        </view>
+        <view class="weui-cell__bd">
+          <view class="weui-input">{{limit}}</view>
+        </view>
+      </view>
+
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">赏金或酬劳</view>
+        </view>
+        <view class="weui-cell__bd">
+          <view class="weui-input">{{money}}</view>
+        </view>
+      </view>
+
+    </view>
+
+    <button>接受任务</button>
+    

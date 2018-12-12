@@ -5,7 +5,7 @@
           <view class="weui-label">昵称</view>
         </view>
         <view class="weui-cell__bd">
-          <input class="weui-input" type="text" disabled="{{true}}" value="{{nickname}}" name="nickname"></input>
+          <view class="weui-input">{{nickname}}</view>
         </view>
       </view>
 
@@ -14,7 +14,7 @@
           <view class="weui-label">性别</view>
         </view>
         <view class="weui-cell__bd">
-          <input class="weui-input" type="text" disabled="{{true}}" value="{{sex}}" name="sex"></input>
+          <view class="weui-input">{{sex}}</view>
         </view>
       </view>
 
@@ -24,7 +24,7 @@
           <view class="weui-label">手机号</view>
         </view>
         <view class="weui-cell__bd">
-          <input class="weui-input" type="text" disabled="{{true}}" value="{{phoneNumber}}" name="phoneNumber"></input>
+          <view class="weui-input">{{phoneNumber}}</view>
         </view>
       </view>
 
@@ -33,7 +33,7 @@
           <view class="weui-label">邮箱</view>
         </view>
         <view class="weui-cell__bd">
-          <input class="weui-input" type="text" disabled="{{true}}" value="{{mail}}" name="mail"></input>
+          <view class="weui-input">{{mail}}</view>
         </view>
       </view>
 
@@ -42,7 +42,7 @@
           <view class="weui-label">学号</view>
         </view>
         <view class="weui-cell__bd">
-          <input class="weui-input" type="text" disabled="{{true}}" value="{{studentID}}" name="studentID"></input>
+          <view class="weui-input">{{studentID}}</view>
         </view>
       </view>
 
@@ -51,7 +51,7 @@
           <view class="weui-label">所在学院</view>
         </view>
         <view class="weui-cell__bd">
-          <input class="weui-input" type="text" disabled="{{true}}" value="{{department}}" name="department"></input>
+          <view class="weui-input">{{department}}</view>
         </view>
       </view>
 

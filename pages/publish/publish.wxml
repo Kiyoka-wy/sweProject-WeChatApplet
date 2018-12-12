@@ -1,20 +1,20 @@
 
     <i-steps current="{{current}}">
         <i-step>
-            <view slot="title">选择任务类型</view>
-            <view slot="content">这里是该步骤的描述信息</view>    
+            <view slot="title">任务类型</view>
+            <view slot="content">请选择要发布的任务类型</view>    
         </i-step>
         <i-step>
-            <view slot="title">填写任务信息</view>
-            <view slot="content">这里是该步骤的描述信息</view>
+            <view slot="title">任务信息</view>
+            <view slot="content">填写任务内容、地点等</view>
         </i-step>
         <i-step>
-            <view slot="title">设定任务时间</view>
-            <view slot="content">这里是该步骤的描述信息</view>
+            <view slot="title">任务时间</view>
+            <view slot="content">设定任务结束时间和执行期限</view>
         </i-step>
         <i-step>
             <view slot="title">其他</view>
-            <view slot="content">这里是该步骤的描述信息</view>
+            <view slot="content">选择任务酬劳、隐藏字段等</view>
         </i-step>
     </i-steps>
 
