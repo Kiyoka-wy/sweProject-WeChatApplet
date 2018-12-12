@@ -7,20 +7,25 @@
 <swiper current="{{currentData}}" class='swiper' style="height:600px;" duration="300" bindchange="bindchange">
   <swiper-item>
     <navigator url="../detail/detail">
-      <i-panel>
-        <view style="padding: 15px;">
-          <i-panel class="cell-panel-demo">
-            <i-cell title="任务标题" label="任务地点" value="任务时间" is-link></i-cell>
-          </i-panel>
-        </view>
-        <i-button bind:click="handleClick" inline type="success">完成任务</i-button>
-        <i-button bind:click="handleClick" inline type="error">取消任务</i-button>
-      </i-panel>
+      <view class="section" style="padding: 15px;">
+        <i-panel class="cell-panel-demo">
+          <i-cell title="任务标题" label="任务地点" value="任务时间" is-link></i-cell>
+        </i-panel>
+      </view>
     </navigator>
+
+    <navigator url="../detail/detail">
+      <view class="section" style="padding: 15px;">
+        <i-panel class="cell-panel-demo">
+          <i-cell title="任务标题" label="任务地点" value="任务时间" is-link></i-cell>
+        </i-panel>
+      </view>
+    </navigator>
+
   </swiper-item> 
 
-  <swiper-item><view class='swiper_con'>welcome come to 热点</view></swiper-item>
-  <swiper-item><view class='swiper_con'>welcome come to 关注</view></swiper-item>  
+  <swiper-item><view class='swiper_con'>welcome come to 2</view></swiper-item>
+  <swiper-item><view class='swiper_con'>welcome come to 3</view></swiper-item>  
 </swiper>
 
 
