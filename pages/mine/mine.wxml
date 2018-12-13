@@ -35,7 +35,7 @@
 	</view>
 
 	<view class="section">
-		<view class="line judgement">我的金币<text class="tl">余额：￥0</text></view>
+		<view class="line judgement">我的积分<text class="tl">总数：0</text></view>
 	</view>
 
 	<view class="section">

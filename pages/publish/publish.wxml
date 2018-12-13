@@ -1,4 +1,4 @@
-
+<view class="step">
     <i-steps current="{{current}}">
         <i-step>
             <view slot="title">任务类型</view>
@@ -17,7 +17,7 @@
             <view slot="content">选择任务酬劳、隐藏字段等</view>
         </i-step>
     </i-steps>
-
+</view>
 <form catchsubmit="formSubmit" catchreset="formReset">
 
 <swiper current="{{currentData}}" class='swiper' style="height:600px;" duration="300" bindclick="handleClick">

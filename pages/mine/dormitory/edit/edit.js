@@ -1,4 +1,4 @@
-// pages/mine/address/add/add.js
+
 var Utils = require("../../../../utils/util.js");
 
 Page({

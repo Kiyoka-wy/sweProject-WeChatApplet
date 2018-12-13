@@ -8,7 +8,7 @@
     "pages/mine/address/display/address",
     "pages/mine/address/add/add",
     "pages/mine/dormitory/display/dormitory",
-    "pages/mine/dormitory/add/add",
+    "pages/mine/dormitory/edit/edit",
     "pages/welcome/register/register",
     "pages/welcome/login/login",
     "pages/welcome/welcome",

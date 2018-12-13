@@ -2,6 +2,20 @@
 var app = getApp()
 
 Page({
+  data: {
+    place:[
+      {
+        address: "5号楼",
+        detailAddress: "303"
+      },
+      {
+        address: "6号楼",
+        detailAddress: "403"
+      }
+    ]
+    
+  },
+
   onLoad: function (options) {
     var that = this
     wx.request({

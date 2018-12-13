@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "已接受的任务",
+  "navigationBarTitleText": "已发布的任务",
   "usingComponents": {
     "i-button": "../../dist/button/index",
     "i-count-down": "../../dist/count-down/index",

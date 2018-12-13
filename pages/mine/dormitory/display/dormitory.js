@@ -2,6 +2,11 @@
 var app = getApp()
 
 Page({
+  data: {
+    address: "5号楼",
+    detailAddress: "303",
+  },
+
   onLoad: function (options) {
     var that = this
     wx.request({

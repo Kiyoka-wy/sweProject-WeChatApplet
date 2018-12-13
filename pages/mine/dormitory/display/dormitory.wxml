@@ -1,6 +1,6 @@
     
-    <navigator url="../add/add">
-        <button>新增宿舍楼</button>
+    <navigator url="../edit/edit">
+        <button>修改宿舍楼</button>
     </navigator>
   
     <view class="weui-cells weui-cells_after-title">  
@@ -9,8 +9,7 @@
           <view class="weui-label">我的宿舍楼</view>
         </view>
         <view class="weui-cell__bd">
-          <input class="weui-input" type="text" disabled="{{true}}" value="{{address}}" name="address"></input>
-          <input class="weui-input" type="text" disabled="{{true}}" value="{{detailAddress}}" name="detailAddress"></input>
+          <view class="weui-input">{{address}} {{detailAddress}}</view>
         </view>
       </view>
     </view>
