@@ -3,12 +3,12 @@
 
       <view class="label-list">
         <view class="label">地址</view>
-        <input placeholder="例：5号楼"  placeholder-class="place" name="address" value="{{address}}"/>
+        <input placeholder="例：5号楼"  placeholder-class="place" name="address" value="{{placeItem.address}}"/>
       </view>
 
       <view class="label-list">
         <view class="label">门牌号</view>
-        <input placeholder="例：203"  placeholder-class="place" name="detailAddress" value="{{detailAddress}}"/>
+        <input placeholder="例：203"  placeholder-class="place" name="detailAddress" value="{{placeItem.detailAddress}}"/>
       </view>
 
       <button form-type='submit' class="submit">确定</button>

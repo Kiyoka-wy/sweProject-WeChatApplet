@@ -10,14 +10,6 @@ Page({
       studentID: '',
       department: ''
     },
-
-//下面的暂时弃用
-    nickname:"",
-    sex:"",
-    phoneNumber:"",
-    mail:"",
-    studentID:"",
-    department:""
   },
 
   onShow: function () {

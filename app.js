@@ -33,8 +33,8 @@ App({
       }
     })
 
-    //调用接口获取个人信息，未完成，现在是假数据
-    this.globalData.myUserData={
+                                                                     
+    this.globalData.myUserData = {                  //调用接口获取个人信息，未完成，现在是假数据
       sex: '男',
       nickname: 'nickname',
       mail: 'mail',
@@ -42,8 +42,23 @@ App({
       studentID: 'studentID',
       department: 'department'
     }
+    this.globalData.place = [                  //调用接口获取地址，未完成，现在是假数据
+        {
+          address: "5号楼",
+          detailAddress: "303"
+        },
+        {
+          address: "6号楼",
+          detailAddress: "403"
+        }
+      ]
+    this.globalData.dormitory = {                  //调用接口获取宿舍楼，未完成，现在是假数据
+      address: "5号楼",
+      detailAddress: "303"
+    }
 
   },
+
   globalData: {
     userInfo: null,
     myUserData:{
@@ -53,6 +68,25 @@ App({
       phoneNumber: '',
       studentID: '',
       department: ''
+    },
+    place: [
+    ],
+    dormitory: {
+      address: "",
+      detailAddress: ""
     }
-  }
+  },
+
+  setMyUserData: function (myUserData) {                                                     
+    this.globalData.myUserData = myUserData;                      //调用接口上传个人信息，未完成
+  },
+
+  addPlace: function (placeItem) {
+    this.globalData.place.push(placeItem)                      //调用接口上传地址，未完成
+  },
+
+  setDormitory: function (dormitory) {
+    this.globalData.dormitory = dormitory;                     //调用接口上传宿舍楼，未完成
+  },
+
 })

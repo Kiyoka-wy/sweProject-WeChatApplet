@@ -9,7 +9,7 @@
           <view class="weui-label">我的宿舍楼</view>
         </view>
         <view class="weui-cell__bd">
-          <view class="weui-input">{{address}} {{detailAddress}}</view>
+          <view class="weui-input">{{dormitory.address}} {{dormitory.detailAddress}}</view>
         </view>
       </view>
     </view>

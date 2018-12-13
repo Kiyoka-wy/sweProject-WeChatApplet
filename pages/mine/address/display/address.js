@@ -4,19 +4,12 @@ var app = getApp()
 Page({
   data: {
     place:[
-      {
-        address: "5号楼",
-        detailAddress: "303"
-      },
-      {
-        address: "6号楼",
-        detailAddress: "403"
-      }
     ]
     
   },
 
   onLoad: function (options) {
+    /*
     var that = this
     wx.request({
       url: '',
@@ -42,7 +35,14 @@ Page({
             })
         }
       }
-    })
+    })*/
+  },
 
+  onShow: function () {
+    this.setData({
+      place: app.globalData.place,
+    })
+    console.log("地址：",this.data.place)
   }
+
 })

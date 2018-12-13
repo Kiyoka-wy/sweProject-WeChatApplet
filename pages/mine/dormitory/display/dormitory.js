@@ -3,11 +3,15 @@ var app = getApp()
 
 Page({
   data: {
-    address: "5号楼",
-    detailAddress: "303",
+    dormitory :{
+      address: "",
+      detailAddress: ""
+     }
+
   },
 
   onLoad: function (options) {
+    /*
     var that = this
     wx.request({
       url: '',
@@ -33,7 +37,14 @@ Page({
             })
         }
       }
-    })
+    })*/
+  },
 
+  onShow: function () {
+    this.setData({
+      dormitory: app.globalData.dormitory,
+    })
+    console.log("宿舍楼", this.data.dormitory)
   }
+
 })

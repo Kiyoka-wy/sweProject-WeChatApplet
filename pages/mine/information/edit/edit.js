@@ -27,8 +27,9 @@ Page({
   formSubmit(e) {
     console.log('form发生了submit事件，携带数据为：', e.detail.value)
     console.log('this.data数据为：',this.data)
-    app.globalData.myUserData = e.detail.value
-    //缺少将修改后的数据上传到后端
+    //app.globalData.myUserData = e.detail.value
+    app.setMyUserData(e.detail.value)
+  
   },
 
   onShow: function () {//这里从全局更新原来的个人信息
