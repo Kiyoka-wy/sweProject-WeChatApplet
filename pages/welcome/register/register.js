@@ -30,7 +30,7 @@ Page({
       util.isError("账号不能为空", that);
       return;
     } else {
-      util.clearError(that);
+      util.clearError(that);/*
       app.ajax.req('/register/checkLoginName', {
         "loginName": account
       }, function (res) {
@@ -39,10 +39,17 @@ Page({
           return;
         }
       });
-    }
+    }*/
+
     // 判断密码是否为空
     if ("" == util.trim(password)) {
       util.isError("密码不能为空", that);
+      return;
+    } else {
+      util.clearError(that);
+    }
+    if ("" == util.trim(subPassword)) {
+      util.isError("确认密码不能为空", that);
       return;
     } else {
       util.clearError(that);
@@ -54,7 +61,23 @@ Page({
     } else {
       util.clearError(that);
     }
+
     // 验证都通过了执行注册方法
+    console.log('注册成功')  
+    wx.showModal({
+      title: '注册状态',
+      content: '注册成功，请点击确定登录吧',
+      success: function (res) {
+        if (res.confirm) {
+          // 点击确定后跳转登录页面并关闭当前页面
+          wx.redirectTo({
+            url: '../login/login?account=' + account + '&password?=' + password + ''
+          })
+        }
+      }
+    })
+    
+    /*
     app.ajax.req('/itdragon/register', {
       "account": account,
       "password": password
@@ -81,7 +104,8 @@ Page({
           duration: 2000
         })
       }
-    });
+    });*/
   }
   
+}
 })

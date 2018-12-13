@@ -30,7 +30,7 @@ subPassword ：确认密码
 
         <view>
           <label>确认密码</label>
-          <input class="weui-input" placeholder="请再次输入密码" type="password" maxlength="10" value="{{subPassword}}" name="password"/>
+          <input class="weui-input" placeholder="请再次输入密码" type="password" maxlength="10" value="{{subPassword}}" name="subPassword"/>
         </view>
 
         <view class="button-sp-area">

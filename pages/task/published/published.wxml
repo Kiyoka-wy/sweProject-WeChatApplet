@@ -20,6 +20,19 @@
 
   </swiper-item> 
 
-  <swiper-item><view class='swiper_con'>welcome come to 2</view></swiper-item>
+  <swiper-item>
+    <view wx:for="{{tasks}}" wx:key="item">
+      <navigator url="">
+      
+        <view class="section" style="padding: 15px;">
+          <i-panel class="cell-panel-demo">
+            <i-cell title="{{item.title}}" label="{{item.fromLocation}}" value="{{item.TimeLimit}}" is-link></i-cell>
+          </i-panel>
+        </view>
+
+      </navigator>
+    </view>
+  </swiper-item>
+
   <swiper-item><view class='swiper_con'>welcome come to 3</view></swiper-item>  
 </swiper>
