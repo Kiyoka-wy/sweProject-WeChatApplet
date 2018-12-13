@@ -9,8 +9,6 @@
   <swiper-item>
       <view class="section section-big">
 			  <view class="title">当前任务</view>
-
-
         <view wx:for="{{tasks}}" wx:key="item">
           <view class='task'>
             <navigator url="../details/details?taskID={{item.taskID}}&title={{item.title}}">

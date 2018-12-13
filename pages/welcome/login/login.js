@@ -30,7 +30,7 @@ Page({
       util.isError("账号不能为空", that);
       return;
     } else {
-      util.clearError(that);
+      util.clearError(that);/*
       app.ajax.req('/register/checkLoginName', {
         "loginName": account
       }, function (res) {
@@ -38,7 +38,7 @@ Page({
           util.isError("账号已经被注册过", that);
           return;
         }
-      });
+      });*/
     }
 
     // 判断密码是否为空
@@ -49,34 +49,20 @@ Page({
       util.clearError(that);
     }
     
-    // 验证都通过了执行注册方法
-    app.ajax.req('/itdragon/register', {
-      "account": account,
-      "password": password
-    }, function (res) {
-      if (true == res) {
-        // 显示模态弹窗
-        wx.showModal({
-          title: '注册状态',
-          content: '注册成功，请点击确定登录吧',
-          success: function (res) {
-            if (res.confirm) {
-              // 点击确定后跳转登录页面并关闭当前页面
-              wx.redirectTo({
-                url: '../login/login?account=' + account + '&password?=' + password + ''
-              })
-            }
-          }
-        })
-      } else {
-        // 显示消息提示框
-        wx.showToast({
-          title: '注册失败',
-          icon: 'error',
-          duration: 2000
-        })
+    // 验证都通过了执行登录方法
+    
+    // 显示模态弹窗
+    wx.showModal({
+      title: '登录状态',
+      content: '登录成功，请点击确定跳转至首页',
+      success: function (res) {
+        if (res.confirm) {
+          // 点击确定后跳转首页并关闭当前页面
+          wx.switchTab({
+            url: '../../index/index'
+          })
+        }
       }
-    });
+    })
   }
-  
 })

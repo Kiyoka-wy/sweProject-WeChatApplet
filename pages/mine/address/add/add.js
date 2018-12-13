@@ -10,15 +10,19 @@ Page({
 
   },
 
+  formSubmit(e) {
+    console.log('form发生了submit事件，携带数据为：', e.detail.value)
+  },
+
   insertButton: function () {
     wx.request({
-    url: '',
+      url: '',
       method: 'POST',
-        header: { 'content-type': 'application/x-www-form-urlencoded' },
+      header: { 'content-type': 'application/x-www-form-urlencoded' },
     data: {
       userID: this.data.userID,
-        address: this.data.address,
-          detailAddress: this.data.detailAddress
+      address: this.data.address,
+      detailAddress: this.data.detailAddress
     },
     success: function (res) {
       console.log(res.data)
