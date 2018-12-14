@@ -25,11 +25,11 @@
 	</view>
 
   <view class="section">
-    <navigator url="../task/accepted/accepted">
+    <navigator url="../task/accepted/accepted?accepterID={{userID}}">
 		  <view class="line judgement">已接受的任务</view>
     </navigator>
 
-    <navigator url="../task/published/published">
+    <navigator url="../task/published/published?releaserID={{userID}}">
 		  <view class="line judgement">已发布的任务</view>
     </navigator> 
 	</view>

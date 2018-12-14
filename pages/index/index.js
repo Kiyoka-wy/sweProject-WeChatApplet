@@ -18,13 +18,6 @@ Page({
         img: 'https://i.loli.net/2017/08/21/599a521472424.jpg',
         content: "此处为任务内容",
         time: "15:00"
-      },
-      {
-        title: '第二个任务标题',
-        nickname: '发布人昵称2',
-        img: 'https://i.loli.net/2017/08/21/599a521472424.jpg',
-        content: "此处为任务内容2",
-        time: "16:00"
       }
     ]
     
@@ -102,6 +95,39 @@ Page({
       })
     }
   },
+
+  onShow: function () {
+    var that = this
+    wx.request({
+      url: 'http://localhost:8080/getAllTasks',
+      method: 'POST',
+      header: { 'content-type': 'application/x-www-form-urlencoded' },
+      data: {
+        userID: 15,
+      },
+      success: function (res) {
+        if (res.data != null) {
+          that.setData(
+            {
+              "tasks[0].taskID": res.data.taskList[0].taskID,
+              "tasks[0].title": res.data.taskList[0].title,
+              "tasks[0].content": res.data.taskList[0].description_1,
+              "tasks[0].time": res.data.taskList[0].dueDate,
+              "tasks[0].nickname": res.data.taskList[0].nickname_r
+            }
+          )
+        }
+        else {
+          wx.showToast(
+            {
+              title: "??",
+              duration: 1000
+            })
+        }
+      }
+    })
+  },
+
   getUserInfo: function(e) {
     console.log(e)
     app.globalData.userInfo = e.detail.userInfo

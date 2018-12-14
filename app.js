@@ -33,97 +33,122 @@ App({
       }
     })
 
-    //调用接口获取个人信息
-      var that = this
-      wx.request({
-        url: 'http://localhost:8080/getUserInfo',
-        method: 'POST',
-        header: { 'content-type': 'application/x-www-form-urlencoded' },
-        data: {
-          userID: 22,
-        },
-        success: function (res) {
-          if (res.data != null) {
-            that.globalData.myUserData=
-              {
-                nickname: res.data.nickname,
-                sex: res.data.sex,
-                phoneNumber: res.data.phoneNumber,
-                mail: res.data.mail,
-                studentID: res.data.studentID,
-                department: res.data.department
-              }
-            
-          }
-          else {
-            wx.showToast(
-              {
-                title: "??",
-                duration: 1000
-              })
-          }
-        }
-      })
-
-    
-           /*                                                          
-    this.globalData.myUserData = {                  //调用接口获取个人信息，未完成，现在是假数据
-      sex: '男',
-      nickname: 'nickname',
-      mail: 'mail',
-      phoneNumber: 'phoneNumber',
-      studentID: 'studentID',
-      department: 'department'
-    }*/
-/*
+    //登录,暂时用测试账号
+    var that = this
     wx.request({
-      url: 'http://localhost:8080/getUserAddresses',
+      url: that.globalData.sweURL + '/loginByPhone',
       method: 'POST',
       header: { 'content-type': 'application/x-www-form-urlencoded' },
       data: {
-        userID: 14,
+        phoneNumber: 123456,
+        password: 123456
       },
       success: function (res) {
         if (res.data != null) {
-          that.setPlace(
+          wx.showToast(
             {
-              address: res.data[0].address,
-              detailAddress: res.data[0].detailAddress
-            }
-          )
+              title: res.data.message,
+              duration: 1000
+            })
+          if (res.data.state == 1) {
+            that.globalData.userID = res.data.userID
+            that.onLoginSuccess()
+          }
         }
         else {
           wx.showToast(
             {
-              title: "??",
+              title: "？？",
               duration: 1000
             })
         }
       }
-    })*/
-    /*
-    this.globalData.place = [                  //调用接口获取地址，未完成，现在是假数据
-        {
-          address: "5号楼",
-          detailAddress: "303"
-        },
-        {
-          address: "6号楼",
-          detailAddress: "403"
-        }
-      ]*/
-
-    this.globalData.dormitory = {                  //调用接口获取宿舍楼，未完成，现在是假数据
-      address: "5号楼",
-      detailAddress: "303"
-    }
-
+    })
   },
 
+  onLoginSuccess: function () {//登录成功后调用获取一些信息
+    var that = this
+    //调用接口获取个人信息
+    wx.request({
+      url: that.globalData.sweURL + '/getUserInfo',
+      method: 'POST',
+      header: { 'content-type': 'application/x-www-form-urlencoded' },
+      data: {
+        userID: that.globalData.userID,
+      },
+      success: function (res) {
+        if (res.data != null) {
+          that.globalData.myUserData =
+            {
+              nickname: res.data.nickname,
+              sex: res.data.sex,
+              phoneNumber: res.data.phoneNumber,
+              mail: res.data.mail,
+              studentID: res.data.studentID,
+              department: res.data.department
+            }
+        }
+        else {
+          wx.showToast(
+            {
+              title: "？？",
+              duration: 1000
+            })
+        }
+      }
+    })
+
+    wx.request({
+      url: that.globalData.sweURL + '/getUserAddresses',
+      method: 'POST',
+      header: { 'content-type': 'application/x-www-form-urlencoded' },
+      data: {
+        userID: that.globalData.userID,
+      },
+      success: function (res) {
+        if (res.data != null) {
+          that.globalData.place = res.data
+        }
+        else {
+          wx.showToast(
+            {
+              title: "？？",
+              duration: 1000
+            })
+        }
+      }
+    })
+/*
+    wx.request({       //调用接口获取宿舍楼，未完成
+      url: that.globalData.sweURL + ,
+      method: 'POST',
+      header: { 'content-type': 'application/x-www-form-urlencoded' },
+      data: {
+        userID: that.globalData.userID,
+      },
+      success: function (res) {
+        if (res.data != null) {
+          this.globalData.dormitory = res
+        }
+        else {
+          wx.showToast(
+            {
+              title: "？？",
+              duration: 1000
+            })
+        }
+      }
+    })
+*/
+  },
+  
   globalData: {
     userInfo: null,
+    sweURL: 'http://localhost:8080',
+    userID: '',
     myUserData:{
       sex: '',
+      sexofapi: '',
       nickname: '',
       mail: '',
       phoneNumber: '',
@@ -138,12 +163,79 @@ App({
     }
   },
 
-  setMyUserData: function (myUserData) {                                                     
-    this.globalData.myUserData = myUserData;                      //调用接口上传个人信息，未完成
+  setMyUserData: function (myUserData) {
+    var that = this
+    console.log("myUserData", myUserData)
+    wx.request({
+      url: that.globalData.sweURL + '/saveUserInfo',
+      method: 'POST',
+      header: { 'content-type': 'application/x-www-form-urlencoded' },
+      data: {
+        userID: that.globalData.userID,
+        nickname: myUserData.nickname,
+        sex: myUserData.sexofapi,
+        phoneNumber: myUserData.phoneNumber,
+        mail: myUserData.mail,
+        moto: myUserData.moto,
+        studentID: myUserData.studentID,
+        communityID: myUserData.communityID,
+      },
+      success: function (res) {
+        if (res.data != null) {
+          wx.showToast(
+            {
+              title: res.data.message,
+              duration: 1000
+            })
+          if (res.data.state == 1) {
+            that.globalData.myUserData = myUserData;                      //调用接口上传个人信息，有错误
+          }
+        }
+        else {
+          wx.showToast(
+            {
+              title: "？？",
+              duration: 1000
+            })
+        }
+      }
+    })
+
   },
 
   addPlace: function (placeItem) {
-    this.globalData.place.push(placeItem)                      //调用接口上传地址，未完成
+    var that = this
+    console.log("placeItem", placeItem)
+    wx.request({
+      url: that.globalData.sweURL + '/insertUserAddress',
+      method: 'POST',
+      header: { 'content-type': 'application/x-www-form-urlencoded' },
+      data: {
+        userID: that.globalData.userID,
+        address: placeItem.address,
+        detailAddress: placeItem.detailAddress,
+      },
+      success: function (res) {
+        if (res.data != null) {
+          wx.showToast(
+            {
+              title: res.data.state + ' ' + res.data.message,
+              duration: 1000
+            })
+          if (res.data.state == 1) {
+            that.globalData.place.push(placeItem)
+          }
+        }
+        else {
+          wx.showToast(
+            {
+              title: "？？",
+              duration: 1000
+            })
+        }
+      }
+    })
+    
   },
 
   setDormitory: function (dormitory) {

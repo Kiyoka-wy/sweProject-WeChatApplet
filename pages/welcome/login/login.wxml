@@ -13,11 +13,12 @@ password ：密码
   
   <view style="height: {{windowHeight}}px; width: {{windowWidth}}px;" class="back_img"></view>
 
-  <form bindsubmit="formSubmit" bindreset="formReset">
+  <form bindsubmit="formSubmit">
 
     <view class="login_info" style="top:{{windowHeight * 0.3}}px;width: {{windowWidth * 0.92}}px;">
-      <view class="login_form">
 
+      <view class="login_form">
+        
         <view>
           <label>账号</label>
           <input placeholder="请输入手机号或邮箱" type="text" maxlength="20" value="{{account}}" focus="true" name="account"/>

@@ -89,9 +89,62 @@ Page({
       Timeddl: e.detail.value
     })
   },
+  
 
   formSubmit(e) {
     console.log('form发生了submit事件，携带数据为：', e.detail.value)
+    console.log(e.detail.value.fromLocation)
+    console.log(e.detail.value.title)
+    console.log(e.detail.value.content)
+    console.log(e.detail.value.Timeddl)
+    console.log(e.detail.value.TimeLimit)
+    console.log(e.detail.value.money)
+    console.log(e.detail.value.HideContent)
+    console.log(e.detail.value.title)
+
+    var abc = new Date().getTime()
+    console.log(new Date().getTime())
+  
+
+    /*
+    wx.request({
+      url: 'http://localhost:8080/addNewTask',
+      method: 'POST',
+      header: { 'content-type': 'application/x-www-form-urlencoded' },
+      data: {
+        "userID": "发布者id",
+        "releaseDate": "发布时间",
+        "fromLocation": e.detail.value.fromLocation,
+        "toLocation": e.detail.value.toLocation,
+        "type": e.detail.value.type,
+        "bonousType": "任务奖励类型 积分或者其他两种选择",
+        "bonousDescription": "奖励描述 只有在选择“其他”时填写",
+        "title": e.detail.value.title,//任务标题
+        "content": e.detail.value.content,//任务内容
+        "Timeddl": e.detail.value.Timeddl,//任务截止时间
+        "TimeLimit": e.detail.value.Timelimit,//任务执行限制时间 多少小时
+        "money": e.detail.value.money,//赏金 在选择“积分”时填写
+        "HideContent": e.detail.value.HideContent //任务隐藏字段
+      },
+      success: function (res) {
+        console.log("回调函数：" + res.data)
+        if (res.data.state) {
+          wx.showToast(
+            {
+              title: res.data.message,
+              duration: 1000
+            })
+        }
+        else {
+          wx.showToast(
+            {
+              title: res.data.message,
+              duration: 1000
+            })
+        }
+      }
+    })*/
+
   },
 
   formReset(e) {

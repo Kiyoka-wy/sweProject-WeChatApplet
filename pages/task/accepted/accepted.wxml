@@ -8,7 +8,7 @@
   <swiper-item>
 
     <view wx:for="{{tasks}}" wx:key="item">
-      <navigator url="../detail_acc/detail?taskID={{item.taskID}}&title={{item.title}}">
+      <navigator url="../detail_acc/detail?taskID={{item.taskID}}">
       
         <view class="section" style="padding: 15px;">
           <i-panel class="cell-panel-demo">

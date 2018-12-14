@@ -15,12 +15,12 @@ subPassword ：确认密码
 
   <form bindsubmit="formSubmit" bindreset="formReset">
 
-    <view class="login_info" style="top:{{windowHeight * 0.3}}px;width: {{windowWidth * 0.92}}px;">
+    <view class="login_info" style="top:{{windowHeight * 0.2}}px;width: {{windowWidth * 0.92}}px;">
       <view class="login_form">
 
         <view>
           <label>账号</label>
-          <input class="weui-input" placeholder="请输入手机号或邮箱" type="text" maxlength="20" value="{{account}}" focus="true" name="account"/>
+          <input class="weui-input" placeholder="请输入手机号或邮箱" type="text" maxlength="20" value="{{account}}" name="account"/>
         </view>
 
         <view>
@@ -31,6 +31,11 @@ subPassword ：确认密码
         <view>
           <label>确认密码</label>
           <input class="weui-input" placeholder="请再次输入密码" type="password" maxlength="10" value="{{subPassword}}" name="subPassword"/>
+        </view>
+
+        <view>
+          <label>昵称</label>
+          <input class="weui-input" placeholder="请输入昵称" type="text" maxlength="10" value="{{nickname}}" name="nickname"/>
         </view>
 
         <view class="button-sp-area">

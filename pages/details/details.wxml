@@ -11,6 +11,15 @@
 
       <view class="weui-cell weui-cell_input">
         <view class="weui-cell__hd">
+          <view class="weui-label">任务类型</view>
+        </view>
+        <view class="weui-cell__bd">
+          <view class="weui-input">{{type}}</view>
+        </view>
+      </view>
+
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
           <view class="weui-label">任务标题</view>
         </view>
         <view class="weui-cell__bd">
@@ -33,7 +42,7 @@
           <view class="weui-label">执行地点</view>
         </view>
         <view class="weui-cell__bd">
-          <view class="weui-input">{{address}}</view>
+          <view class="weui-input">{{fromaddress}}</view>
         </view>
       </view>
 
@@ -42,7 +51,7 @@
           <view class="weui-label">交付地点</view>
         </view>
         <view class="weui-cell__bd">
-          <view class="weui-input">{{address2}}</view>
+          <view class="weui-input">{{toaddress}}</view>
         </view>
       </view>
 

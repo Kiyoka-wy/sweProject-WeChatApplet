@@ -7,8 +7,8 @@
 <swiper current="{{currentData}}" class='swiper' style="height:600px;" duration="300" bindchange="bindchange">
   <swiper-item>
 
-    <view wx:for="{{tasks}}" wx:key="item">
-      <navigator url="../detail_pub/detail?taskID={{item.taskID}}&title={{item.title}}">
+    <view wx:for="{{noacc_tasks}}" wx:key="item">
+      <navigator url="../detail_pub/detail?taskID={{item.taskID}}">
       
         <view class="section" style="padding: 15px;">
           <i-panel class="cell-panel-demo">
@@ -21,8 +21,8 @@
   </swiper-item> 
 
   <swiper-item>
-    <view wx:for="{{tasks}}" wx:key="item">
-      <navigator url="">
+    <view wx:for="{{acc_tasks}}" wx:key="item">
+      <navigator url="../detail_pub/detail?taskID={{item.taskID}}">
       
         <view class="section" style="padding: 15px;">
           <i-panel class="cell-panel-demo">

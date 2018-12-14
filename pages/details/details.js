@@ -7,13 +7,15 @@ Page({
    * 页面的初始数据
    */
   data: {
-    nickname: "发布人昵称",
-    title: "我是一个任务标题",
-    content: "我是任务的内容",
-    address: "我是一个地点",
-    address2: "我是另一个地点",
-    limit: "3小时",
-    money: "20元"
+    taskID:'',
+    nickname: "",
+    type:"",
+    title: "",
+    content: "",
+    fromaddress: "",
+    toaddress: "",
+    limit: "",
+    money: ""
   },
 
   /**
@@ -21,7 +23,40 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      title: options.title
+      taskID: options.taskID
+    });
+    var that = this
+    wx.request({
+      url: 'http://localhost:8080/getTaskInfoByID',
+      method: 'POST',
+      header: { 'content-type': 'application/x-www-form-urlencoded' },
+      data: {
+        taskID: this.data.taskID,
+      },
+      success: function (res) {
+        if (res.data != null) {
+          that.setData(
+            {
+              "type": res.data.type,
+              "title": res.data.title,
+              "content": res.data.description_1,
+              "time": res.data.dueDate,
+              "nickname": res.data.nickname_r,
+              "limit": res.data.leftHours + '小时',
+              "money": res.data.bonousType + res.data.bonousAmount,
+              "fromaddress": res.data.from,
+              "toaddress": res.data.to
+            }
+          )
+        }
+        else {
+          wx.showToast(
+            {
+              title: "??",
+              duration: 1000
+            })
+        }
+      }
     })
   },
 
