@@ -28,13 +28,19 @@ Page({
     console.log('form发生了submit事件，携带数据为：', e.detail.value)
     console.log('this.data数据为：',this.data)
     //app.globalData.myUserData = e.detail.value
+    var data=e.detail.value
+    if (data.sex = '男') data.sexofapi='1'
+    else if (data.sex = '女') data.sexofapi = '2'
     app.setMyUserData(e.detail.value)
   
   },
 
   onShow: function () {//这里从全局更新原来的个人信息
+    var data = app.globalData.myUserData
+    if (data.sexofapi = '1') data.sex = '男'
+    else if (data.sexofapi = '2') data.sex = '女'
     this.setData({
-      myUserData: app.globalData.myUserData
+      myUserData: data
     })
     if (this.data.myUserData.sex=='男'){
       this.data.sexItems[0].checked = true
