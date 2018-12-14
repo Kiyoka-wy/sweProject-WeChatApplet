@@ -2,7 +2,7 @@ var app = getApp()
 
 Page({
   data:{
-    myUserData: {
+  myUserData: {
       sex: '',
       nickname: '',
       mail: '',
@@ -20,22 +20,22 @@ Page({
     /*
     var that = this
     wx.request({
-      url: '',
-      method: 'GET',
-      header: { 'content-type': 'application/json' },
+      url: 'http://localhost:8080/getUserInfo',
+      method: 'POST',
+      header: { 'content-type': 'application/x-www-form-urlencoded' },
       data: {
-        userID: 14,
+        userID: 22,
       },
       success: function (res) {
         if (res.data != null) {
           that.setData(
             {
-              nickname: res.data.nickname,
-              sexArray: res.data.sex,
-              phoneNumber: res.data.phoneNumber,
-              mail: res.data.mail,
-              studentID: res.data.studentID,
-              department: res.data.department
+              'myUserData.nickname': res.data.nickname,
+              'myUserData.sex': res.data.sex,
+              'myUserData.phoneNumber': res.data.phoneNumber,
+              'myUserData.mail': res.data.mail,
+              'myUserData.studentID': res.data.studentID,
+              'myUserData.department': res.data.department
             }
           )
         }

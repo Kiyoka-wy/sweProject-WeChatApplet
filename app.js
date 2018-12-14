@@ -33,7 +33,40 @@ App({
       }
     })
 
-                                                                     
+    //调用接口获取个人信息
+      var that = this
+      wx.request({
+        url: 'http://localhost:8080/getUserInfo',
+        method: 'POST',
+        header: { 'content-type': 'application/x-www-form-urlencoded' },
+        data: {
+          userID: 22,
+        },
+        success: function (res) {
+          if (res.data != null) {
+            that.globalData.myUserData=
+              {
+                nickname: res.data.nickname,
+                sex: res.data.sex,
+                phoneNumber: res.data.phoneNumber,
+                mail: res.data.mail,
+                studentID: res.data.studentID,
+                department: res.data.department
+              }
+            
+          }
+          else {
+            wx.showToast(
+              {
+                title: "??",
+                duration: 1000
+              })
+          }
+        }
+      })
+
+    
+           /*                                                          
     this.globalData.myUserData = {                  //调用接口获取个人信息，未完成，现在是假数据
       sex: '男',
       nickname: 'nickname',
@@ -41,7 +74,34 @@ App({
       phoneNumber: 'phoneNumber',
       studentID: 'studentID',
       department: 'department'
-    }
+    }*/
+/*
+    wx.request({
+      url: 'http://localhost:8080/getUserAddresses',
+      method: 'POST',
+      header: { 'content-type': 'application/x-www-form-urlencoded' },
+      data: {
+        userID: 14,
+      },
+      success: function (res) {
+        if (res.data != null) {
+          that.setPlace(
+            {
+              address: res.data[0].address,
+              detailAddress: res.data[0].detailAddress
+            }
+          )
+        }
+        else {
+          wx.showToast(
+            {
+              title: "??",
+              duration: 1000
+            })
+        }
+      }
+    })*/
+    /*
     this.globalData.place = [                  //调用接口获取地址，未完成，现在是假数据
         {
           address: "5号楼",
@@ -51,7 +111,8 @@ App({
           address: "6号楼",
           detailAddress: "403"
         }
-      ]
+      ]*/
+
     this.globalData.dormitory = {                  //调用接口获取宿舍楼，未完成，现在是假数据
       address: "5号楼",
       detailAddress: "303"

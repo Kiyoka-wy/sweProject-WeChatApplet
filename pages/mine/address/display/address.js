@@ -3,16 +3,15 @@ var app = getApp()
 
 Page({
   data: {
-    place:[
-    ]
-    
+    address: '',
+    detailAddress:''
   },
 
   onLoad: function (options) {
     /*
     var that = this
     wx.request({
-      url: '',
+      url: 'http://localhost:8080/getUserAddresses',
       method: 'GET',
       header: { 'content-type': 'application/json' },
       data: {
@@ -22,8 +21,8 @@ Page({
         if (res.data != null) {
           that.setData(
             {
-              address: res.data.addressList[0].address,
-              detailAddress: res.data.addressList[0].detailAddress
+              address: res.data[0].address,
+              detailAddress: res.data[0].detailAddress
             }
           )
         }
