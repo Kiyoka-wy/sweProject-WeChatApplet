@@ -52,7 +52,7 @@ Page({
     
     // 验证都通过了执行登录方法
     wx.request({
-      url: 'http://localhost:8080/loginByPhone',
+      url: app.globalData.sweURL + '/loginByPhone',
       method: 'POST',
       header: { 'content-type': 'application/x-www-form-urlencoded' },
       data: {

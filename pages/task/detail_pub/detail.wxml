@@ -1,4 +1,7 @@
 <!--pages/task/detail_pub/detail.wxml-->
+<i-panel title="任务类型">
+    <view style="padding: 15px;">{{type}}</view>
+</i-panel>
 
 <i-panel title="任务标题">
     <view style="padding: 15px;">{{title}}</view>

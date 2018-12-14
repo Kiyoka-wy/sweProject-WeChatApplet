@@ -1,12 +1,16 @@
 // pages/task/detail_pub/detail.js
+var app = getApp();
+
 Page({
   data: {
     taskID: 0,
+    type: '',
     title: 0,
-    content: "我是任务的内容",
-    fromLocation: "任务执行地点",
-    toLocation: "任务交付的地点",
-    HideContent: "任务隐藏的字段啊",
+    content: "",
+    fromLocation: "",
+    toLocation: "",
+    HideContent: "",
+    limit: 0,
     targetTime: 0,
     clearTimer: false
   },
@@ -14,7 +18,42 @@ Page({
   onLoad: function (options) {
     this.setData({
       targetTime: new Date().getTime() + 6430000,
-      title: options.title
+      taskID: options.taskID
+    })
+    var that = this
+    wx.request({
+      url: app.globalData.sweURL + '/getTaskInfoByID',
+      method: 'POST',
+      header: { 'content-type': 'application/x-www-form-urlencoded' },
+      data: {
+        taskID: this.data.taskID,
+      },
+      success: function (res) {
+        if (res.data != null) {
+          that.setData(
+            {
+              "type": res.data.type,
+              "title": res.data.title,
+              "content": res.data.description_1,
+              "time": res.data.dueDate,
+              "nickname": res.data.nickname_r,
+              "limit": res.data.leftHours,
+              "money": res.data.bonousType + res.data.bonousAmount,
+              "fromLocation": res.data.from,
+              "toLocation": res.data.to,
+              "HideContent": res.data.description_2,
+              "targetTime": new Date().getTime() + 1000 * 60 * 60 * res.data.leftHours,
+            }
+          )
+        }
+        else {
+          wx.showToast(
+            {
+              title: "??",
+              duration: 1000
+            })
+        }
+      }
     })
   }
 });

@@ -41,7 +41,7 @@ Page({
     });
     var that = this
     wx.request({
-      url: 'http://localhost:8080/getUnacceptedTasksByID',
+      url: app.globalData.sweURL + '/getUnacceptedTasksByID',
       method: 'POST',
       header: { 'content-type': 'application/x-www-form-urlencoded' },
       data: {
@@ -68,7 +68,7 @@ Page({
     })
 
     wx.request({
-      url: 'http://localhost:8080/getAcceptedTasksByID',
+      url: app.globalData.sweURL + '/getAcceptedTasksByID',
       method: 'POST',
       header: { 'content-type': 'application/x-www-form-urlencoded' },
       data: {

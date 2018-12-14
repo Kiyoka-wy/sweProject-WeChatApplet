@@ -4,7 +4,7 @@ const app = getApp()
 
 Page({
   data: {
-    userID:15,
+    userID:0,
     motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
@@ -17,6 +17,11 @@ Page({
     })
   },
   onLoad: function () {
+    if (app.globalData.userID) {
+      this.setData({
+        userID: app.globalData.userID
+      })
+    }
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,

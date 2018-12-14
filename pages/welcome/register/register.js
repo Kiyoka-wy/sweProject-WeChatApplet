@@ -65,7 +65,7 @@ Page({
     
     // 验证都通过了执行注册方法
       wx.request({
-        url: 'http://localhost:8080/register',
+        url: app.globalData.sweURL + '/register',
         method: 'POST',
         header: { 'content-type': 'application/x-www-form-urlencoded' },
         data: {

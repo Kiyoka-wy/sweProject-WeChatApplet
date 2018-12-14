@@ -146,7 +146,7 @@ App({
   globalData: {
     userInfo: null,
     sweURL:'http://localhost:8080',
-    userID:'',
+    userID:'15',//测试
     myUserData:{
       sex: '',
       sexofapi:'',

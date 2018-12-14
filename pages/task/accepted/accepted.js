@@ -27,7 +27,7 @@ Page({
     });
     var that = this
     wx.request({
-      url: 'http://localhost:8080/getTasksByAccepterID',
+      url: app.globalData.sweURL + '/getTasksByAccepterID',
       method: 'POST',
       header: { 'content-type': 'application/x-www-form-urlencoded' },
       data: {

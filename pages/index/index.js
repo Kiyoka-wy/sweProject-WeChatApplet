@@ -99,7 +99,7 @@ Page({
   onShow: function () {
     var that = this
     wx.request({
-      url: 'http://localhost:8080/getAllTasks',
+      url: app.globalData.sweURL + '/getAllTasks',
       method: 'POST',
       header: { 'content-type': 'application/x-www-form-urlencoded' },
       data: {

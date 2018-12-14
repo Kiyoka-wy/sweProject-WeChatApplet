@@ -27,7 +27,7 @@ Page({
     });
     var that = this
     wx.request({
-      url: 'http://localhost:8080/getTaskInfoByID',
+      url: app.globalData.sweURL + '/getTaskInfoByID',
       method: 'POST',
       header: { 'content-type': 'application/x-www-form-urlencoded' },
       data: {
