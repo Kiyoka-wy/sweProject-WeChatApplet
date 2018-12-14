@@ -10,6 +10,8 @@ Page({
     place: '安楼208',
     dataIndex: 0,
     money:0,
+    bonus:"",
+    type:"",
     items: [
       { value: '1', name: '代办' },
       { value: '2', name: '交易' },
@@ -17,8 +19,8 @@ Page({
       { value: '4', name: '其他' },
     ],
     item2: [
-      { value: '1', type: '赏金', name:'money', description: '请输入赏金数量'},
-      { value: '2', type: '其他', name:'thing', description: '请输入其他酬劳内容'},
+      { value: '1', type: '赏金', amount:0, description: '请输入赏金数量'},
+      { value: '2', type: '其他', amount:0, description: '请输入其他酬劳内容'},
     ]
   },
 
@@ -48,8 +50,8 @@ Page({
   },
 
   radioChange2: function (e) {
-    this.data.aa = e.detail.value;
-    console.log(this.data.aa);
+    console.log(e.detail.value);
+    
   },
 
   radioChange(e) {
@@ -61,6 +63,7 @@ Page({
     this.setData({
       items
     })
+    
   },
 
   bindCasPickerChange: function (e) {
@@ -100,7 +103,7 @@ Page({
     console.log(e.detail.value.TimeLimit)
     console.log(e.detail.value.money)
     console.log(e.detail.value.HideContent)
-    console.log(e.detail.value.title)
+    console.log(e.detail.value.item2.amount)
 
     var abc = new Date().getTime()
     console.log(new Date().getTime())

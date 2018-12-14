@@ -51,7 +51,8 @@ App({
               duration: 1000
             })
           if (res.data.state==1){
-            that.globalData.userID = res.data.userID
+            //that.globalData.userID = res.data.userID
+            that.globalData.userID = 15
             that.onLoginSuccess()
           }
         }
@@ -146,7 +147,7 @@ App({
   globalData: {
     userInfo: null,
     sweURL:'http://localhost:8080',
-    userID:'15',//测试
+    userID:'',
     myUserData:{
       sex: '',
       sexofapi:'',
