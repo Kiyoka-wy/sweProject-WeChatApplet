@@ -84,12 +84,14 @@ App({
           that.globalData.myUserData =
             {
               nickname: res.data.nickname,
-              sex: res.data.sex,
+              sexofapi: res.data.sex,
               phoneNumber: res.data.phoneNumber,
               mail: res.data.mail,
               studentID: res.data.studentID,
               department: res.data.department
             }
+          if (that.globalData.myUserData.sexofapi == '1') that.globalData.myUserData.sex = '男'
+          else if (that.globalData.myUserData.sexofapi == '2') that.globalData.myUserData.sex = '女'
         }
         else {
           wx.showToast(
@@ -180,7 +182,8 @@ App({
         mail: myUserData.mail,
         moto: myUserData.moto,
         studentID: myUserData.studentID,
-        communityID: myUserData.communityID,
+        //communityID: parseInt(myUserData.communityID),
+       // communityID: 1
       },
       success: function (res) {
         if (res.data != null) {
@@ -189,8 +192,8 @@ App({
               title: res.data.message,
               duration: 1000
             })
-          if (res.data.state==1){
-            that.globalData.myUserData = myUserData;                      //调用接口上传个人信息，有错误
+          if (res.data.state != 0){
+            that.globalData.myUserData = myUserData;                      
           }
         }
         else {
@@ -224,7 +227,7 @@ App({
               title: res.data.state+' '+res.data.message,
               duration: 1000
             })
-          if (res.data.state == 1) {
+          if (res.data.state != 0) {
             that.globalData.place.push(placeItem)     
           }
         }
