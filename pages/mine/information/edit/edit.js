@@ -28,8 +28,8 @@ Page({
     console.log('form发生了submit事件，携带数据为：', e.detail.value)
     console.log('this.data数据为：',this.data)
     //app.globalData.myUserData = e.detail.value
-    var data = e.detail.value
-    if (data.sex = '男') data.sexofapi = '1'
+    var data=e.detail.value
+    if (data.sex = '男') data.sexofapi='1'
     else if (data.sex = '女') data.sexofapi = '2'
     app.setMyUserData(e.detail.value)
   

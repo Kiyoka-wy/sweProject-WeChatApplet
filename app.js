@@ -50,7 +50,7 @@ App({
               title: res.data.message,
               duration: 1000
             })
-          if (res.data.state == 1) {
+          if (res.data.state==1){
             that.globalData.userID = res.data.userID
             that.onLoginSuccess()
           }
@@ -64,10 +64,12 @@ App({
         }
       }
     })
+
+
   },
 
-  onLoginSuccess: function () {//登录成功后调用获取一些信息
-    var that = this
+  onLoginSuccess: function (){//登录成功后调用获取一些信息
+    var that=this
     //调用接口获取个人信息
     wx.request({
       url: that.globalData.sweURL + '/getUserInfo',
@@ -141,14 +143,13 @@ App({
     })
 */
   },
-  
   globalData: {
     userInfo: null,
-    sweURL: 'http://localhost:8080',
-    userID: '',
+    sweURL:'http://localhost:8080',
+    userID:'',
     myUserData:{
       sex: '',
-      sexofapi: '',
+      sexofapi:'',
       nickname: '',
       mail: '',
       phoneNumber: '',
@@ -163,7 +164,7 @@ App({
     }
   },
 
-  setMyUserData: function (myUserData) {
+  setMyUserData: function (myUserData) {     
     var that = this
     console.log("myUserData", myUserData)
     wx.request({
@@ -187,7 +188,7 @@ App({
               title: res.data.message,
               duration: 1000
             })
-          if (res.data.state == 1) {
+          if (res.data.state==1){
             that.globalData.myUserData = myUserData;                      //调用接口上传个人信息，有错误
           }
         }
@@ -199,12 +200,12 @@ App({
             })
         }
       }
-    })
-
+    })                                                
+   
   },
 
   addPlace: function (placeItem) {
-    var that = this
+    var that=this
     console.log("placeItem", placeItem)
     wx.request({
       url: that.globalData.sweURL + '/insertUserAddress',
@@ -219,11 +220,11 @@ App({
         if (res.data != null) {
           wx.showToast(
             {
-              title: res.data.state + ' ' + res.data.message,
+              title: res.data.state+' '+res.data.message,
               duration: 1000
             })
           if (res.data.state == 1) {
-            that.globalData.place.push(placeItem)
+            that.globalData.place.push(placeItem)     
           }
         }
         else {
@@ -235,7 +236,7 @@ App({
         }
       }
     })
-    
+                   
   },
 
   setDormitory: function (dormitory) {
