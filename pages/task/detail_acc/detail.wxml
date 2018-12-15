@@ -33,6 +33,6 @@
     </view>
 
 
-<i-button bind:click="handleClick" inline type="success">完成任务</i-button>
-<i-button bind:click="handleClick" inline type="error">取消任务</i-button>
+<i-button bind:click="handleClick1" inline type="success">完成任务</i-button>
+<i-button bind:click="handleClick2" inline type="error">取消任务</i-button>
 

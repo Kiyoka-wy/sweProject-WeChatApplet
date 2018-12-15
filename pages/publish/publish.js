@@ -1,3 +1,5 @@
+const app = getApp()
+
 Page({
   data: {
     current: 0,
@@ -6,24 +8,58 @@ Page({
     Timeddl: '00:00',
     DateLimit: '2000-01-01',
     TimeLimit: '00:00',
-    dataArray: ['安楼208', 'B楼308', 'F楼', 'G107', '手动输入'],
+    AddressArray: [
+      {address:''}
+    ],
     place: '安楼208',
     dataIndex: 0,
     money:0,
+    description:'',
     bonus:"",
     bonusType:'',
     type:"",
-    
+    amount:0,
     items: [
       { value: '代办', name: '代办' },
-      { value: '交易', name: '交易' },
-      { value: '问卷', name: '问卷' },
       { value: '其他', name: '其他' },
+      { value: '交易', name: '交易(暂不支持)' },
+      { value: '问卷', name: '问卷(暂不支持)' },
     ],
     item2: [
-      { value: '1', type: '赏金', amount:0, description: '请输入赏金数量'},
-      { value: '2', type: '其他', amount:0, description: '请输入其他酬劳内容'},
+      { value: '1', type: '积分', amount:0, description: '请输入积分数量'},
+      { value: '2', type: '其他', amount:'0', description: '请输入其他酬劳内容'},
     ]
+  },
+
+  onShow: function () {
+    var that = this
+    wx.request({
+      url: app.globalData.sweURL + '/getUserAddresses',
+      method: 'POST',
+      header: { 'content-type': 'application/x-www-form-urlencoded' },
+      data: {
+        userID: 22,
+      },
+      success: function (res) {
+        if (res.data.state != 0) {
+          for (let index = 0; index < 4; index++) {           //index问题
+            let straddress = 'AddressArray[' + index + '].address'
+            that.setData(
+              {
+                [straddress]: res.data[index].address,
+              }
+            )
+          }
+        }
+        else {
+          wx.showToast(
+            {
+              title: "没有地址",
+              duration: 1000
+            })
+        }
+      }
+    })
   },
 
   handleClick(options) {
@@ -52,9 +88,9 @@ Page({
   },
 
   radioChange2: function (e) {
-    console.log(e.detail.value);
+    console.log(e.detail.value)
     this.setData({
-      bonusType: e.detail.value
+      bonusType: e.detail.value,
     })
   },
 
@@ -70,9 +106,9 @@ Page({
     
   },
 
-  bindCasPickerChange: function (e) {
+  bindFromChange: function (e) {
     console.log('选择的是', e.detail.value)
-    console.log('选择的是', this.data.dataArray[e.detail.value])
+    console.log('选择的是', this.data.AddressArray[e.detail.value])
     if (e.detail.value == 4) {
       this.setData({ reply: true })
     } else {
@@ -80,7 +116,21 @@ Page({
     }
     this.setData({
       dataIndex: e.detail.value,
-      place: this.data.dataArray[e.detail.value]
+      place: this.data.AddressArray[e.detail.value]
+    })
+  },
+
+  bindToChange: function (e) {
+    console.log('选择的是', e.detail.value)
+    console.log('选择的是', this.data.AddressArray[e.detail.value])
+    if (e.detail.value == 4) {
+      this.setData({ reply: true })
+    } else {
+      this.setData({ reply: false })
+    }
+    this.setData({
+      dataIndex: e.detail.value,
+      place: this.data.AddressArray[e.detail.value]
     })
   },
 
@@ -101,12 +151,9 @@ Page({
 
   formSubmit(e) {
     console.log('form发生了submit事件，携带数据为：', e.detail.value)
-   
-    var abc = new Date().getTime()
-    console.log(new Date().getTime())
-    
+
     wx.request({
-      url: 'http://localhost:8080/addNewTask',
+      url: app.globalData.sweURL + '/addNewTask',
       method: 'POST',
       header: { 'content-type': 'application/x-www-form-urlencoded' },
       data: {
@@ -116,13 +163,13 @@ Page({
         "toLocation": this.data.dataIndex,
         "type": this.data.type,
         "bonousType": this.data.bonusType,
-        "bonousDescription": "",
-        "title": e.detail.value.title,//任务标题
-        "content": e.detail.value.content,//任务内容
-        "Timeddl": this.data.Dateddl + ' ' + this.data.Timeddl,//任务截止时间
-        "TimeLimit": e.detail.value.Timelimit,//任务执行限制时间 多少小时
-        "money": e.detail.value.money,//赏金 在选择“积分”时填写
-        "HideContent": e.detail.value.HideContent //任务隐藏字段
+        "bonousDescription": e.detail.value.amount,
+        "title": e.detail.value.title,
+        "content": e.detail.value.content,
+        "Timeddl": this.data.Dateddl + ' ' + this.data.Timeddl,
+        "TimeLimit": e.detail.value.Timelimit,
+        "money": e.detail.value.amount,
+        "HideContent": e.detail.value.HideContent
       },
       success: function (res) {
         console.log("回调函数：" + res.data)

@@ -69,8 +69,8 @@
             <view class="weui-label">当前选择</view>
           </view>
           <view class="weui-cell__bd">
-            <picker name="placePicker"bindchange="bindCasPickerChange" value="{{dataIndex}}" range="{{dataArray}}">
-                <view class="weui-input">{{dataArray[dataIndex]}}</view>
+            <picker name="placePicker"bindchange="bindFromChange" value="{{dataIndex}}" range="{{AddressArray}}">
+                <view class="weui-input">{{AddressArray[dataIndex].address}}</view>
             </picker>
           </view>
         </view>
@@ -86,8 +86,8 @@
             <view class="weui-label">当前选择</view>
           </view>
           <view class="weui-cell__bd">
-            <picker name="placePicker"bindchange="bindCasPickerChange" value="{{dataIndex}}" range="{{dataArray}}">
-                <view class="weui-input">{{dataArray[dataIndex]}}</view>
+            <picker name="placePicker"bindchange="bindToChange" value="{{dataIndex}}" range="{{AddressArray}}">
+                <view class="weui-input">{{AddressArray[dataIndex].address}}</view>
             </picker>
           </view>
         </view>
@@ -137,9 +137,19 @@
         <radio-group class="radio-group" bindchange="radioChange2">
           <radio class="radio" bindtap="bindtap1" wx:for-items="{{item2}}" wx:key="name" value="{{item.type}}" checked = "{{item.checked}}">
             <text>{{item.type}}</text>
-            <input class="weui-input" name="{{item.amount}}" placeholder="{{item.description}}" />
           </radio>
         </radio-group>
+      </view>
+
+      <view class="page-section">
+        <view class="page-section-title">数量或描述</view>
+        <view class="weui-cells weui-cells_after-title">
+          <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__bd">
+              <input class="weui-input" name="amount" placeholder="请输入任务酬劳" />
+            </view>
+          </view>
+        </view>
       </view>
      
 

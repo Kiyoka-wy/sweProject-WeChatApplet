@@ -55,5 +55,54 @@ Page({
         }
       }
     })
-  }
+  },
+
+  handleClick1() {
+
+    wx.showModal(
+      {
+        title: '是否确认任务完成',
+        content: '请确认任务已完成',
+        duration: 1000,
+        success: function (res) {
+          if (res.confirm) {
+            // 点击确定后跳转首页并关闭当前页面
+            wx.showToast(
+              {
+                title: '任务完成！',
+                duration: 1000
+              })
+            wx.switchTab({
+              url: '../../mine/mine'
+            })
+          }
+        }
+      })
+
+  },
+
+  handleClick2() {
+
+    wx.showModal(
+      {
+        title: '是否要取消任务？',
+        content: '任务将被取消',
+        duration: 1000,
+        success: function (res) {
+          if (res.confirm) {
+            // 点击确定后跳转首页并关闭当前页面
+            wx.showToast(
+              {
+                title: '任务取消的信息已发送！',
+                duration: 1000
+              })
+            wx.switchTab({
+              url: '../../mine/mine'
+            })
+          }
+        }
+      })
+
+  },
+
 });
