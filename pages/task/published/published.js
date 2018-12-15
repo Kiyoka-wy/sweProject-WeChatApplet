@@ -6,30 +6,18 @@ Page({
     currentData: 0,
     noacc_tasks: [
       {
-        taskID: "001",
-        title: "我是任务的标题1",
-        fromLocation: "我是任务的交付地点",
-        Timeddl: "15：00"
-      },
-      {
-        taskID: "002",
-        title: "我是任务的标题2",
-        fromLocation: "我是任务的交付地点2",
-        Timeddl: "16：00"
+        taskID: "",
+        title: "",
+        fromLocation: "",
+        Timeddl: ""
       }
     ],
     acc_tasks: [
       {
-        taskID: "001",
-        title: "我是任务的标题1",
-        fromLocation: "我是任务的交付地点",
-        Timeddl: "15：00"
-      },
-      {
-        taskID: "002",
-        title: "我是任务的标题2",
-        fromLocation: "我是任务的交付地点2",
-        Timeddl: "16：00"
+        taskID: "",
+        title: "",
+        fromLocation: "",
+        Timeddl: ""
       }
     ]
 
@@ -53,7 +41,7 @@ Page({
             {
               "noacc_tasks[0].taskID": res.data.taskList[0].taskID,
               "noacc_tasks[0].title": res.data.taskList[0].title,
-              "noacc_tasks[0].fromLocation": res.data.taskList[0].fromLocation
+              "noacc_tasks[0].fromLocation": res.data.taskList[0].from
             }
           )
         }
@@ -72,17 +60,28 @@ Page({
       method: 'POST',
       header: { 'content-type': 'application/x-www-form-urlencoded' },
       data: {
-        releaserID: this.data.releaserID,
+        //releaserID: this.data.releaserID,
+        releaserID: 14,//测试
       },
       success: function (res) {
         if (res.data != null) {
-          that.setData(
-            {
-              "acc_tasks[0].taskID": res.data.taskList[0].taskID,
-              "acc_tasks[0].title": res.data.taskList[0].title,
-              "acc_tasks[0].fromLocation": res.data.taskList[0].fromLocation
-            }
-          )
+          for (let index = 0; index < 3; index++) {           //index问题
+            let strtaskID = 'acc_tasks[' + index + '].taskID'
+            let strtitle = 'acc_tasks[' + index + '].title'
+            let strfromLocation = 'acc_tasks[' + index + '].fromLocation'
+            
+            that.setData(
+              {
+                [strtaskID]: res.data.taskList[index].taskID,
+                [strtitle]: res.data.taskList[index].title,
+                [strfromLocation]: res.data.taskList[index].from,
+                /*
+                "acc_tasks[0].taskID": res.data.taskList[0].taskID,
+                "acc_tasks[0].title": res.data.taskList[0].title,
+                "acc_tasks[0].fromLocation": res.data.taskList[0].from*/
+              }
+            )
+          }
         }
         else {
           wx.showToast(

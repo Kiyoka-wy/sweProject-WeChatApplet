@@ -41,7 +41,7 @@ Page({
                 "fromLocation": res.data.from,
                 "toLocation": res.data.to,
                 "HideContent": res.data.description_2,
-                "targetTime": new Date().getTime() + 1000 * 60 * 60 * res.data.leftHours,
+                targetTime: new Date().getTime() + 1000 * 60 * 60 * res.data.leftHours,
               }
             )
           }
