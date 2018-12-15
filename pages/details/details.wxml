@@ -75,5 +75,5 @@
 
     </view>
 
-    <button>接受任务</button>
+    <button bindtap="accepttask">接受任务</button>
     

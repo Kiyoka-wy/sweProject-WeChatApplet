@@ -7,7 +7,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    taskID:'',
+    userID:0,
+    taskID:0,
     nickname: "",
     type:"",
     title: "",
@@ -22,6 +23,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    if (app.globalData.userID) {
+      this.setData({
+        userID: app.globalData.userID
+      })
+    }
+
     this.setData({
       taskID: options.taskID
     });
@@ -53,6 +60,45 @@ Page({
           wx.showToast(
             {
               title: "??",
+              duration: 1000
+            })
+        }
+      }
+    })
+  },
+
+  accepttask:function()
+  {
+    var that = this;
+    wx.request({
+      url: app.globalData.sweURL + '/acceptTask',
+      method: 'POST',
+      header: { 'content-type': 'application/x-www-form-urlencoded' },
+      data: {
+        accepterID: this.data.userID,
+        taskID: this.data.taskID
+      },
+      success: function (res) {
+        if (res.data.state) {
+          wx.showModal(
+            {
+              title: '成功接受任务',
+              content: res.data.message,
+              duration: 1000,
+              success: function (res) {
+                if (res.confirm) {
+                  // 点击确定后跳转首页并关闭当前页面
+                  wx.switchTab({
+                    url: '../index/index'
+                  })
+                }
+              }
+            })
+        }
+        else {
+          wx.showToast(
+            {
+              title: res.data.message,
               duration: 1000
             })
         }

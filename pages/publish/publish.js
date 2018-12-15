@@ -11,12 +11,14 @@ Page({
     dataIndex: 0,
     money:0,
     bonus:"",
+    bonusType:'',
     type:"",
+    
     items: [
-      { value: '1', name: '代办' },
-      { value: '2', name: '交易' },
-      { value: '3', name: '问卷' },
-      { value: '4', name: '其他' },
+      { value: '代办', name: '代办' },
+      { value: '交易', name: '交易' },
+      { value: '问卷', name: '问卷' },
+      { value: '其他', name: '其他' },
     ],
     item2: [
       { value: '1', type: '赏金', amount:0, description: '请输入赏金数量'},
@@ -24,7 +26,7 @@ Page({
     ]
   },
 
-  handleClick() {
+  handleClick(options) {
     const current = this.data.current + 1;
     this.setData({
       'current': current,
@@ -51,7 +53,9 @@ Page({
 
   radioChange2: function (e) {
     console.log(e.detail.value);
-    
+    this.setData({
+      bonusType: e.detail.value
+    })
   },
 
   radioChange(e) {
@@ -61,12 +65,13 @@ Page({
       items[i].checked = items[i].value === e.detail.value
     }
     this.setData({
-      items
+      type: e.detail.value
     })
     
   },
 
   bindCasPickerChange: function (e) {
+    console.log('选择的是', e.detail.value)
     console.log('选择的是', this.data.dataArray[e.detail.value])
     if (e.detail.value == 4) {
       this.setData({ reply: true })
@@ -96,35 +101,25 @@ Page({
 
   formSubmit(e) {
     console.log('form发生了submit事件，携带数据为：', e.detail.value)
-    console.log(e.detail.value.fromLocation)
-    console.log(e.detail.value.title)
-    console.log(e.detail.value.content)
-    console.log(e.detail.value.Timeddl)
-    console.log(e.detail.value.TimeLimit)
-    console.log(e.detail.value.money)
-    console.log(e.detail.value.HideContent)
-    console.log(e.detail.value.item2.amount)
-
+   
     var abc = new Date().getTime()
     console.log(new Date().getTime())
-  
-
-    /*
+    
     wx.request({
       url: 'http://localhost:8080/addNewTask',
       method: 'POST',
       header: { 'content-type': 'application/x-www-form-urlencoded' },
       data: {
-        "userID": "发布者id",
-        "releaseDate": "发布时间",
-        "fromLocation": e.detail.value.fromLocation,
-        "toLocation": e.detail.value.toLocation,
-        "type": e.detail.value.type,
-        "bonousType": "任务奖励类型 积分或者其他两种选择",
-        "bonousDescription": "奖励描述 只有在选择“其他”时填写",
+        "userID": 12,
+        "releaseDate": '2018/12/15 09:20:04',
+        "fromLocation": this.data.dataIndex,
+        "toLocation": this.data.dataIndex,
+        "type": this.data.type,
+        "bonousType": this.data.bonusType,
+        "bonousDescription": "",
         "title": e.detail.value.title,//任务标题
         "content": e.detail.value.content,//任务内容
-        "Timeddl": e.detail.value.Timeddl,//任务截止时间
+        "Timeddl": this.data.Dateddl + ' ' + this.data.Timeddl,//任务截止时间
         "TimeLimit": e.detail.value.Timelimit,//任务执行限制时间 多少小时
         "money": e.detail.value.money,//赏金 在选择“积分”时填写
         "HideContent": e.detail.value.HideContent //任务隐藏字段
@@ -146,7 +141,7 @@ Page({
             })
         }
       }
-    })*/
+    })
 
   },
 

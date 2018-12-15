@@ -33,7 +33,8 @@ Page({
       method: 'POST',
       header: { 'content-type': 'application/x-www-form-urlencoded' },
       data: {
-        releaserID: this.data.releaserID,
+        //releaserID: this.data.releaserID,
+        releaserID: 15,
       },
       success: function (res) {
         if (res.data != null) {

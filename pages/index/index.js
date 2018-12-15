@@ -109,7 +109,7 @@ Page({
       method: 'POST',
       header: { 'content-type': 'application/x-www-form-urlencoded' },
       data: {
-        userID: this.data.userID,
+        userID: 14,
       },
       success: function (res) {
         if (res.data != null) {
