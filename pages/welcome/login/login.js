@@ -6,7 +6,17 @@ Page({
   data: {
     showTopTips: false,
     errorMsg: "",
+    account:'',
+    password:''
   },
+
+  onShow: function () {
+    this.setData({
+      account: wx.getStorageSync('account'),
+      password: wx.getStorageSync('password'),
+    })
+  },
+  
   onLoad: function () {
     var that = this;
     wx.getSystemInfo({
@@ -75,6 +85,11 @@ Page({
                 }
               }
             })
+          app.globalData.userID = res.data.userID
+          app.onLoginSuccess()
+          wx.setStorageSync('account', account)
+          wx.setStorageSync('password', password)
+
         }
         else {
           wx.showToast(

@@ -87,6 +87,11 @@ Page({
                 }
               }
             })
+          
+            wx.setStorageSync('account', account)
+            wx.setStorageSync('password', password)
+            app.login()
+    
           }
           else {
             wx.showToast(

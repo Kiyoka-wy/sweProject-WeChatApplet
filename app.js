@@ -33,42 +33,49 @@ App({
       }
     })
 
-    //登录,暂时用测试账号
-    var that = this
-    wx.request({
-      url: that.globalData.sweURL + '/loginByPhone',
-      method: 'POST',
-      header: { 'content-type': 'application/x-www-form-urlencoded' },
-      data: {
-        phoneNumber: 123456,
-        password: 123456
-      },
-      success: function (res) {
-        if (res.data != null) {
-          wx.showToast(
-            {
-              title: res.data.message,
-              duration: 1000
-            })
-          if (res.data.state==1){
-            //that.globalData.userID = res.data.userID
-            that.globalData.userID = 15
-            that.onLoginSuccess()
-          }
-        }
-        else {
-          wx.showToast(
-            {
-              title: "？？",
-              duration: 1000
-            })
-        }
-      }
-    })
-
+    this.login()
 
   },
 
+  login:function(){
+    //登录,暂时用测试账号
+    var that = this
+    var account = wx.getStorageSync('account')
+    var password = wx.getStorageSync('password')
+    if (account != '' && password != '') {
+      wx.request({
+        url: that.globalData.sweURL + '/loginByPhone',
+        method: 'POST',
+        header: { 'content-type': 'application/x-www-form-urlencoded' },
+        data: {
+          phoneNumber: account,
+          password: password
+        },
+        success: function (res) {
+          if (res.data != null) {
+            wx.showToast(
+              {
+                title: res.data.message,
+                duration: 1000
+              })
+            if (res.data.state == 1) {
+              that.globalData.userID = res.data.userID
+              //that.globalData.userID = 15
+              that.onLoginSuccess()
+            }
+          }
+          else {
+            wx.showToast(
+              {
+                title: "？？",
+                duration: 1000
+              })
+          }
+        }
+      })
+    }
+
+  },
   onLoginSuccess: function (){//登录成功后调用获取一些信息
     var that=this
     //调用接口获取个人信息
@@ -148,7 +155,7 @@ App({
   },
   globalData: {
     userInfo: null,
-    sweURL:'http://localhost:8080',
+    sweURL:'http://127.0.0.1:8080',
     userID:'',
     myUserData:{
       sex: '',

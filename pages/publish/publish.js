@@ -38,7 +38,7 @@ Page({
       method: 'POST',
       header: { 'content-type': 'application/x-www-form-urlencoded' },
       data: {
-        userID: 22,
+        userID: app.globalData.userID,
       },
       success: function (res) {
         if (res.data.state != 0) {
