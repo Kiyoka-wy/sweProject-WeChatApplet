@@ -112,7 +112,7 @@ Page({
         userID: 14,
       },
       success: function (res) {
-        if (res.data != null) {
+        if (!res.data.state) {
           for (let index = 0; index < 1; index++) {           //index问题
             let strtaskID = 'tasks[' + index + '].taskID'
             let strtitle = 'tasks[' + index + '].title'
@@ -139,7 +139,7 @@ Page({
         else {
           wx.showToast(
             {
-              title: "??",
+              title: "没有任务",
               duration: 1000
             })
         }

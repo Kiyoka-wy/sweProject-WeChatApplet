@@ -37,19 +37,24 @@ Page({
         releaserID: 15,
       },
       success: function (res) {
-        if (res.data != null) {
-          that.setData(
-            {
-              "noacc_tasks[0].taskID": res.data.taskList[0].taskID,
-              "noacc_tasks[0].title": res.data.taskList[0].title,
-              "noacc_tasks[0].fromLocation": res.data.taskList[0].from
-            }
-          )
+        if (!res.data.state) {
+          for (let index = 0; index < 1; index++) {           //index问题
+            let strtaskID = 'noacc_tasks[' + index + '].taskID'
+            let strtitle = 'noacc_tasks[' + index + '].title'
+            let strfromLocation = 'noacc_tasks[' + index + '].fromLocation'
+            that.setData(
+              {
+                [strtaskID]: res.data.taskList[index].taskID,
+                [strtitle]: res.data.taskList[index].title,
+                [strfromLocation]: res.data.taskList[index].from,
+              }
+            )
+          }
         }
         else {
           wx.showToast(
             {
-              title: "??",
+              title: "没有任务",
               duration: 1000
             })
         }
@@ -65,7 +70,7 @@ Page({
         releaserID: 14,//测试
       },
       success: function (res) {
-        if (res.data != null) {
+        if (!res.data.state) {
           for (let index = 0; index < 3; index++) {           //index问题
             let strtaskID = 'acc_tasks[' + index + '].taskID'
             let strtitle = 'acc_tasks[' + index + '].title'
@@ -76,10 +81,6 @@ Page({
                 [strtaskID]: res.data.taskList[index].taskID,
                 [strtitle]: res.data.taskList[index].title,
                 [strfromLocation]: res.data.taskList[index].from,
-                /*
-                "acc_tasks[0].taskID": res.data.taskList[0].taskID,
-                "acc_tasks[0].title": res.data.taskList[0].title,
-                "acc_tasks[0].fromLocation": res.data.taskList[0].from*/
               }
             )
           }
@@ -87,7 +88,7 @@ Page({
         else {
           wx.showToast(
             {
-              title: "??",
+              title: "没有任务",
               duration: 1000
             })
         }
