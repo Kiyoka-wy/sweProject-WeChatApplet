@@ -155,7 +155,7 @@ App({
   },
   globalData: {
     userInfo: null,
-    sweURL:'http://127.0.0.1:8080',
+    sweURL:'http://localhost:8080',
     userID:'',
     myUserData:{
       sex: '',
