@@ -37,7 +37,7 @@ Page({
         releaserID: 15,
       },
       success: function (res) {
-        if (!res.data.state) {
+        if (res.data.state!=0) {
           for (let index = 0; index < 1; index++) {           //index问题
             let strtaskID = 'noacc_tasks[' + index + '].taskID'
             let strtitle = 'noacc_tasks[' + index + '].title'
@@ -70,7 +70,7 @@ Page({
         releaserID: 14,//测试
       },
       success: function (res) {
-        if (!res.data.state) {
+        if (res.data.state!=0) {
           for (let index = 0; index < 3; index++) {           //index问题
             let strtaskID = 'acc_tasks[' + index + '].taskID'
             let strtitle = 'acc_tasks[' + index + '].title'

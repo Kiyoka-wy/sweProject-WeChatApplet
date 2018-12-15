@@ -30,7 +30,7 @@ Page({
       },
 
       success: function (res) {
-        if (!res.data.state) {
+        if (res.data.state!=0) {
           for (let index = 0; index < 1; index++) {       //index问题
             let strtaskID = 'tasks[' + index + '].taskID'
             let strtitle = 'tasks[' + index + '].title'

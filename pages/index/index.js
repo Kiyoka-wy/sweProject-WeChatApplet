@@ -14,11 +14,11 @@ Page({
     currentData: 0,
     tasks:[
       {
-        title: '一个任务标题',
-        nickname: '发布人昵称',
-        img: 'https://i.loli.net/2017/08/21/599a521472424.jpg',
-        content: "此处为任务内容",
-        time: "15:00"
+        title: '',
+        nickname: '',
+        img: '',
+        content: "",
+        time: ""
       }
     ]
     
@@ -109,10 +109,10 @@ Page({
       method: 'POST',
       header: { 'content-type': 'application/x-www-form-urlencoded' },
       data: {
-        userID: 14,
+        userID: 15,
       },
       success: function (res) {
-        if (!res.data.state) {
+        if (res.data.state!=0) {
           for (let index = 0; index < 1; index++) {           //index问题
             let strtaskID = 'tasks[' + index + '].taskID'
             let strtitle = 'tasks[' + index + '].title'
