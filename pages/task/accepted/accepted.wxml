@@ -1,27 +1,11 @@
-<view class='topTabSwiper'>
-    <view class='tab  {{currentData == 0 ? "tabBorer" : ""}}'  data-current = "0" bindtap='checkCurrent'>进行中</view>
-    <view class='tab  {{currentData == 1 ? "tabBorer" : ""}}'  data-current = "1" bindtap='checkCurrent'>已完成</view>
-    <view class='tab  {{currentData == 2 ? "tabBorer" : ""}}'  data-current = "2" bindtap='checkCurrent'>已取消</view>
-</view>
-
-<swiper current="{{currentData}}" class='swiper' style="height:600px;" duration="300" bindchange="bindchange">
-  <swiper-item>
 
     <view wx:for="{{tasks}}" wx:key="item">
       <navigator url="../detail_acc/detail?taskID={{item.taskID}}">
       
         <view class="section" style="padding: 15px;">
           <i-panel class="cell-panel-demo">
-            <i-cell title="{{item.title}}" label="{{item.fromLocation}}" value="{{item.TimeLimit}}" is-link></i-cell>
+            <i-cell title="{{item.title}}" label="{{item.state}}" value="{{item.TimeLimit}}" is-link></i-cell>
           </i-panel>
         </view>
       </navigator>
     </view>
-
-  </swiper-item> 
-
-  <swiper-item><view class='swiper_con'>welcome come to 2</view></swiper-item>
-  <swiper-item><view class='swiper_con'>welcome come to 3</view></swiper-item>  
-</swiper>
-
-

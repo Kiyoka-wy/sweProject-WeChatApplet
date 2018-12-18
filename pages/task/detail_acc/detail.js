@@ -32,7 +32,7 @@ Page({
       method: 'POST',
       header: { 'content-type': 'application/x-www-form-urlencoded' },
       data: {
-        taskID: 2,//this.data.taskID,
+        taskID: this.data.taskID,
       },
       success: function (res) {
         if (res.data != null) {
@@ -70,7 +70,7 @@ Page({
     })
     },
   
-  handleClick1(){ //完成任务
+  handleClick1(){       //接受人完成任务
     wx.showModal(
       {
         title: '是否已经完成任务？',
@@ -78,21 +78,31 @@ Page({
         duration: 1000,
         success: function (res) {
           if (res.confirm) {
-            // 点击确定后跳转首页并关闭当前页面
-            wx.showToast(
-              {
-                title: '完成任务！',
-                duration: 1000
-              })
-            wx.switchTab({
-              url: '../../mine/mine'
+            var that = this
+            wx.request({
+              url: app.globalData.sweURL + '/acpCompleteTask',
+              method: 'POST',
+              header: { 'content-type': 'application/x-www-form-urlencoded' },
+              data: {
+                taskID: 2,//this.data.taskID,
+              },
+              success: function (res) {
+                wx.showToast(
+                  {
+                    message: res.data.message,
+                    duration: 1000
+                  })
+                wx.switchTab({  // 点击确定后跳转首页并关闭当前页面
+                  url: '../../mine/mine'
+                })
+              }
             })
           }
         }
       })
   },
 
-  handleClick2() { //取消任务
+  handleClick2() {        //接受人取消任务
     wx.showModal(
       {
         title: '是否要取消任务？',
@@ -113,6 +123,52 @@ Page({
         }
       })
   },
+
+  handleClick3() {        //同意取消
+    wx.showModal(
+      {
+        title: '是否同意取消任务？',
+        content: '任务将被取消',
+        duration: 1000,
+        success: function (res) {
+          if (res.confirm) {
+            // 点击确定后跳转首页并关闭当前页面
+            wx.showToast(
+              {
+                title: '同意取消任务！',
+                duration: 1000
+              })
+            wx.switchTab({
+              url: '../../mine/mine'
+            })
+          }
+        }
+      })
+  },
+
+  handleClick4() {        //不同意取消
+    wx.showModal(
+      {
+        title: '是否不同意取消任务？',
+        content: '任务将恢复状态',
+        duration: 1000,
+        success: function (res) {
+          if (res.confirm) {
+            // 点击确定后跳转首页并关闭当前页面
+            wx.showToast(
+              {
+                title: '任务恢复！',
+                duration: 1000
+              })
+            wx.switchTab({
+              url: '../../mine/mine'
+            })
+          }
+        }
+      })
+  },
+
+
   
 
   onUnload() {

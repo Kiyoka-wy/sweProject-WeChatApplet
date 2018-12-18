@@ -11,10 +11,10 @@
 			  <view class="title">当前任务</view>
         <view wx:for="{{tasks}}" wx:key="item">
           <view class='task'>
-            <navigator url="../details/details?taskID={{item.nickname_r}}">
-              <i-card title="{{item.title}}" extra="{{item.nickname}}" >
+            <navigator url="../details/details?taskID={{item.taskID}}">
+              <i-card title="任务标题：{{item.title}}" extra="发布人：{{item.nickname_r}}" >
                 <view slot="content">{{item.description_1}}</view>
-                <view slot="footer">{{item.dueDate}}</view>
+                <view slot="footer">{{item.from}}</view>
               </i-card>
             </navigator>
           </view>

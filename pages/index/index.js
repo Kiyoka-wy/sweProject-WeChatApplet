@@ -103,7 +103,7 @@ Page({
       method: 'POST',
       header: { 'content-type': 'application/x-www-form-urlencoded' },
       data: {
-        userID: app.globalData.userID,
+        userID: 15,//app.globalData.userID,
       },
       success: function (res) {
         console.log("返回数据", res.data)
@@ -112,30 +112,6 @@ Page({
           tasks: res.data
         })
         console.log("任务列表", res.data)
-          /*
-          for (let index = 0; index < 1; index++) {           //index问题
-            let strtaskID = 'tasks[' + index + '].taskID'
-            let strtitle = 'tasks[' + index + '].title'
-            let strcontent = 'tasks[' + index + '].content'
-            let strtime = 'tasks[' + index + '].time'
-            let strnickname = 'tasks[' + index + '].nickname'
-            that.setData(
-              {
-                [strtaskID]: res.data.taskList[index].taskID,
-                [strtitle]: res.data.taskList[index].title,
-                [strcontent]: res.data.taskList[index].description_1,
-                [strtime]: res.data.taskList[index].dueDate,
-                [strnickname]: res.data.taskList[index].nickname_r,
-                
-              //  "tasks[0].taskID": res.data.taskList[0].taskID,
-              //  "tasks[0].title": res.data.taskList[0].title,
-               // "tasks[0].content": res.data.taskList[0].description_1,
-               // "tasks[0].time": res.data.taskList[0].dueDate,
-              //  "tasks[0].nickname": res.data.taskList[0].nickname_r
-              }
-            )
-          }
-          */
       }
     })
   },

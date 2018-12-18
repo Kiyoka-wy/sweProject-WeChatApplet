@@ -4,14 +4,7 @@ Page({
   data: {
     accepterID:0,
     currentData: 0,
-    tasks:[
-      {
-        taskID:"",
-        title: "",
-        fromLocation: "",
-        TimeLimit: ""
-      }
-    ]
+    tasks:[]
     
   },
 
@@ -30,43 +23,14 @@ Page({
       },
 
       success: function (res) {
-        if (res.data.state!=0) {
-          for (let index = 0; index < 1; index++) {       //index问题
-            let strtaskID = 'tasks[' + index + '].taskID'
-            let strtitle = 'tasks[' + index + '].title'
-            let strfromLocation = 'tasks[' + index + '].fromLocation'
-            let strTimeLimit = 'tasks[' + index + '].TimeLimit'
-            that.setData(
-              {
-                [strtaskID]: res.data.taskList[index].taskID,
-                [strtitle]: res.data.taskList[index].title,
-                [strfromLocation]: res.data.taskList[index].from,
-                [strTimeLimit]: res.data.taskList[index].leftHours + '小时',/*
-                "tasks[index].taskID": res.data.taskList[index].taskID,
-                "tasks[index].title": res.data.taskList[index].title,
-                "tasks[index].fromLocation": res.data.taskList[index].from,
-                "tasks[index].TimeLimit": res.data.taskList[index].leftHours + '小时'*/
-              }
-            )
-          }
-          /*
-          that.setData(
-            {
-              "tasks[0].taskID": res.data.taskList[0].taskID,
-              "tasks[0].title": res.data.taskList[0].title,
-              "tasks[0].fromLocation": res.data.taskList[0].from,
-              "tasks[0].TimeLimit": res.data.taskList[0].leftHours +'小时'
-            }
-          )*/
+        console.log("返回数据", res.data)
+
+        that.setData({
+          tasks: res.data
+        })
+        console.log("任务列表", res.data)
+
         }
-        else {
-          wx.showToast(
-            {
-              title: '没有任务',
-              duration: 1000
-            })
-        }
-      }
     })
 
   },  
