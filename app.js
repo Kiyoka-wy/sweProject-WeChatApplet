@@ -33,7 +33,9 @@ App({
       }
     })
 
+    this.globalData.userID = wx.getStorageSync('userID')
     this.login()
+    
 
   },
 
@@ -60,7 +62,7 @@ App({
               })
             if (res.data.state == 1) {
               that.globalData.userID = res.data.userID
-              //that.globalData.userID = 15
+              wx.setStorageSync('userID', res.data.userID)
               that.onLoginSuccess()
             }
           }
@@ -77,7 +79,8 @@ App({
 
   },
   onLoginSuccess: function (){//登录成功后调用获取一些信息
-    var that=this
+    var that = this
+    console.log("userID:", that.globalData.userID)
     //调用接口获取个人信息
     wx.request({
       url: that.globalData.sweURL + '/getUserInfo',

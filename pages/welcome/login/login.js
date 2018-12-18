@@ -89,7 +89,7 @@ Page({
           app.onLoginSuccess()
           wx.setStorageSync('account', account)
           wx.setStorageSync('password', password)
-
+          wx.setStorageSync('userID', res.data.userID)
         }
         else {
           wx.showToast(

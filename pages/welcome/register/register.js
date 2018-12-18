@@ -75,6 +75,8 @@ Page({
         },
         success: function (res) {
           if (res.data.state) {
+            wx.setStorageSync('account', account)
+            wx.setStorageSync('password', password)
             wx.showModal({
               title: '注册状态',
               content: '注册成功，请点击确定登录吧',
@@ -87,10 +89,6 @@ Page({
                 }
               }
             })
-          
-            wx.setStorageSync('account', account)
-            wx.setStorageSync('password', password)
-            app.login()
     
           }
           else {

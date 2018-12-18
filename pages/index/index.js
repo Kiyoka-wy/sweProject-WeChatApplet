@@ -96,6 +96,8 @@ Page({
     }
 */
     var that = this
+    
+    console.log("globalData.userID:", app.globalData.userID)
     wx.request({
       url: app.globalData.sweURL + '/getAllTasks',
       method: 'POST',
@@ -105,11 +107,11 @@ Page({
       },
       success: function (res) {
         console.log("返回数据", res.data)
-        if (res.data.state!=0) {
-          that.setData({
-            tasks: res.data.taskList
-          })
-          console.log("任务列表", res.data.taskList)
+       
+        that.setData({
+          tasks: res.data
+        })
+        console.log("任务列表", res.data)
           /*
           for (let index = 0; index < 1; index++) {           //index问题
             let strtaskID = 'tasks[' + index + '].taskID'
@@ -134,14 +136,6 @@ Page({
             )
           }
           */
-        }
-        else {
-          wx.showToast(
-            {
-              title: "没有任务",
-              duration: 1000
-            })
-        }
       }
     })
   },
