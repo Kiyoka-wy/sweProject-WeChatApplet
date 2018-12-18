@@ -67,48 +67,118 @@ function clearError(that) {
   })
 }
 
-function status(state) {
+function status(state,role) {
   var statusJson = {};
   var x = "";
   var y = "";
   var xc = "";
   var yc = "";
 
-  switch (state) {
-    case null:           //未接受
-      
-      y = "取消发布";
-      yc = "CancelPublish";
-      break;
-    case "在进行":        //已接受状态
-      x = "完成任务";
-      xc = "CompleteTask";
-      y = "取消任务";
-      yc = "CancelTask";
-      break;
-    case "待审核":        //发布人操作
-      x = "任务已完成";
-      y = "任务未完成";
-      break;
-    case "已完成":
-      x = "";
-      y = "";
-      break;
-    case "已超时":
-      x = "完成任务";
-      y = "取消任务";
-      break;
-    case "异常":
-      x = "";
-      y = "";
-      break;
-    case "待取消":
-      x = "同意取消";
-      xc = "AgreeCancel";
-      y = "不同意取消";
-      yc = "DisagreeCancel";
-      break;
+  if(role==1){             //发布者身份
+    switch (state) {
+      case null:           //未接受
+        
+        y = "取消发布";
+        yc = "CancelTask";
+        break;
+      case "在进行":        //已接受状态
+        x = "完成任务";
+        xc = "CompleteTask";
+        y = "取消任务";
+        yc = "CancelTask";
+        break;
+      case "待审核":         //发布人操作
+        x = "确认任务已完成";
+        xc = "CompleteTask";
+        y = "确认任务未完成";
+        yc = "UnacceptCancel";
+        break;
+      case "已完成":
+        x = "";
+        y = "";
+        break;
+      case "已超时":
+        x = "完成任务";
+        xc = "CompleteTask";
+        y = "取消任务";
+        yc = "CancelTask";
+        break;
+      case "异常":
+        x = "";
+        y = "";
+        break;
+      case "待取消":
+        x = "同意取消";
+        xc = "AgreeCancel";
+        y = "不同意取消";
+        yc = "DisagreeCancel";
+        break;
+      case "发布者取消":
+        x = "";
+        xc = "";
+        y = "撤销取消";
+        yc = "WithdrawCancel";
+        break;
+      case "接受者取消":
+        x = "同意取消";
+        xc = "AgreeCancel";
+        y = "不同意取消";
+        yc = "DisagreeCancel";
+        break;
+    }
   }
+    if(role==2){             //接收人身份
+      switch (state) {
+        case null:           //未接受
+
+          y = "取消发布";
+          yc = "CancelTask";
+          break;
+        case "在进行":        //已接受状态
+          x = "完成任务";
+          xc = "CompleteTask";
+          y = "取消任务";
+          yc = "CancelTask";
+          break;
+        case "待审核":        
+          x = "";
+          y = "";
+          break;
+        case "已完成":
+          x = "";
+          y = "";
+          break;
+        case "已超时":
+          x = "完成任务";
+          xc = "CompleteTask";
+          y = "取消任务";
+          yc = "CancelTask";
+          break;
+        case "异常":
+          x = "";
+          y = "";
+          break;
+        case "待取消":
+          x = "同意取消";
+          xc = "AgreeCancel";
+          y = "不同意取消";
+          yc = "DisagreeCancel";
+          break;
+        case "发布者取消":
+          x = "同意取消";
+          xc = "AgreeCancel";
+          y = "不同意取消";
+          yc = "DisagreeCancel";
+          break;
+        case "接受者取消":
+          x = "";
+          xc = "";
+          y = "撤销取消";
+          yc = "WithdrawCancel";
+          break;
+      }
+    }
+  
   statusJson.x = x;
   statusJson.y = y;
   statusJson.xc = xc;
@@ -126,4 +196,3 @@ module.exports = {
   getReq: getReq,
   status: status
 }
-

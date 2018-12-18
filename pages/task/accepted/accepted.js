@@ -18,7 +18,7 @@ Page({
       method: 'POST',
       header: { 'content-type': 'application/x-www-form-urlencoded' },
       data: {
-        accepterID: this.data.accepterID,
+        accepterID: 20,//this.data.accepterID,
       },
 
       success: function (res) {

@@ -7,7 +7,7 @@
   <swiper-item>
 
     <view wx:for="{{noacc_tasks}}" wx:key="item">
-      <navigator url="../detail_pub/detail?taskID={{item.taskID}}">
+      <navigator url="../detail_pub/detail?taskID={{item.taskID}}&releaserID={{item.releaserID}}">
       
         <view class="section" style="padding: 15px;">
           <i-panel class="cell-panel-demo">
@@ -21,7 +21,7 @@
 
   <swiper-item>
     <view wx:for="{{acc_tasks}}" wx:key="item">
-      <navigator url="../detail_pub/detail?taskID={{item.taskID}}">
+      <navigator url="../detail_pub/detail?taskID={{item.taskID}}&releaserID={{item.releaserID}}">
       
         <view class="section" style="padding: 15px;">
           <i-panel class="cell-panel-demo">

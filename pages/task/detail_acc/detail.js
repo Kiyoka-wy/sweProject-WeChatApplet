@@ -4,6 +4,7 @@ var utils = require('../../../utils/util.js');
 
 Page({
   data: {
+    accepterID:0,
     taskID:0,
     type:'',
     title: 0,
@@ -50,13 +51,14 @@ Page({
               "toLocation": res.data.to,
               "HideContent": res.data.description_2,
               targetTime: new Date().getTime() + 1000 * 60 * 60 * res.data.leftHours,  
+              "accepterID": res.data.accepter
             }
           )
           that.setData({
-            buttonx: utils.status(that.data.state).x,
-            buttony: utils.status(that.data.state).y,
-            buttonxc: utils.status(that.data.state).xc,
-            buttonyc: utils.status(that.data.state).yc,
+            buttonx: utils.status(that.data.state,2).x,
+            buttony: utils.status(that.data.state,2).y,
+            buttonxc: utils.status(that.data.state,2).xc,
+            buttonyc: utils.status(that.data.state,2).yc,
           })
         }
         else {
@@ -69,40 +71,9 @@ Page({
       }
     })
     },
-  
-  CompleteTask(){       //接受人完成任务
-    wx.showModal(
-      {
-        title: '是否已经完成任务？',
-        content: '请确认您已经完成任务',
-        duration: 1000,
-        success: function (res) {
-          if (res.confirm) {
-            var that = this
-            wx.request({
-              url: app.globalData.sweURL + '/acpCompleteTask',
-              method: 'POST',
-              header: { 'content-type': 'application/x-www-form-urlencoded' },
-              data: {
-                taskID: 2,//this.data.taskID,
-              },
-              success: function (res) {
-                wx.showToast(
-                  {
-                    message: res.data.message,
-                    duration: 1000
-                  })
-                wx.switchTab({  // 点击确定后跳转首页并关闭当前页面
-                  url: '../../mine/mine'
-                })
-              }
-            })
-          }
-        }
-      })
-  },
 
-  CancelTask() {        //接受人取消任务
+  CancelTask: function () {              //接受人取消任务
+    var that = this
     wx.showModal(
       {
         title: '是否要取消任务？',
@@ -111,35 +82,151 @@ Page({
         success: function (res) {
           if (res.confirm) {
             // 点击确定后跳转首页并关闭当前页面
-            wx.showToast(
-              {
-                title: '取消任务！',
-                duration: 1000
-              })
-            wx.switchTab({
-              url: '../../mine/mine'
+            wx.request({
+              url: app.globalData.sweURL + '/cancelTask',
+              method: 'POST',
+              header: { 'content-type': 'application/x-www-form-urlencoded' },
+              data: {
+                userID: that.data.accepterID,
+                taskID: that.data.taskID,
+              },
+              success: function (res) {
+                if (res.data.state) {
+                  wx.showToast(
+                    {
+                      title: res.data.message,
+                      duration: 5000
+                    })
+                }
+                else {
+                  wx.showToast(
+                    {
+                      title: res.data.message,
+                      duration: 1000
+                    })
+                }
+              }
             })
           }
         }
       })
   },
 
-  AgreeCancel() {        //同意取消
+  CompleteTask: function () {        //接收人完成任务
+    var that = this
     wx.showModal(
       {
-        title: '是否同意取消任务？',
-        content: '任务将被取消',
+        title: '完成任务？',
+        content: '请确认任务是否已完成',
         duration: 1000,
         success: function (res) {
           if (res.confirm) {
             // 点击确定后跳转首页并关闭当前页面
-            wx.showToast(
-              {
-                title: '同意取消任务！',
-                duration: 1000
-              })
-            wx.switchTab({
-              url: '../../mine/mine'
+            wx.request({
+              url: app.globalData.sweURL + '/acpCompleteTask',
+              method: 'POST',
+              header: { 'content-type': 'application/x-www-form-urlencoded' },
+              data: {
+                taskID: that.data.taskID,
+              },
+              success: function (res) {
+                if (res.data.state) {
+                  wx.showToast(
+                    {
+                      title: res.data.message,
+                      duration: 1000
+                    })
+                }
+                else {
+                  wx.showToast(
+                    {
+                      title: res.data.message,
+                      duration: 1000
+                    })
+                }
+              }
+            })
+          }
+        }
+      })
+  },
+
+  WithdrawCancel() {        //接受人撤回取消
+    var that = this
+    wx.showModal(
+      {
+        title: '撤回取消任务？',
+        content: '请确认是否要撤回对任务的取消',
+        duration: 1000,
+        success: function (res) {
+          if (res.confirm) {
+            // 点击确定后跳转首页并关闭当前页面
+            wx.request({
+              url: app.globalData.sweURL + '/undoCancel',
+              method: 'POST',
+              header: { 'content-type': 'application/x-www-form-urlencoded' },
+              data: {
+                userID: that.data.accepterID,
+                taskID: that.data.taskID,
+              },
+              success: function (res) {
+                if (res.data.state) {
+                  wx.showToast(
+                    {
+                      title: res.data.message,
+                      duration: 1000
+                    })
+                }
+                else {
+                  wx.showToast(
+                    {
+                      title: res.data.message,
+                      duration: 1000
+                    })
+                }
+              }
+            })
+          }
+        }
+      })
+  },
+
+
+
+  AgreeCancel() {        //同意取消
+    var that = this
+    wx.showModal(
+      {
+        title: '同意取消任务？',
+        content: '请确认是否同意取消任务',
+        duration: 1000,
+        success: function (res) {
+          if (res.confirm) {
+            // 点击确定后跳转首页并关闭当前页面
+            wx.request({
+              url: app.globalData.sweURL + '/acceptCancel',
+              method: 'POST',
+              header: { 'content-type': 'application/x-www-form-urlencoded' },
+              data: {
+                userID: that.data.accepterID,
+                taskID: that.data.taskID,
+              },
+              success: function (res) {
+                if (res.data.state) {
+                  wx.showToast(
+                    {
+                      title: res.data.message,
+                      duration: 1000
+                    })
+                }
+                else {
+                  wx.showToast(
+                    {
+                      title: res.data.message,
+                      duration: 1000
+                    })
+                }
+              }
             })
           }
         }
@@ -147,21 +234,39 @@ Page({
   },
 
   DisagreeCancel() {        //不同意取消
+    var that = this
     wx.showModal(
       {
-        title: '是否不同意取消任务？',
-        content: '任务将恢复状态',
+        title: '不同意取消任务？',
+        content: '请确认是否不同意取消任务',
         duration: 1000,
         success: function (res) {
           if (res.confirm) {
             // 点击确定后跳转首页并关闭当前页面
-            wx.showToast(
-              {
-                title: '任务恢复！',
-                duration: 1000
-              })
-            wx.switchTab({
-              url: '../../mine/mine'
+            wx.request({
+              url: app.globalData.sweURL + '/unacceptCancel',
+              method: 'POST',
+              header: { 'content-type': 'application/x-www-form-urlencoded' },
+              data: {
+                userID: that.data.accepterID,
+                taskID: that.data.taskID,
+              },
+              success: function (res) {
+                if (res.data.state) {
+                  wx.showToast(
+                    {
+                      title: res.data.message,
+                      duration: 1000
+                    })
+                }
+                else {
+                  wx.showToast(
+                    {
+                      title: res.data.message,
+                      duration: 1000
+                    })
+                }
+              }
             })
           }
         }
