@@ -32,7 +32,5 @@
     
     </view>
 
-
-<i-button bind:click="handleClick1" inline type="success">完成任务</i-button>
-<i-button bind:click="handleClick2" inline type="error">取消任务</i-button>
-
+<i-button bindclick="{{buttonxc}}" inline type="success">{{buttonx}}</i-button>
+<i-button bindclick="{{buttonyc}}" inline type="error">{{buttony}}</i-button>

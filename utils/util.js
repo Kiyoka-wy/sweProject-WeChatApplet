@@ -67,11 +67,60 @@ function clearError(that) {
   })
 }
 
+function status(state) {
+  var statusJson = {};
+  var x = "";
+  var y = "";
+  var xc = "";
+  var yc = "";
+
+  switch (state) {
+    case null:           //未接受
+      
+      y = "取消发布";
+      break;
+    case "在进行":
+      x = "完成任务";
+      xc= "handleClick1";
+      y = "取消任务";
+      yc= "handleClick2";
+      break;
+    case "待审核":
+      x = "任务已完成";
+      y = "任务未完成";
+      break;
+    case "已完成":
+      x = "已完成";
+      y = "";
+      break;
+    case "已超时":
+      x = "完成任务";
+      y = "取消任务";
+      break;
+    case "异常":
+      x = "";
+      y = "";
+      break;
+    case "待取消":
+      x = "同意取消";
+      y = "不同意取消";
+      break;
+  }
+  statusJson.x = x;
+  statusJson.y = y;
+  statusJson.xc = xc;
+  statusJson.yc = yc;
+  return statusJson;
+}
+
+
 module.exports = {
   formatTime: formatTime,
   req: req,
   trim: trim,
   isError: isError,
   clearError: clearError,
-  getReq: getReq
+  getReq: getReq,
+  status: status
 }
+

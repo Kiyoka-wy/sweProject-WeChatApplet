@@ -1,5 +1,6 @@
 // pages/task/detail/detail.js
 var app = getApp();
+var utils = require('../../../utils/util.js');
 
 Page({
   data: {
@@ -11,53 +12,65 @@ Page({
     toLocation: "",
     HideContent: "",
     limit:0,
+    state: "",
     targetTime: 0,
-    clearTimer: false
+    clearTimer: false,
+    buttonx:"",
+    buttony:"",
+    buttonxc: "",
+    buttonyc: "",
   },
   
   onLoad: function (options) {
+    var state = this.data.state;
     this.setData({
-      taskID: options.taskID
+      taskID: options.taskID,  
     });
-      var that = this
-      wx.request({
-        url: app.globalData.sweURL + '/getTaskInfoByID',
-        method: 'POST',
-        header: { 'content-type': 'application/x-www-form-urlencoded' },
-        data: {
-          taskID: this.data.taskID,
-        },
-        success: function (res) {
-          if (res.data != null) {
-            that.setData(
-              {
-                "type": res.data.type,
-                "title": res.data.title,
-                "content": res.data.description_1,
-                "time": res.data.dueDate,
-                "nickname": res.data.nickname_r,
-                "limit": res.data.leftHours,
-                "money": res.data.bonousType + res.data.bonousAmount,
-                "fromLocation": res.data.from,
-                "toLocation": res.data.to,
-                "HideContent": res.data.description_2,
-                targetTime: new Date().getTime() + 1000 * 60 * 60 * res.data.leftHours,
-              }
-            )
-          }
-          else {
-            wx.showToast(
-              {
-                title: "??",
-                duration: 1000
-              })
-          }
+    var that = this
+    wx.request({
+      url: app.globalData.sweURL + '/getTaskInfoByID',
+      method: 'POST',
+      header: { 'content-type': 'application/x-www-form-urlencoded' },
+      data: {
+        taskID: 2,//this.data.taskID,
+      },
+      success: function (res) {
+        if (res.data != null) {
+          that.setData(
+            {
+              "type": res.data.type,
+              "title": res.data.title,
+              "content": res.data.description_1,
+              "time": res.data.dueDate,
+              "nickname": res.data.nickname_r,
+              "limit": res.data.leftHours,
+              "state": res.data.state,
+              "money": res.data.bonousType + res.data.bonousAmount,
+              "fromLocation": res.data.from,
+              "toLocation": res.data.to,
+              "HideContent": res.data.description_2,
+              targetTime: new Date().getTime() + 1000 * 60 * 60 * res.data.leftHours,  
+            }
+          )
+          that.setData({
+            buttonx: utils.status(that.data.state).x,
+            buttony: utils.status(that.data.state).y,
+            buttonxc: utils.status(that.data.state).xc,
+            buttonyc: utils.status(that.data.state).yc,
+          })
         }
-      })
+        else {
+          wx.showToast(
+            {
+              title: "??",
+              duration: 1000
+            })
+        }
+      }
+    })
     },
   
-  handleClick1(){
-
+  handleClick1(){ //完成任务
     wx.showModal(
       {
         title: '是否已经完成任务？',
@@ -77,11 +90,9 @@ Page({
           }
         }
       })
-
   },
 
-  handleClick2() {
-
+  handleClick2() { //取消任务
     wx.showModal(
       {
         title: '是否要取消任务？',
@@ -101,7 +112,6 @@ Page({
           }
         }
       })
-
   },
   
 

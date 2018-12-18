@@ -1,5 +1,6 @@
 // pages/task/detail_pub/detail.js
 var app = getApp();
+var utils = require('../../../utils/util.js');
 
 Page({
   data: {
@@ -12,7 +13,12 @@ Page({
     HideContent: "",
     limit: 0,
     targetTime: 0,
-    clearTimer: false
+    clearTimer: false,
+    state: "",
+    buttonx: "",
+    buttony: "",
+    buttonxc: "",
+    buttonyc: "",
   },
 
   onLoad: function (options) {
@@ -43,8 +49,15 @@ Page({
               "toLocation": res.data.to,
               "HideContent": res.data.description_2,
               "targetTime": new Date().getTime() + 1000 * 60 * 60 * res.data.leftHours,
+              "state": res.data.state,
             }
           )
+          that.setData({
+            buttonx: utils.status(that.data.state).x,
+            buttony: utils.status(that.data.state).y,
+            buttonxc: utils.status(that.data.state).xc,
+            buttonyc: utils.status(that.data.state).yc,
+          })
         }
         else {
           wx.showToast(
