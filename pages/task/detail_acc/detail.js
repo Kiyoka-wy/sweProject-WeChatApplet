@@ -70,7 +70,7 @@ Page({
     })
     },
   
-  handleClick1(){       //接受人完成任务
+  CompleteTask(){       //接受人完成任务
     wx.showModal(
       {
         title: '是否已经完成任务？',
@@ -102,7 +102,7 @@ Page({
       })
   },
 
-  handleClick2() {        //接受人取消任务
+  CancelTask() {        //接受人取消任务
     wx.showModal(
       {
         title: '是否要取消任务？',
@@ -124,7 +124,7 @@ Page({
       })
   },
 
-  handleClick3() {        //同意取消
+  AgreeCancel() {        //同意取消
     wx.showModal(
       {
         title: '是否同意取消任务？',
@@ -146,7 +146,7 @@ Page({
       })
   },
 
-  handleClick4() {        //不同意取消
+  DisagreeCancel() {        //不同意取消
     wx.showModal(
       {
         title: '是否不同意取消任务？',

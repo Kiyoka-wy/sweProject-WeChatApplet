@@ -78,12 +78,13 @@ function status(state) {
     case null:           //未接受
       
       y = "取消发布";
+      yc = "CancelPublish";
       break;
-    case "在进行":        //已接受状态/接收人操作
+    case "在进行":        //已接受状态
       x = "完成任务";
-      xc= "handleClick1";
+      xc = "CompleteTask";
       y = "取消任务";
-      yc= "handleClick2";
+      yc = "CancelTask";
       break;
     case "待审核":        //发布人操作
       x = "任务已完成";
@@ -103,9 +104,9 @@ function status(state) {
       break;
     case "待取消":
       x = "同意取消";
-      xc = "handleClick3";
+      xc = "AgreeCancel";
       y = "不同意取消";
-      yc = "handleClick4";
+      yc = "DisagreeCancel";
       break;
   }
   statusJson.x = x;

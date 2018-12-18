@@ -4,7 +4,7 @@
       
         <view class="section" style="padding: 15px;">
           <i-panel class="cell-panel-demo">
-            <i-cell title="{{item.title}}" label="{{item.state}}" value="{{item.TimeLimit}}" is-link></i-cell>
+            <i-cell title="{{item.title}}" label="{{item.from}}" value="{{item.state}}" is-link></i-cell>
           </i-panel>
         </view>
       </navigator>

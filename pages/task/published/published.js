@@ -19,8 +19,7 @@ Page({
       method: 'POST',
       header: { 'content-type': 'application/x-www-form-urlencoded' },
       data: {
-        //releaserID: this.data.releaserID,
-        releaserID: 15,
+        releaserID: this.data.releaserID,
       },
       success: function (res) {
         console.log("返回数据", res.data)
@@ -37,8 +36,7 @@ Page({
       method: 'POST',
       header: { 'content-type': 'application/x-www-form-urlencoded' },
       data: {
-        //releaserID: this.data.releaserID,
-        releaserID: 14,//测试
+        releaserID: this.data.releaserID,
       },
       success: function (res) {
         console.log("返回数据", res.data)
