@@ -12,13 +12,14 @@ Page({
     this.setData({
       accepterID: options.accepterID,
     });
+    //console.log("userid" + this.data.accepterID)
     var that = this
     wx.request({
       url: app.globalData.sweURL + '/getTasksByAccepterID',
       method: 'POST',
       header: { 'content-type': 'application/x-www-form-urlencoded' },
       data: {
-        accepterID: 20,//this.data.accepterID,
+        accepterID: this.data.accepterID,
       },
 
       success: function (res) {

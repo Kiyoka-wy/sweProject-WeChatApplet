@@ -14,6 +14,7 @@ Page({
     HideContent: "",
     limit:0,
     state: "",
+    leftHours:0,
     targetTime: 0,
     clearTimer: false,
     buttonx:"",
@@ -27,6 +28,7 @@ Page({
     this.setData({
       taskID: options.taskID,  
     });
+    console.log(new Date('2018-12-11 15:46:13'.replace(/-/g, "/")).getTime())
     var that = this
     wx.request({
       url: app.globalData.sweURL + '/getTaskInfoByID',
@@ -50,8 +52,8 @@ Page({
               "fromLocation": res.data.from,
               "toLocation": res.data.to,
               "HideContent": res.data.description_2,
-              targetTime: new Date().getTime() + 1000 * 60 * 60 * res.data.leftHours,  
-              "accepterID": res.data.accepter
+              "accepterID": res.data.accepter,
+              "leftHours": res.data.leftHours
             }
           )
           that.setData({

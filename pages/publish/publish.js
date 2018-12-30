@@ -1,5 +1,5 @@
 const app = getApp()
-
+var util = require('../../utils/util.js');
 Page({
   data: {
     current: 0,
@@ -8,9 +8,7 @@ Page({
     Timeddl: '00:00',
     DateLimit: '2000-01-01',
     TimeLimit: '00:00',
-    AddressArray: [
-      {address:''}
-    ],
+    address:[],
     place: '安楼208',
     dataIndex: 0,
     money:0,
@@ -33,6 +31,7 @@ Page({
 
   onShow: function () {
     var that = this
+    
     wx.request({
       url: app.globalData.sweURL + '/getUserAddresses',
       method: 'POST',
@@ -41,7 +40,12 @@ Page({
         userID: app.globalData.userID,
       },
       success: function (res) {
-        if (res.data.state != 0) {
+        if (res.data.state != 0) { 
+          console.log("返回数据", res.data)
+          that.setData({
+            address: res.data
+          })
+          /*
           for (let index = 0; index < 4; index++) {           //index问题
             let straddress = 'AddressArray[' + index + '].address'
             that.setData(
@@ -49,7 +53,7 @@ Page({
                 [straddress]: res.data[index].address,
               }
             )
-          }
+          }*/
         }
         else {
           wx.showToast(
@@ -108,7 +112,7 @@ Page({
 
   bindFromChange: function (e) {
     console.log('选择的是', e.detail.value)
-    console.log('选择的是', this.data.AddressArray[e.detail.value])
+    console.log('选择的是', this.data.address[e.detail.value].address)
     if (e.detail.value == 4) {
       this.setData({ reply: true })
     } else {
@@ -116,13 +120,13 @@ Page({
     }
     this.setData({
       dataIndex: e.detail.value,
-      place: this.data.AddressArray[e.detail.value]
+      place: this.data.address[e.detail.value].address
     })
   },
 
   bindToChange: function (e) {
     console.log('选择的是', e.detail.value)
-    console.log('选择的是', this.data.AddressArray[e.detail.value])
+    console.log('选择的是', this.data.address[e.detail.value].address)
     if (e.detail.value == 4) {
       this.setData({ reply: true })
     } else {
@@ -130,7 +134,7 @@ Page({
     }
     this.setData({
       dataIndex: e.detail.value,
-      place: this.data.AddressArray[e.detail.value]
+      place: this.data.address[e.detail.value].address
     })
   },
 
@@ -157,8 +161,8 @@ Page({
       method: 'POST',
       header: { 'content-type': 'application/x-www-form-urlencoded' },
       data: {
-        "userID": 12,
-        "releaseDate": '2018/12/15 09:20:04',
+        "userID": app.globalData.userID,
+        "releaseDate": util.formatTime(new Date()),
         "fromLocation": this.data.dataIndex,
         "toLocation": this.data.dataIndex,
         "type": this.data.type,
@@ -172,12 +176,20 @@ Page({
         "HideContent": e.detail.value.HideContent
       },
       success: function (res) {
-        console.log("回调函数：" + res.data)
         if (res.data.state) {
-          wx.showToast(
+          wx.showModal(
             {
-              title: res.data.message,
-              duration: 1000
+              title: '成功发布任务',
+              content: res.data.message,
+              duration: 1000,
+              success: function (res) {
+                if (res.confirm) {
+                  // 点击确定后跳转首页并关闭当前页面
+                  wx.switchTab({
+                    url: '../index/index'
+                  })
+                }
+              }
             })
         }
         else {

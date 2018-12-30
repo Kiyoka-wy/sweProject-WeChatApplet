@@ -13,6 +13,7 @@ Page({
     this.setData({
       releaserID: options.releaserID
     });
+    //console.log("userid" + this.data.releaserID)
     var that = this
     wx.request({                     //已发布 未被接受的任务
       url: app.globalData.sweURL + '/getUnacceptedTasksByID',
@@ -36,7 +37,7 @@ Page({
       method: 'POST',
       header: { 'content-type': 'application/x-www-form-urlencoded' },
       data: {
-        releaserID: 14,//this.data.releaserID,
+        releaserID: this.data.releaserID,
       },
       success: function (res) {
         console.log("返回数据", res.data)

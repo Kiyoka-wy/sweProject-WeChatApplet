@@ -4,7 +4,7 @@ const app = getApp()
 
 Page({
   data: {
-    userID:15,
+    userID:0,
     motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
@@ -21,6 +21,7 @@ Page({
       this.setData({
         userID: app.globalData.userID
       })
+      //console.log("userid"+this.data.userID)
     }
     if (app.globalData.userInfo) {
       this.setData({

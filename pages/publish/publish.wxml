@@ -69,8 +69,8 @@
             <view class="weui-label">当前选择</view>
           </view>
           <view class="weui-cell__bd">
-            <picker name="placePicker"bindchange="bindFromChange" value="{{dataIndex}}" range="{{AddressArray}}">
-                <view class="weui-input">{{AddressArray[dataIndex].address}}</view>
+            <picker name="placePicker"bindchange="bindFromChange" value="{{dataIndex}}" range="{{address}}">
+                <view class="weui-input">{{address[dataIndex].address}}</view>
             </picker>
           </view>
         </view>
@@ -86,8 +86,8 @@
             <view class="weui-label">当前选择</view>
           </view>
           <view class="weui-cell__bd">
-            <picker name="placePicker"bindchange="bindToChange" value="{{dataIndex}}" range="{{AddressArray}}">
-                <view class="weui-input">{{AddressArray[dataIndex].address}}</view>
+            <picker name="placePicker"bindchange="bindToChange" value="{{dataIndex}}" range="{{address}}">
+                <view class="weui-input">{{address[dataIndex].address}}</view>
             </picker>
           </view>
         </view>

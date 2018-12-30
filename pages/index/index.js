@@ -103,7 +103,7 @@ Page({
       method: 'POST',
       header: { 'content-type': 'application/x-www-form-urlencoded' },
       data: {
-        userID: 15,//app.globalData.userID,
+        userID: app.globalData.userID,
       },
       success: function (res) {
         console.log("返回数据", res.data)
