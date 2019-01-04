@@ -20,7 +20,10 @@ Page({
     wx.request({
       url: '',
       method: 'POST',
-      header: { 'content-type': 'application/x-www-form-urlencoded' },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded',
+        'Authorization': app.globalData.token
+      },
       data: {
         userID: this.data.userID,
         address: this.data.address,

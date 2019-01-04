@@ -16,7 +16,10 @@ Page({
     wx.request({
       url: '',
       method: 'GET',
-      header: { 'content-type': 'application/json' },
+    header: {
+          'content-type': 'application/x-www-form-urlencoded',
+          'Authorization': app.globalData.token
+        },
       data: {
         userID: 14,
       },

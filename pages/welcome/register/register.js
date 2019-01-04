@@ -67,7 +67,10 @@ Page({
       wx.request({
         url: app.globalData.sweURL + '/register',
         method: 'POST',
-        header: { 'content-type': 'application/x-www-form-urlencoded' },
+        header: {
+          'content-type': 'application/x-www-form-urlencoded',
+          'Authorization': app.globalData.token
+        },
         data: {
           phoneNumber: account,
           password: password,

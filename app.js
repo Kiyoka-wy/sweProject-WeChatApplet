@@ -62,8 +62,12 @@ App({
               })
             if (res.data.state == 1) {
               that.globalData.userID = res.data.userID
+              that.globalData.token = res.header.token
               wx.setStorageSync('userID', res.data.userID)
               that.onLoginSuccess()
+              console.log("loginByPhone:", res.data)
+              console.log("token:", res.header.token)
+
             }
           }
           else {
@@ -85,7 +89,10 @@ App({
     wx.request({
       url: that.globalData.sweURL + '/getUserInfo',
       method: 'POST',
-      header: { 'content-type': 'application/x-www-form-urlencoded' },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded',
+        'Authorization': that.globalData.token
+      },
       data: {
         userID: that.globalData.userID,
       },
@@ -102,6 +109,7 @@ App({
             }
           if (that.globalData.myUserData.sexofapi == '1') that.globalData.myUserData.sex = '男'
           else if (that.globalData.myUserData.sexofapi == '2') that.globalData.myUserData.sex = '女'
+          console.log("myUserData:", that.globalData.myUserData)
         }
         else {
           wx.showToast(
@@ -116,7 +124,10 @@ App({
     wx.request({
       url: that.globalData.sweURL + '/getUserAddresses',
       method: 'POST',
-      header: { 'content-type': 'application/x-www-form-urlencoded' },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded',
+        'Authorization': that.globalData.token
+      },
       data: {
         userID: that.globalData.userID,
       },
@@ -137,7 +148,10 @@ App({
     wx.request({       //调用接口获取宿舍楼，未完成
       url: that.globalData.sweURL + ,
       method: 'POST',
-      header: { 'content-type': 'application/x-www-form-urlencoded' },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded',
+        'Authorization': that.globalData.token
+      },
       data: {
         userID: that.globalData.userID,
       },
@@ -160,6 +174,7 @@ App({
     userInfo: null,
     sweURL:'http://localhost:8080',
     userID:'',
+    token:'',
     myUserData:{
       sex: '',
       sexofapi:'',
@@ -183,7 +198,10 @@ App({
     wx.request({
       url: that.globalData.sweURL + '/saveUserInfo',
       method: 'POST',
-      header: { 'content-type': 'application/x-www-form-urlencoded' },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded',
+        'Authorization': that.globalData.token
+      },
       data: {
         userID: that.globalData.userID,
         nickname: myUserData.nickname,
@@ -224,7 +242,10 @@ App({
     wx.request({
       url: that.globalData.sweURL + '/insertUserAddress',
       method: 'POST',
-      header: { 'content-type': 'application/x-www-form-urlencoded' },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded',
+        'Authorization': that.globalData.token
+      },
       data: {
         userID: that.globalData.userID,
         address: placeItem.address,

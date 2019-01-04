@@ -35,7 +35,10 @@ Page({
     wx.request({
       url: app.globalData.sweURL + '/getUserAddresses',
       method: 'POST',
-      header: { 'content-type': 'application/x-www-form-urlencoded' },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded',
+        'Authorization': app.globalData.token
+      },
       data: {
         userID: app.globalData.userID,
       },
@@ -159,7 +162,10 @@ Page({
     wx.request({
       url: app.globalData.sweURL + '/addNewTask',
       method: 'POST',
-      header: { 'content-type': 'application/x-www-form-urlencoded' },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded',
+        'Authorization': app.globalData.token
+      },
       data: {
         "userID": app.globalData.userID,
         "releaseDate": util.formatTime(new Date()),

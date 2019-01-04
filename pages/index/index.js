@@ -101,7 +101,10 @@ Page({
     wx.request({
       url: app.globalData.sweURL + '/getAllTasks',
       method: 'POST',
-      header: { 'content-type': 'application/x-www-form-urlencoded' },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded',
+        'Authorization': app.globalData.token
+      },
       data: {
         userID: app.globalData.userID,
       },

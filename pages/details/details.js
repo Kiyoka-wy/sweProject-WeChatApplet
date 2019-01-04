@@ -36,7 +36,10 @@ Page({
     wx.request({
       url: app.globalData.sweURL + '/getTaskInfoByID',
       method: 'POST',
-      header: { 'content-type': 'application/x-www-form-urlencoded' },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded',
+        'Authorization': app.globalData.token
+      },
       data: {
         taskID: this.data.taskID,
       },
@@ -73,7 +76,10 @@ Page({
     wx.request({
       url: app.globalData.sweURL + '/acceptTask',
       method: 'POST',
-      header: { 'content-type': 'application/x-www-form-urlencoded' },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded',
+        'Authorization': app.globalData.token
+      },
       data: {
         accepterID: this.data.userID,
         taskID: this.data.taskID
