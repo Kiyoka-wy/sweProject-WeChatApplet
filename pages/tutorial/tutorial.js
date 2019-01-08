@@ -4,9 +4,9 @@ Page({
     current: 0,
     imgwidth: 750,
     imgUrls: [
-      '../../imgs/meBack.jpg',
-      '../../imgs/meBack.jpg',
-      '../../imgs/meBack.jpg',
+      '../../imgs/tutorial/1.png',
+      '../../imgs/tutorial/2.png',
+      '../../imgs/tutorial/3.png',
       '../../imgs/meBack.jpg',
       '../../imgs/meBack.jpg'
     ],

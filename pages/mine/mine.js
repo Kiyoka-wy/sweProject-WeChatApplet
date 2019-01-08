@@ -7,7 +7,7 @@ Page({
     userID:0,
     motto: 'Hello World',
     userInfo: {},
-    avatarUrl:"",
+    avatarUrl:"../../imgs/avatar.jpg",
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },

@@ -40,8 +40,12 @@
 
 	<view class="section">
     <navigator url="../tutorial/tutorial">
-		  <view class="line judgement">帮助与反馈</view>
+		  <view class="line judgement">用户指引</view>
     </navigator>
 		<view class="line judgement">在线客服<text class="tl">9:00 - 23:00</text></view>
 	</view>
+	
+  <navigator url="../welcome/login/login">
+    <button type="warn">退出当前账号</button>
+  </navigator>
 </view>
