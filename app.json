@@ -9,6 +9,7 @@
     "pages/mine/address/add/add",
     "pages/mine/dormitory/display/dormitory",
     "pages/mine/dormitory/edit/edit",
+    "pages/mine/avator/avator",
     "pages/welcome/register/register",
     "pages/welcome/login/login",
     "pages/welcome/welcome",
@@ -16,7 +17,8 @@
     "pages/task/accepted/accepted",
     "pages/task/published/published",
     "pages/task/detail_acc/detail",
-    "pages/task/detail_pub/detail"
+    "pages/task/detail_pub/detail",
+    "pages/message/message"
   ],
   "window":{
     "backgroundTextStyle":"light",
@@ -40,7 +42,12 @@
         "selectedIconPath": "imgs/tabBar/home_1.png",
         "text": "首页"
       },
-      
+      {
+        "pagePath": "pages/message/message",
+        "iconPath": "imgs/tabBar/message_2.png",
+        "selectedIconPath": "imgs/tabBar/message_1.png",
+        "text": "消息"
+      },
       {
         "pagePath": "pages/mine/mine",
         "iconPath": "imgs/tabBar/mine_2.png",

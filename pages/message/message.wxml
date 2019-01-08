@@ -1,0 +1,8 @@
+
+<view wx:for="{{message}}" wx:key="item">
+  <i-swipeout  i-class="i-swipeout-demo-item" actions="{{actions}}" toggle="{{toggle}}" unclosable="{{true}}" bindchange="handlerCloseButton">
+    <view slot="content">
+      <i-cell i-class="i-cell-padding" title="{{item.title}}" label="{{item.time}}"></i-cell>
+    </view>
+  </i-swipeout>
+</view>

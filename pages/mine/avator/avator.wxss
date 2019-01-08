@@ -1,0 +1,11 @@
+.avator{
+  height: 300px;
+  margin: 20rpx;
+  border-radius: 50%;
+  border: 2px solid #efefef;
+}
+.container{
+  flex-direction: column;
+  align-items: center;
+  display: flex;
+}

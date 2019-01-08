@@ -7,15 +7,12 @@ Page({
     userID:0,
     motto: 'Hello World',
     userInfo: {},
+    avatarUrl:"",
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
   //事件处理函数
-  bindViewTap: function () {
-    wx.navigateTo({
-      url: '../logs/logs'
-    })
-  },
+  
   onLoad: function () {
     if (app.globalData.userID) {
       this.setData({
@@ -57,5 +54,11 @@ Page({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     })
-  }
+  },
+
+  bindViewTap: function () {
+    wx.navigateTo({
+      url: 'avator/avator'
+    })
+  },
 })
