@@ -39,7 +39,9 @@
 	</view>
 
 	<view class="section">
-		<view class="line judgement">帮助与反馈</view>
+    <navigator url="../tutorial/tutorial">
+		  <view class="line judgement">帮助与反馈</view>
+    </navigator>
 		<view class="line judgement">在线客服<text class="tl">9:00 - 23:00</text></view>
 	</view>
 </view>

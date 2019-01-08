@@ -18,7 +18,8 @@
     "pages/task/published/published",
     "pages/task/detail_acc/detail",
     "pages/task/detail_pub/detail",
-    "pages/message/message"
+    "pages/message/message",
+    "pages/tutorial/tutorial"
   ],
   "window":{
     "backgroundTextStyle":"light",

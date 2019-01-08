@@ -1,7 +1,7 @@
 <view class="container">
   <form bindsubmit="uploadImg">
     <button bindtap="chooseImg">点击选择图片</button>
-    <image src='{{photos?photos:"../../../imgs/avatar.jpg"}}' class="avator"></image>
+    <image src='{{photos?photos:def}}' class="avator"></image>
     <button form-type="submit">提交</button>
   </form>
 </view>

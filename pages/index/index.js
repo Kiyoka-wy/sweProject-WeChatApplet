@@ -16,6 +16,21 @@ Page({
     
   },
 
+  onLoad: function () {
+    wx.showModal({
+      content: '是否查看教程指引？',
+      confirmText: '确定',
+      cancelText: '取消',
+      success: function (res) {
+        if (res.confirm) {
+          wx.navigateTo({
+            url: '../tutorial/tutorial'
+          })
+        }
+      }
+    })
+  },
+
   jumpto: function () {
     wx.navigateTo({
       url: '../details/details',

@@ -5,7 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    photos: ""
+    photos: "",
+    def: "../../../imgs/avatar.jpg"
   },
 
   /**
@@ -43,7 +44,9 @@ Page({
       success: function (res) {
         var data = res.data
         console.log(data)
-        //do something
+        wx.showToast({
+          title: "上传成功！"
+        })
       }
     })
   },
