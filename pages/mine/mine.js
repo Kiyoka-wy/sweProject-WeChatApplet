@@ -9,6 +9,7 @@ Page({
     userInfo: {},
     avatarUrl:"",
     defUrl:"../../imgs/avatar.jpg",
+    nickname:"",
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
@@ -72,6 +73,9 @@ Page({
   onShow: function () {
     let avatarUrl = wx.getStorageInfoSync('url')
     this.onLoad();
+    this.setData({
+      nickname: app.globalData.myUserData.nickname
+    })
   },
 
   getUserInfo: function (e) {

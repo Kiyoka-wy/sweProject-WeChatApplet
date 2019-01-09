@@ -15,8 +15,11 @@ Page({
       mail: '',
       phoneNumber: '',
       studentID: '',
-      department: ''
-    }
+      department: '',
+      dormitory:''
+    },
+    array: [],
+    index: 0,
 
   },
   sexRadioChange(e) {
@@ -53,7 +56,29 @@ Page({
       sexItems: this.data.sexItems
     })
     console.log('this.data数据为：',this.data)
-   
-   
+  },
+
+  onLoad: function () {
+    var that = this
+    wx.request({
+      url: app.globalData.sweURL + '/getDormitoryList',
+      method: 'POST',
+      header: {
+        'content-type': 'application/json',
+      },
+      data: {},
+      success: function (res) {
+        console.log(res.data)
+        that.setData({
+          array: res.data
+        })
+      }
+    })
+  },
+
+  bindDateChange(e) {
+    this.setData({
+      date: e.detail.value
+    })
   },
 })

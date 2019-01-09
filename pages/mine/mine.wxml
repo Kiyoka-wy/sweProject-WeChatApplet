@@ -4,7 +4,7 @@
     <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
     <block wx:else>
       <image bindtap="bindViewTap" class="userinfo-avatar" src="{{avatarUrl?avatarUrl:defUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+      <text class="userinfo-nickname">{{nickname}}</text>
     </block>
   </view>
 
@@ -15,10 +15,6 @@
     
     <navigator url="address/display/address">
 		  <view class="line judgement">我的地址</view>
-    </navigator>
-
-    <navigator url="dormitory/display/dormitory">
-      <view class="line judgement">我的宿舍楼</view>
     </navigator>
 
 		<view class="line judgement">消息通知</view>

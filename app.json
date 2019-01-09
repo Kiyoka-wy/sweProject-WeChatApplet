@@ -7,8 +7,6 @@
     "pages/mine/information/edit/edit",
     "pages/mine/address/display/address",
     "pages/mine/address/add/add",
-    "pages/mine/dormitory/display/dormitory",
-    "pages/mine/dormitory/edit/edit",
     "pages/mine/avator/avator",
     "pages/welcome/register/register",
     "pages/welcome/login/login",

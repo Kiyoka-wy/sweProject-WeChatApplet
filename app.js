@@ -225,7 +225,8 @@ App({
       mail: '',
       phoneNumber: '',
       studentID: '',
-      department: ''
+      department: '',
+      dormitory:''
     },
     avatarUrl:'',
     place: [

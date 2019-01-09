@@ -1,4 +1,5 @@
-/* pages/mine/edit/edit.wxss */
+@import "../../../lib/weui.wxss";
+
 .modify-form form{
     display:block;
     padding:30rpx;
