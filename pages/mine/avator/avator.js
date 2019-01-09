@@ -9,6 +9,30 @@ Page({
     def: "../../../imgs/avatar.jpg"
   },
 
+  onLoad: function () {
+    var that = this
+
+    console.log("globalData.userID:", app.globalData.userID)
+    wx.request({
+      url: app.globalData.sweURL + '/getUserPic',
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded',
+      },
+      data: {
+        userID: app.globalData.userID,
+      },
+      success: function (res) {
+        console.log("返回数据", res.data.url)
+
+        that.setData({
+          photos: res.data.url,
+        })
+        wx.setStorageSync('url', res.data.url);
+      }
+    })
+  },
+
   /**
    * 选择照片
    */
@@ -35,7 +59,7 @@ Page({
   uploadImg: function () {
     var that = this
     wx.uploadFile({
-      url: 'http://localhost:8080/setUserPic', 
+      url: app.globalData.sweURL + '/setUserPic',
       filePath: that.data.photos[0],
       name: 'pic',
       formData: {

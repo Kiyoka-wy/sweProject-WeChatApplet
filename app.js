@@ -227,6 +227,7 @@ App({
       studentID: '',
       department: ''
     },
+    avatarUrl:'',
     place: [
     ],
     dormitory: {
