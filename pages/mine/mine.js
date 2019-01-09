@@ -7,7 +7,8 @@ Page({
     userID:0,
     motto: 'Hello World',
     userInfo: {},
-    avatarUrl:"../../imgs/avatar.jpg",
+    avatarUrl:"",
+    defUrl:"../../imgs/avatar.jpg",
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
@@ -46,7 +47,33 @@ Page({
         }
       })
     }
+
+    var that = this
+    console.log("globalData.userID:", app.globalData.userID)
+    wx.request({
+      url: app.globalData.sweURL + '/getUserPic',
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded',
+      },
+      data: {
+        userID: app.globalData.userID,
+      },
+      success: function (res) {
+        console.log("返回数据", res.data.url)
+
+        that.setData({
+          avatarUrl: res.data.url
+        })
+      }
+    })
   },
+
+  onShow: function () {
+    let avatarUrl = wx.getStorageInfoSync('url')
+    this.onLoad();
+  },
+
   getUserInfo: function (e) {
     console.log(e)
     app.globalData.userInfo = e.detail.userInfo
