@@ -107,11 +107,13 @@ App({
               phoneNumber: res.data.phoneNumber,
               mail: res.data.mail,
               studentID: res.data.studentID,
-              department: res.data.department
+              department: res.data.department,
+              dormitory: res.data.dormitory,
             }
           if (that.globalData.myUserData.sexofapi == '1') that.globalData.myUserData.sex = '男'
           else if (that.globalData.myUserData.sexofapi == '2') that.globalData.myUserData.sex = '女'
           console.log("myUserData:", that.globalData.myUserData)
+          console.log("res.data:", res.data)
         }
         else {
           wx.showToast(
@@ -264,6 +266,7 @@ App({
         mail: myUserData.mail,
         moto: myUserData.moto,
         studentID: myUserData.studentID,
+        dormitory: myUserData.dormitory,
         //communityID: parseInt(myUserData.communityID),
        // communityID: 1
       },

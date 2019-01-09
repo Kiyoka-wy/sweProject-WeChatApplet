@@ -6,9 +6,27 @@ Page({
 
   data: {
     placeItem: {
-      address: "",
+      address: "   点击添加地址",
       detailAddress: ""
     },
+
+  },
+
+  onChangeAddress: function () {
+    var that = this;
+    wx.chooseLocation({
+      success: function (res) {
+        that.data.placeItem.address = res.name,
+          that.setData({
+          placeItem: that.data.placeItem
+        });
+
+      },
+      fail: function (err) {
+        console.log(err)
+
+      }
+    });
 
   },
 
@@ -52,7 +70,7 @@ Page({
 
   formSubmit(e) {
     console.log('form发生了submit事件，携带数据为：', e.detail.value)
-    if (e.detail.value.address != '' && e.detail.value.detailAddress != ''){
+    if (e.detail.value.address != '' ){
       app.addPlace(e.detail.value)
     }
 

@@ -40,3 +40,7 @@
     background-color: #ea3333;
     color: #fff;
 }
+
+.choose-address {
+    border: 1px solid #000;
+ }

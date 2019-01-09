@@ -1,9 +1,10 @@
 <view class="modify-form">
   <form bindsubmit="formSubmit">
 
+  
       <view class="label-list">
         <view class="label">地址</view>
-        <input placeholder="例：5号楼"  placeholder-class="place" name="address" value="{{placeItem.address}}"/>
+        <input placeholder="点击添加地址"  placeholder-class="place" name="address" value="{{placeItem.address}}"bindtap='onChangeAddress' disabled='true'/>
       </view>
 
       <view class="label-list">

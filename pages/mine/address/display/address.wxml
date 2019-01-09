@@ -10,7 +10,7 @@
           <view class="weui-label">地址{{index+1}}</view>
         </view>
         <view class="weui-cell__bd">
-          <view class="weui-input">{{item.address}} {{item.detailAddress}}</view>
+          <view class="weui-input"style="height: {{clientHeight?clientHeight+'px':'auto'}}">{{item.address}} {{item.detailAddress}}</view>
         </view>
       </view>
     </view>
