@@ -34,6 +34,7 @@ App({
     })
 
     this.globalData.userID = wx.getStorageSync('userID')
+    this.globalData.token = wx.getStorageSync('token')
     this.login()
     
 
@@ -64,6 +65,7 @@ App({
               that.globalData.userID = res.data.userID
               that.globalData.token = res.header.token
               wx.setStorageSync('userID', res.data.userID)
+              wx.setStorageSync('token', res.header.token)
               that.onLoginSuccess()
               console.log("loginByPhone:", res.data)
               console.log("token:", res.header.token)
@@ -144,6 +146,46 @@ App({
         }
       }
     })
+    var SocketTask = wx.connectSocket({
+      url: that.globalData.sweWxURL+"/myWebSocket/" + that.
+        globalData.userID,
+      header: {
+        'content-type': 'application/x-www-form-urlencoded',
+      },
+      data: {
+        userID: that.globalData.userID,
+      },
+      method: 'post',
+      success: function (res) {
+        console.log('WebSocket连接创建', res)
+      },
+      fail: function (err) {
+        wx.showToast({
+          title: '网络异常！',
+        })
+        console.log(err)
+      },
+    });
+    SocketTask.onOpen(res => {
+      console.log('监听 WebSocket 连接打开事件。', res)
+    })
+    SocketTask.onClose(onClose => {
+      console.log('监听 WebSocket 连接关闭事件。', onClose)
+      this.webSocket()
+    })
+    SocketTask.onError(onError => {
+      console.log('监听 WebSocket 错误。错误信息', onError)
+    })
+    SocketTask.onMessage(onMessage => {
+      wx.showTabBarRedDot({
+        index: 1
+      })
+      console.log('监听WebSocket接受到服务器的消息事件。服务器返回的消息', onMessage.data)
+      that.globalData.message = JSON.parse(onMessage.data)
+      console.log('message', that.globalData.message)
+
+    })
+
 /*
     wx.request({       //调用接口获取宿舍楼，未完成
       url: that.globalData.sweURL + ,
@@ -173,6 +215,7 @@ App({
   globalData: {
     userInfo: null,
     sweURL:'http://localhost:8080',
+    sweWxURL: 'ws://localhost:8080',
     userID:'',
     token:'',
     myUserData:{
@@ -189,7 +232,16 @@ App({
     dormitory: {
       address: "",
       detailAddress: ""
-    }
+    },
+    message: [{
+      title: "ABC接受了您发布的任务",
+      time: "2018/10/21 10:59"
+    },
+      {
+        title: "EDF接受了您发布的任务",
+        time: "2018/10/21 10:25"
+      }
+    ],
   },
 
   setMyUserData: function (myUserData) {     

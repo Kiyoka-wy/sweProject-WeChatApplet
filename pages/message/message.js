@@ -23,20 +23,13 @@ Page({
       }
     ],
     message:[
-      {
-        title:"ABC接受了您发布的任务",
-        time:"2018/10/21 10:59"
-      },
-      {
-        title: "EDF接受了您发布的任务",
-        time: "2018/10/21 10:25"
-      }
     ]
   },
   onLoad: function () {
+    /*
     wx.showTabBarRedDot({
       index: 1
-    })
+    })*/
   },
 
   handlerCloseButton() {
@@ -44,5 +37,15 @@ Page({
       toggle: this.data.toggle ? false : true
     });
   },
+
+  onShow: function () {
+    this.setData({
+      message: app.globalData.message
+    });
+    wx.hideTabBarRedDot({
+      index: 1
+    })
+    console.log("message", this.data.message)
+  }
 
 })
