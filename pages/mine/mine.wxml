@@ -14,10 +14,9 @@
     </navigator>
     
     <navigator url="address/display/address">
-		  <view class="line judgement">我的地址</view>
+		  <view class="line judgement">常用地址</view>
     </navigator>
 
-		<view class="line judgement">消息通知</view>
 	</view>
 
   <view class="section">
