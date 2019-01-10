@@ -41,7 +41,7 @@ App({
   },
 
   login:function(){
-    //登录,暂时用测试账号
+    console.log("22")
     var that = this
     var account = wx.getStorageSync('account')
     var password = wx.getStorageSync('password')
@@ -143,6 +143,7 @@ App({
       success: function (res) {
         if (res.data.data != null) {
           that.globalData.place = res.data.data
+          console.log("place", that.globalData.place)
         }
         else {
           wx.showToast(
@@ -285,6 +286,8 @@ App({
         userID: that.globalData.userID,
         address: placeItem.address,
         detailAddress: placeItem.detailAddress,
+        lng: placeItem.lng,
+        lat: placeItem.lat,
       },
       success: function (res) {
         if (res.data != null) {

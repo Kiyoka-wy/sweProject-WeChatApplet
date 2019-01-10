@@ -45,17 +45,18 @@ Page({
       },
       success: function (res) {
         if (res.data != null) {
+          console.log("task",res.data.data)
           that.setData(
             {
-              "type": res.data.type,
-              "title": res.data.title,
-              "content": res.data.description_1,
-              "time": res.data.dueDate,
-              "nickname": res.data.nickname_r,
-              "limit": res.data.leftHours + '小时',
-              "money": res.data.bonousType + res.data.bonousAmount,
-              "fromaddress": res.data.from,
-              "toaddress": res.data.to
+              "type": res.data.data.type,
+              "title": res.data.data.title,
+              "content": res.data.data.description_1,
+              "time": res.data.data.dueDate,
+              "nickname": res.data.data.nickname_r,
+              "limit": res.data.data.leftHours + '小时',
+              "money": res.data.data.bonousType + res.data.data.bonousAmount,
+              "fromaddress": res.data.data.from,
+              "toaddress": res.data.data.to
             }
           )
         }

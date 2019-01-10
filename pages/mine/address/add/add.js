@@ -7,7 +7,9 @@ Page({
   data: {
     placeItem: {
       address: "   点击添加地址",
-      detailAddress: ""
+      detailAddress: "",
+      lng: null,
+      lat: null,
     },
 
   },
@@ -17,9 +19,11 @@ Page({
     wx.chooseLocation({
       success: function (res) {
         that.data.placeItem.address = res.name,
+          that.data.placeItem.lng = res.longitude,
+          that.data.placeItem.lat = res.latitude,
           that.setData({
-          placeItem: that.data.placeItem
-        });
+            placeItem: that.data.placeItem
+          });
 
       },
       fail: function (err) {
@@ -29,45 +33,7 @@ Page({
     });
 
   },
-
-  formSubmit(e) {
-    console.log('form发生了submit事件，携带数据为：', e.detail.value)
-  },
-
-  insertButton: function () {
-    wx.request({
-      url: '',
-      method: 'POST',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded',
-        'Authorization': app.globalData.token
-      },
-    data: {
-      userID: this.data.userID,
-      address: this.data.address,
-      detailAddress: this.data.detailAddress
-    },
-    success: function (res) {
-      console.log(res.data)
-        if (res.data.state) {
-        wx.showToast(
-          {
-            title: res.data.message,
-            duration: 1000
-          })
-      }
-      else {
-        wx.showToast(
-          {
-            title: res.data.message,
-            duration: 1000
-          })
-      }
-    }
-  })
-  
-},
-
+ 
   formSubmit(e) {
     console.log('form发生了submit事件，携带数据为：', e.detail.value)
     if (e.detail.value.address != '' ){
