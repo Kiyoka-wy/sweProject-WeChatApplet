@@ -1,5 +1,6 @@
 {
   "pages":[
+    "pages/welcome/login/login",
     "pages/index/index",
     "pages/mine/mine",
     "pages/details/details",
@@ -9,7 +10,6 @@
     "pages/mine/address/add/add",
     "pages/mine/avator/avator",
     "pages/welcome/register/register",
-    "pages/welcome/login/login",
     "pages/welcome/welcome",
     "pages/publish/publish",
     "pages/task/accepted/accepted",
