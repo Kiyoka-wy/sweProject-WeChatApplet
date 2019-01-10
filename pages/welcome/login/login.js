@@ -93,6 +93,7 @@ Page({
           wx.setStorageSync('account', account)
           wx.setStorageSync('password', password)
           wx.setStorageSync('userID', res.data.userID)
+          wx.setStorageSync('token', res.header.token)
         }
         else {
           wx.showToast(

@@ -99,21 +99,26 @@ App({
         userID: that.globalData.userID,
       },
       success: function (res) {
-        if (res.data != null) {
-          that.globalData.myUserData =
-            {
-              nickname: res.data.nickname,
-              sexofapi: res.data.sex,
-              phoneNumber: res.data.phoneNumber,
-              mail: res.data.mail,
-              studentID: res.data.studentID,
-              department: res.data.department,
-              dormitory: res.data.dormitory,
-            }
+        if (res.data.data != null) {
+          that.globalData.myUserData = res.data.data
+          that.globalData.myUserData.sexofapi = res.data.data.sex
           if (that.globalData.myUserData.sexofapi == '1') that.globalData.myUserData.sex = '男'
           else if (that.globalData.myUserData.sexofapi == '2') that.globalData.myUserData.sex = '女'
           console.log("myUserData:", that.globalData.myUserData)
-          console.log("res.data:", res.data)
+          console.log("res.data:", res.data.data)
+          wx.request({
+            url: that.globalData.sweURL + '/getDormitoryList',
+            method: 'POST',
+            header: {
+              'content-type': 'application/json',
+            },
+            data: {},
+            success: function (res) {
+              console.log("getDormitoryList", res.data.data)
+              that.globalData.myUserData.dormitory = res.data.data[that.globalData.myUserData.communityID - 1]
+              console.log("myUserData:", that.globalData.myUserData)
+            }
+          })
         }
         else {
           wx.showToast(
@@ -136,8 +141,8 @@ App({
         userID: that.globalData.userID,
       },
       success: function (res) {
-        if (res.data != null) {
-          that.globalData.place = res.data
+        if (res.data.data != null) {
+          that.globalData.place = res.data.data
         }
         else {
           wx.showToast(
@@ -183,36 +188,13 @@ App({
         index: 1
       })
       console.log('监听WebSocket接受到服务器的消息事件。服务器返回的消息', onMessage.data)
-      that.globalData.message = JSON.parse(onMessage.data)
+      var s = JSON.parse(onMessage.data)
+      console.log('s', s)
+      that.globalData.message = JSON.parse(s.data)
+      //that.globalData.message =s.data
       console.log('message', that.globalData.message)
 
     })
-
-/*
-    wx.request({       //调用接口获取宿舍楼，未完成
-      url: that.globalData.sweURL + ,
-      method: 'POST',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded',
-        'Authorization': that.globalData.token
-      },
-      data: {
-        userID: that.globalData.userID,
-      },
-      success: function (res) {
-        if (res.data != null) {
-          this.globalData.dormitory = res
-        }
-        else {
-          wx.showToast(
-            {
-              title: "？？",
-              duration: 1000
-            })
-        }
-      }
-    })
-*/
   },
   globalData: {
     userInfo: null,
@@ -233,10 +215,6 @@ App({
     avatarUrl:'',
     place: [
     ],
-    dormitory: {
-      address: "",
-      detailAddress: ""
-    },
     message: [{
       title: "ABC接受了您发布的任务",
       time: "2018/10/21 10:59"
@@ -250,6 +228,7 @@ App({
 
   setMyUserData: function (myUserData) {     
     var that = this
+    myUserData.communityID = parseInt(myUserData.communityID)
     console.log("myUserData", myUserData)
     wx.request({
       url: that.globalData.sweURL + '/saveUserInfo',
@@ -266,9 +245,7 @@ App({
         mail: myUserData.mail,
         moto: myUserData.moto,
         studentID: myUserData.studentID,
-        dormitory: myUserData.dormitory,
-        //communityID: parseInt(myUserData.communityID),
-       // communityID: 1
+        communityID: myUserData.communityID
       },
       success: function (res) {
         if (res.data != null) {
@@ -278,7 +255,8 @@ App({
               duration: 1000
             })
           if (res.data.state != 0){
-            that.globalData.myUserData = myUserData;                      
+            that.globalData.myUserData = myUserData; 
+
           }
         }
         else {
@@ -329,10 +307,6 @@ App({
       }
     })
                    
-  },
-
-  setDormitory: function (dormitory) {
-    this.globalData.dormitory = dormitory;                     //调用接口上传宿舍楼，未完成
   },
 
 })

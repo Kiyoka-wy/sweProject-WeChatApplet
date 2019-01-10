@@ -34,6 +34,8 @@ Page({
     var submitdata=e.detail.value
     if (submitdata.sex == '男') submitdata.sexofapi='1'
     else if (submitdata.sex == '女') submitdata.sexofapi = '2'
+    submitdata.dormitory = this.data.array[parseInt(submitdata.communityID)-1]
+
     console.log('submitdata数据为：', submitdata)
     app.setMyUserData(submitdata)
   
@@ -68,17 +70,18 @@ Page({
       },
       data: {},
       success: function (res) {
-        console.log(res.data)
+        console.log(res.data.data)
         that.setData({
-          array: res.data
+          array: res.data.data
         })
       }
     })
   },
 
   bindDateChange(e) {
+    console.log("e.detail.value", e.detail.value)
     this.setData({
-      date: e.detail.value
+      index: e.detail.value
     })
   },
 })

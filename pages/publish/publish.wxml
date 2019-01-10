@@ -69,14 +69,14 @@
             <view class="weui-label">当前选择</view>
           </view>
           <view class="weui-cell__bd">
-            <picker name="placePicker"bindchange="bindFromChange" value="{{dataIndex}}" range="{{address}}">
-                <view class="weui-input">{{address[dataIndex].address}}</view>
+            <picker name="fromLocation"bindchange="bindFromChange" value="{{address[dataIndex1]}}" range="{{address}}">
+                <view class="weui-input"style="height: {{clientHeight?clientHeight+'px':'auto'}}">{{address[dataIndex1]}}</view>
             </picker>
           </view>
         </view>
       </view>
-      <view class="section {{reply?'on':'off'}}">
-        <input name="place" placeholder="请输入任务地点" type="text" value="{{place}}"/>
+      <view class="section {{reply1?'on':'off'}}">
+        <input name="place1" placeholder="请输入任务地点" type="text" value="{{place1}}"style="height: {{clientHeight?clientHeight+'px':'auto'}}"/>
       </view>
 
       <view class="weui-cells__title">任务交付地点</view>
@@ -86,14 +86,14 @@
             <view class="weui-label">当前选择</view>
           </view>
           <view class="weui-cell__bd">
-            <picker name="placePicker"bindchange="bindToChange" value="{{dataIndex}}" range="{{address}}">
-                <view class="weui-input">{{address[dataIndex].address}}</view>
+            <picker name="toLocation"bindchange="bindToChange" value="{{address[dataIndex2]}}" range="{{address}}">
+                <view class="weui-input"style="height: {{clientHeight?clientHeight+'px':'auto'}}">{{address[dataIndex2]}}</view>
             </picker>
           </view>
         </view>
       </view>
-      <view class="section {{reply?'on':'off'}}">
-        <input name="place" placeholder="请输入任务地点" type="text" value="{{place}}"/>
+      <view class="section {{reply2?'on':'off'}}">
+        <input name="place2" placeholder="请输入任务地点" type="text" value="{{place2}}"style="height: {{clientHeight?clientHeight+'px':'auto'}}"/>
       </view>
 
       <i-button bindclick="handleClick">下一步</i-button>

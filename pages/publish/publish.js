@@ -9,8 +9,12 @@ Page({
     DateLimit: '2000-01-01',
     TimeLimit: '00:00',
     address:[],
-    place: '安楼208',
-    dataIndex: 0,
+    place1: '',
+    place2: '',
+    reply1: false,
+    reply2: false,
+    dataIndex1: 0,
+    dataIndex2: 0,
     money:0,
     description:'',
     bonus:"",
@@ -45,18 +49,15 @@ Page({
       success: function (res) {
         if (res.data.state != 0) { 
           console.log("返回数据", res.data)
+          that.data.address=[]
+          for (var i=0;i<res.data.length;i++){
+            that.setData({
+              address: that.data.address.concat(res.data[i].address + res.data[i].detailAddress)
+            })
+          }
           that.setData({
-            address: res.data
+            address: that.data.address.concat("自定义")
           })
-          /*
-          for (let index = 0; index < 4; index++) {           //index问题
-            let straddress = 'AddressArray[' + index + '].address'
-            that.setData(
-              {
-                [straddress]: res.data[index].address,
-              }
-            )
-          }*/
         }
         else {
           wx.showToast(
@@ -115,29 +116,27 @@ Page({
 
   bindFromChange: function (e) {
     console.log('选择的是', e.detail.value)
-    console.log('选择的是', this.data.address[e.detail.value].address)
-    if (e.detail.value == 4) {
-      this.setData({ reply: true })
+    console.log('选择的是', this.data.address[e.detail.value])
+    if (e.detail.value == this.data.address.length - 1) {
+      this.setData({ reply1: true })
     } else {
-      this.setData({ reply: false })
+      this.setData({ reply1: false })
     }
     this.setData({
-      dataIndex: e.detail.value,
-      place: this.data.address[e.detail.value].address
+      dataIndex1: e.detail.value,
     })
   },
 
   bindToChange: function (e) {
     console.log('选择的是', e.detail.value)
-    console.log('选择的是', this.data.address[e.detail.value].address)
-    if (e.detail.value == 4) {
-      this.setData({ reply: true })
+    console.log('选择的是', this.data.address[e.detail.value])
+    if (e.detail.value == this.data.address.length-1) {
+      this.setData({ reply2: true })
     } else {
-      this.setData({ reply: false })
+      this.setData({ reply2: false })
     }
     this.setData({
-      dataIndex: e.detail.value,
-      place: this.data.address[e.detail.value].address
+      dataIndex2: e.detail.value,
     })
   },
 
@@ -158,7 +157,11 @@ Page({
 
   formSubmit(e) {
     console.log('form发生了submit事件，携带数据为：', e.detail.value)
-
+    console.log('data：', this.data)
+    console.log('userID', app.globalData.userID)
+    if (this.data.reply1 == true) e.detail.value.fromLocation = e.detail.value.place1
+    if (this.data.reply2 == true) e.detail.value.toLocation = e.detail.value.place2
+    console.log('e.detail.value', e.detail.value)
     wx.request({
       url: app.globalData.sweURL + '/addNewTask',
       method: 'POST',
@@ -167,10 +170,10 @@ Page({
         'Authorization': app.globalData.token
       },
       data: {
-        "userID": app.globalData.userID,
+        "releaser": app.globalData.userID,
         "releaseDate": util.formatTime(new Date()),
-        "fromLocation": this.data.dataIndex,
-        "toLocation": this.data.dataIndex,
+        "fromLocation": e.detail.value.fromLocation,
+        "toLocation": e.detail.value.toLocation,
         "type": this.data.type,
         "bonousType": this.data.bonusType,
         "bonousDescription": e.detail.value.amount,
@@ -217,9 +220,12 @@ Page({
       startTime: '00:00',
       endDate: '2000-01-01',
       endTime: '00:00',
-      dataArray: ['安楼208', 'B楼308', 'F楼', 'G107', '手动输入'],
-      place: '安楼208',
-      dataIndex: 0,
+      place1: '',
+      place2: '',
+      reply1: false,
+      reply2: false,
+      dataIndex1: 0,
+      dataIndex2: 0,
       money: 0
     })
   }
