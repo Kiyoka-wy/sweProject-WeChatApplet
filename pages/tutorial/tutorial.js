@@ -6,6 +6,7 @@ Page({
     imgUrls: [
       '../../imgs/tutorial/1.png',
       '../../imgs/tutorial/2.png',
+      '../../imgs/tutorial/3.png',
       '../../imgs/tutorial/4.png',
       '../../imgs/tutorial/5.png'
     ],
