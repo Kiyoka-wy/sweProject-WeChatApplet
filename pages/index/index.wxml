@@ -15,7 +15,7 @@
             <view class="weui-label">排序方式</view>
           </view>
           <view class="weui-cell__bd">
-            <picker name="toLocation" bindchange="bindChange" value="{{order[index]}}" range="{{order}}">
+            <picker name="sort" bindchange="bindChange" value="{{order[index]}}" range="{{order}}">
                 <view class="weui-input"style="height: {{clientHeight?clientHeight+'px':'auto'}}">{{order[index]}}</view>
             </picker>
           </view>

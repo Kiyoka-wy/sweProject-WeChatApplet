@@ -13,8 +13,9 @@ Page({
     current_scroll: 'tab1',
     currentData: 0,
     tasks:[],
-    order:["按时间排序","按积分排序","智能排序"]
-    
+    firstTasks:[],
+    order:["按时间排序","按积分排序","智能排序"],
+    index:2
   },
 
   onLoad: function () {
@@ -62,16 +63,55 @@ Page({
   bindChange: function (e) {
     console.log('选择的是', e.detail.value)
     console.log('选择的是', this.data.order[e.detail.value])
-    if (e.detail.value == this.data.order.length - 1) {
-      //this.setData({ reply2: true })
-    } else {
-      this.setData({ reply2: false })
+    if (e.detail.value == 0) {
+      this.timeSort()
+    }
+    else if (e.detail.value == 1) {
+      this.bonnousSort()
+    }
+    else if (e.detail.value == 2) {
+      this.setData({
+        tasks: this.data.firstTasks
+      })　
     }
     this.setData({
       index: e.detail.value,
     })
   },
-
+  timeSort: function () {
+    var arr = this.data.firstTasks
+    var len = arr.length;
+    for (var i = 0; i < len; i++) {
+      for (var j = 0; j < len - 1 - i; j++) {
+        if (arr[j].releaseDate > arr[j + 1].releaseDate) { //相邻元素两两对比
+          var temp = arr[j + 1]; //元素交换
+          arr[j + 1] = arr[j];
+          arr[j] = temp;
+        }
+      }
+    }
+    console.log("timeSort", arr)
+    this.setData({
+      tasks: arr
+    })　
+  },
+  bonnousSort: function () {
+    var arr = this.data.firstTasks
+    var len = arr.length;
+    for (var i = 0; i < len; i++) {
+      for (var j = 0; j < len - 1 - i; j++) {
+        if (parseInt(arr[j].bonousDescription) < parseInt(arr[j + 1].bonousDescription)){ //相邻元素两两对比
+          var temp = arr[j + 1]; //元素交换
+          arr[j + 1] = arr[j];
+          arr[j] = temp;
+        }
+      }
+    }
+    console.log("bonnousSort", arr)
+    this.setData({
+      tasks: arr
+    })
+  },
   //点击切换，滑块index赋值
   checkCurrent: function (e) {
     const that = this;
@@ -124,6 +164,7 @@ Page({
         that.setData({
           tasks: res.data.data
         })
+        that.data.firstTasks=that.data.tasks
         console.log("任务列表", that.data.tasks)
       }
     })
