@@ -41,21 +41,22 @@ Page({
         if (res.data != null) {
           that.setData(
             {
-              "type": res.data.type,
-              "title": res.data.title,
-              "content": res.data.description_1,
-              "time": res.data.dueDate,
-              "nickname": res.data.nickname_r,
-              "limit": res.data.leftHours,
-              "state": res.data.state,
-              "money": res.data.bonousType + res.data.bonousAmount,
-              "fromLocation": res.data.from,
-              "toLocation": res.data.to,
-              "HideContent": res.data.description_2,
-              "accepterID": res.data.accepter,
-              "leftHours": res.data.leftHours
+              "type": res.data.data.type,
+              "title": res.data.data.title,
+              "content": res.data.data.description_1,
+              "time": res.data.data.dueDate,
+              "nickname": res.data.data.nickname_r,
+              "limit": res.data.data.leftHours,
+              "state": res.data.data.state,
+              "money": res.data.data.bonousType + res.data.data.bonousAmount,
+              "fromLocation": res.data.data.from,
+              "toLocation": res.data.data.to,
+              "HideContent": res.data.data.description_2,
+              "accepterID": res.data.data.accepter,
+              "leftHours": res.data.data.leftHours
             }
           )
+          console.log("任务", res.data.data)
           that.setData({
             buttonx: utils.status(that.data.state,2).x,
             buttony: utils.status(that.data.state,2).y,

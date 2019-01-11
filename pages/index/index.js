@@ -74,9 +74,7 @@ Page({
       this.bonnousSort()
     }
     else if (e.detail.value == 2) {
-      this.setData({
-        tasks: this.data.firstTasks
-      })　
+      this.distanceSort()
     }
     else if (e.detail.value == 3) {
       this.setData({
@@ -117,6 +115,23 @@ Page({
       }
     }
     console.log("bonnousSort", arr)
+    this.setData({
+      tasks: arr
+    })
+  },
+  distanceSort: function () {
+    var arr = this.data.firstTasks
+    var len = arr.length;
+    for (var i = 0; i < len; i++) {
+      for (var j = 0; j < len - 1 - i; j++) {
+        if (arr[j].distance > arr[j + 1].distance) { //相邻元素两两对比
+          var temp = arr[j + 1]; //元素交换
+          arr[j + 1] = arr[j];
+          arr[j] = temp;
+        }
+      }
+    }
+    console.log("timeSort", arr)
     this.setData({
       tasks: arr
     })
@@ -169,12 +184,11 @@ Page({
       },
       success: function (res) {
         console.log("返回数据", res.data.data)
-       
         that.setData({
           tasks: res.data.data
         })
-        that.data.firstTasks=that.data.tasks
         console.log("任务列表", that.data.tasks)
+        that.data.firstTasks = that.data.tasks
       }
     })
   },

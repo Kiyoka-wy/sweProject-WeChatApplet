@@ -40,12 +40,12 @@ Page({
         releaserID: this.data.releaserID,
       },
       success: function (res) {
-        console.log("返回数据", res.data)
+        console.log("返回数据", res.data.data)
 
         that.setData({
-          acc_tasks: res.data
+          acc_tasks: res.data.data
         })
-        console.log("任务列表", res.data)
+        console.log("任务列表", res.data.data)
       }
     })
 
