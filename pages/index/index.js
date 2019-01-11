@@ -15,7 +15,7 @@ Page({
     currentData: 0,
     tasks:[],
     firstTasks:[],
-    order:["按时间排序","按积分排序","智能排序","距离排序"],
+    order: ["按时间排序", "按积分排序", "距离排序","智能排序"],
     index:2
   },
 
