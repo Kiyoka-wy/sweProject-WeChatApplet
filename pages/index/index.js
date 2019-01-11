@@ -13,7 +13,7 @@ Page({
     current_scroll: 'tab1',
     currentData: 0,
     tasks:[],
-    order:["按时间排序","按地点排序"]
+    order:["按时间排序","按积分排序","智能排序"]
     
   },
 
