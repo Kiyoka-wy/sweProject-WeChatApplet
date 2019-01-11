@@ -66,7 +66,7 @@ Page({
       url: app.globalData.sweURL + '/getDormitoryList',
       method: 'POST',
       header: {
-        'content-type': 'application/json',
+        'content-type': 'application/x-www-form-urlencoded',
       },
       data: {},
       success: function (res) {

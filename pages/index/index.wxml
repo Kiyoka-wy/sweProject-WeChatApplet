@@ -9,6 +9,19 @@
   <swiper-item>
       <view class="section section-big">
 			  <view class="title">当前任务</view>
+          <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell weui-cell_input">
+             <view class="weui-cell__hd">
+            <view class="weui-label">排序方式</view>
+          </view>
+          <view class="weui-cell__bd">
+            <picker name="toLocation" bindchange="bindChange" value="{{order[index]}}" range="{{order}}">
+                <view class="weui-input"style="height: {{clientHeight?clientHeight+'px':'auto'}}">{{order[index]}}</view>
+            </picker>
+          </view>
+        </view>
+      </view>
+
         <view wx:for="{{tasks}}" wx:key="item">
           <view class='task'>
             <navigator url="../details/details?taskID={{item.taskID}}">

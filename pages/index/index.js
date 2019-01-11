@@ -12,7 +12,8 @@ Page({
     current: 'tab1',
     current_scroll: 'tab1',
     currentData: 0,
-    tasks:[]
+    tasks:[],
+    order:["按时间排序","按地点排序"]
     
   },
 
@@ -43,6 +44,20 @@ Page({
       currentData: e.detail.current
     })
   },
+
+  bindChange: function (e) {
+    console.log('选择的是', e.detail.value)
+    console.log('选择的是', this.data.order[e.detail.value])
+    if (e.detail.value == this.data.order.length - 1) {
+      //this.setData({ reply2: true })
+    } else {
+      this.setData({ reply2: false })
+    }
+    this.setData({
+      index: e.detail.value,
+    })
+  },
+
   //点击切换，滑块index赋值
   checkCurrent: function (e) {
     const that = this;
