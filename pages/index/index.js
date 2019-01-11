@@ -1,7 +1,8 @@
 //index.js
 //获取应用实例
 var app = getApp()
-
+var QQMapWX = require('../../libs/qqmap-wx-jssdk.js');
+var qqmapsdk;
 Page({
   data: {
     motto: 'Hello World',
@@ -14,7 +15,7 @@ Page({
     currentData: 0,
     tasks:[],
     firstTasks:[],
-    order:["按时间排序","按积分排序","智能排序"],
+    order:["按时间排序","按积分排序","智能排序","距离排序"],
     index:2
   },
 
@@ -45,6 +46,9 @@ Page({
         }
       })
     }
+    qqmapsdk = new QQMapWX({
+      key: 'I22BZ-VRX3R-ILTW5-WC3L7-BVZNJ-DMFGB'
+    });
   },
 
   jumpto: function () {
@@ -74,6 +78,11 @@ Page({
         tasks: this.data.firstTasks
       })　
     }
+    else if (e.detail.value == 3) {
+      this.setData({
+        tasks: this.data.firstTasks
+      })
+    }
     this.setData({
       index: e.detail.value,
     })
@@ -83,7 +92,7 @@ Page({
     var len = arr.length;
     for (var i = 0; i < len; i++) {
       for (var j = 0; j < len - 1 - i; j++) {
-        if (arr[j].releaseDate > arr[j + 1].releaseDate) { //相邻元素两两对比
+        if (arr[j].releaseDate < arr[j + 1].releaseDate) { //相邻元素两两对比
           var temp = arr[j + 1]; //元素交换
           arr[j + 1] = arr[j];
           arr[j] = temp;

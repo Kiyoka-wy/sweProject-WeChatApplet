@@ -36,8 +36,11 @@ Page({
  
   formSubmit(e) {
     console.log('form发生了submit事件，携带数据为：', e.detail.value)
-    if (e.detail.value.address != '' ){
-      app.addPlace(e.detail.value)
+    var item=e.detail.value
+    item.lng = this.data.placeItem.lng
+    item.lat = this.data.placeItem.lat
+    if (item.address != '' ){
+      app.addPlace(item)
     }
 
   },
