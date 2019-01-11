@@ -27,7 +27,7 @@ Page({
         })
       }
     });
-    app.login()
+   // app.login()
   },
 
   formSubmit: function (e) {
