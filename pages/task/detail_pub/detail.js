@@ -39,19 +39,19 @@ Page({
         if (res.data != null) {
           that.setData(
             {
-              "type": res.data.type,
-              "title": res.data.title,
-              "content": res.data.description_1,
-              "time": res.data.dueDate,
-              "nickname": res.data.nickname_r,
-              "limit": res.data.leftHours,
-              "money": res.data.bonousType + res.data.bonousAmount,
-              "fromLocation": res.data.from,
-              "toLocation": res.data.to,
-              "HideContent": res.data.description_2,
+              "type": res.data.data.type,
+              "title": res.data.data.title,
+              "content": res.data.data.description_1,
+              "time": res.data.data.dueDate,
+              "nickname": res.data.data.nickname_r,
+              "limit": res.data.data.leftHours,
+              "money": res.data.data.bonousType + res.data.data.bonousAmount,
+              "fromLocation": res.data.data.from,
+              "toLocation": res.data.data.to,
+              "HideContent": res.data.data.description_2,
               "targetTime": new Date().getTime() + 1000 * 60 * 60 * res.data.leftHours,
-              "state": res.data.state,
-              "releaserID":res.data.releaser
+              "state": res.data.data.state,
+              "releaserID": res.data.data.releaser
             }
           )
           that.setData({

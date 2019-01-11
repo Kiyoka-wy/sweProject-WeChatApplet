@@ -189,10 +189,13 @@ wx.switchTab({
         index: 1
       })
       console.log('监听WebSocket接受到服务器的消息事件。服务器返回的消息', onMessage.data)
-      var s = JSON.parse(onMessage.data)
-      console.log('s', s)
-      that.globalData.message = JSON.parse(s.data)
-      //that.globalData.message =s.data
+      var newMessage = {
+        title: "",
+        time: "",
+      }
+      newMessage.title = onMessage.data
+      newMessage.time ="2019/1/11 14:55"
+      that.globalData.message.push(newMessage)
       console.log('message', that.globalData.message)
 
     })
