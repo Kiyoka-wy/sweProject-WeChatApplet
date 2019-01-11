@@ -26,7 +26,7 @@ Page({
         'Authorization': app.globalData.token
       },
       data: {
-        userID: this.data.userID,
+        userID: app.globalData.userID,
       },
     })
     
