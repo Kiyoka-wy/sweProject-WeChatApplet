@@ -27,6 +27,7 @@ Page({
         })
       }
     });
+    app.login()
   },
 
   formSubmit: function (e) {

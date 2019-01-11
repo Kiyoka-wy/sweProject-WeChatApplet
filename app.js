@@ -35,8 +35,6 @@ App({
 
     this.globalData.userID = wx.getStorageSync('userID')
     this.globalData.token = wx.getStorageSync('token')
-    this.login()
-    
 
   },
 
@@ -69,7 +67,9 @@ App({
               that.onLoginSuccess()
               console.log("loginByPhone:", res.data)
               console.log("token:", res.header.token)
-
+wx.switchTab({
+                    url: '../../index/index'
+                  })
             }
           }
           else {
@@ -199,8 +199,8 @@ App({
   },
   globalData: {
     userInfo: null,
-    sweURL:'http://localhost:8080',
-    sweWxURL: 'ws://localhost:8080',
+    sweURL:'http://111.230.110.146:8888',
+    sweWxURL: 'ws://111.230.110.146:8888',
     userID:'',
     token:'',
     myUserData:{

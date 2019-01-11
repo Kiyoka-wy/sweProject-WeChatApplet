@@ -18,18 +18,32 @@ Page({
   },
 
   onLoad: function () {
-    wx.showModal({
-      content: '是否查看教程指引？',
-      confirmText: '确定',
-      cancelText: '取消',
-      success: function (res) {
-        if (res.confirm) {
-          wx.navigateTo({
-            url: '../tutorial/tutorial'
-          })
-        }
-      }
+    wx.request({
+      url: app.globalData.sweURL + '/setProfileState',
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded',
+        'Authorization': app.globalData.token
+      },
+      data: {
+        userID: this.data.userID,
+      },
     })
+    
+    if (app.globalData.myUserData.profileState == "N") {
+      wx.showModal({
+        content: '是否查看教程指引？',
+        confirmText: '确定',
+        cancelText: '取消',
+        success: function (res) {
+          if (res.confirm) {
+            wx.navigateTo({
+              url: '../tutorial/tutorial'
+            })
+          }
+        }
+      })
+    }
   },
 
   jumpto: function () {
